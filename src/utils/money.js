@@ -1,4 +1,4 @@
-export const formatKes = (amount: number) =>
+export const formatKes = (amount) =>
   new Intl.NumberFormat("en-KE", {
     style: "currency",
     currency: "KES",

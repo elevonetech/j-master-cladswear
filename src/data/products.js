@@ -1,12 +1,10 @@
-import type { Product } from "@/types";
-
-const gallery = (seed: string) => [
+const gallery = (seed) => [
   `https://images.unsplash.com/${seed}?auto=format&fit=crop&w=900&q=80`,
   `https://images.unsplash.com/${seed}&sat=-10&auto=format&fit=crop&w=900&q=80`,
   `https://images.unsplash.com/${seed}&blur=1&auto=format&fit=crop&w=900&q=80`,
 ];
 
-const products: Product[] = [
+const products = [
   {
     id: "sneaker-nike-0",
     name: "Air Force 1 Classic",

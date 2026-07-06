@@ -1,38 +1,8 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import type { CartItem, Product } from "@/types";
 
-type StoreContextValue = {
-  cartItems: CartItem[];
-  wishlist: string[];
-  recentlyViewed: string[];
-  addToCart: (
-    product: Product,
-    quantity: number,
-    selectedSize: string,
-    selectedColor: string,
-  ) => void;
-  updateQuantity: (
-    productId: string,
-    selectedSize: string,
-    selectedColor: string,
-    quantity: number,
-  ) => void;
-  removeFromCart: (
-    productId: string,
-    selectedSize: string,
-    selectedColor: string,
-  ) => void;
-  clearCart: () => void;
-  toggleWishlist: (productId: string) => void;
-  isWishlisted: (productId: string) => boolean;
-  markViewed: (productId: string) => void;
-  cartCount: number;
-  cartSubtotal: number;
-};
+const StoreContext = createContext(undefined);
 
-const StoreContext = createContext<StoreContextValue | undefined>(undefined);
-
-const readStorage = <T,>(key: string, fallback: T) => {
+const readStorage = (key, fallback) => {
   if (typeof window === "undefined") {
     return fallback;
   }
@@ -43,20 +13,20 @@ const readStorage = <T,>(key: string, fallback: T) => {
   }
 
   try {
-    return JSON.parse(value) as T;
+    return JSON.parse(value);
   } catch {
     return fallback;
   }
 };
 
-export function StoreProvider({ children }: { children: React.ReactNode }) {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() =>
+export function StoreProvider({ children }) {
+  const [cartItems, setCartItems] = useState(() =>
     readStorage("kithome-cart", []),
   );
-  const [wishlist, setWishlist] = useState<string[]>(() =>
+  const [wishlist, setWishlist] = useState(() =>
     readStorage("kithome-wishlist", []),
   );
-  const [recentlyViewed, setRecentlyViewed] = useState<string[]>(() =>
+  const [recentlyViewed, setRecentlyViewed] = useState(() =>
     readStorage("kithome-recent", []),
   );
 
@@ -76,10 +46,10 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   }, [recentlyViewed]);
 
   const addToCart = (
-    product: Product,
-    quantity: number,
-    selectedSize: string,
-    selectedColor: string,
+    product,
+    quantity,
+    selectedSize,
+    selectedColor,
   ) => {
     setCartItems((current) => {
       const existing = current.find(
@@ -102,10 +72,10 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   };
 
   const updateQuantity = (
-    productId: string,
-    selectedSize: string,
-    selectedColor: string,
-    quantity: number,
+    productId,
+    selectedSize,
+    selectedColor,
+    quantity,
   ) => {
     if (quantity < 1) {
       return;
@@ -123,9 +93,9 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   };
 
   const removeFromCart = (
-    productId: string,
-    selectedSize: string,
-    selectedColor: string,
+    productId,
+    selectedSize,
+    selectedColor,
   ) => {
     setCartItems((current) =>
       current.filter(
@@ -141,7 +111,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   const clearCart = () => setCartItems([]);
 
-  const toggleWishlist = (productId: string) => {
+  const toggleWishlist = (productId) => {
     setWishlist((current) =>
       current.includes(productId)
         ? current.filter((id) => id !== productId)
@@ -149,9 +119,9 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     );
   };
 
-  const isWishlisted = (productId: string) => wishlist.includes(productId);
+  const isWishlisted = (productId) => wishlist.includes(productId);
 
-  const markViewed = (productId: string) => {
+  const markViewed = (productId) => {
     setRecentlyViewed((current) => {
       const next = [productId, ...current.filter((id) => id !== productId)];
       return next.slice(0, 6);

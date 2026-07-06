@@ -1,12 +1,6 @@
 import { motion } from "framer-motion";
 
-type Props = {
-  eyebrow?: string;
-  title: string;
-  description?: string;
-};
-
-export function SectionHeading({ eyebrow, title, description }: Props) {
+export function SectionHeading({ eyebrow, title, description }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 18 }}

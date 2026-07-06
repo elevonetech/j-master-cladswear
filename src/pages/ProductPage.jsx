@@ -11,14 +11,7 @@ import { formatKes } from "@/utils/money";
 import { buildWhatsAppUrl } from "@/utils/whatsapp";
 import { handleImgError } from "@/utils/image";
 
-type ReviewItem = {
-  name: string;
-  rating: number;
-  date: string;
-  text: string;
-};
-
-const REVIEWS: ReviewItem[] = [
+const REVIEWS = [
   {
     name: "Alex Mwangi",
     rating: 5,
@@ -45,7 +38,7 @@ const REVIEWS: ReviewItem[] = [
   },
 ];
 
-function StarRating({ rating }: { rating: number }) {
+function StarRating({ rating }) {
   return (
     <span className="inline-flex items-center gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
@@ -63,7 +56,7 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-function ReviewCard({ name, rating, date, text }: ReviewItem) {
+function ReviewCard({ name, rating, date, text }) {
   return (
     <div className="rounded-[1.25rem] border border-white/8 bg-white/[0.04] p-5">
       <div className="flex items-start justify-between gap-3">

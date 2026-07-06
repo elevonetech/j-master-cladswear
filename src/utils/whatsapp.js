@@ -1,9 +1,8 @@
-import type { CartItem } from "@/types";
 import { formatKes } from "@/utils/money";
 
 const WHATSAPP_NUMBER = "254712643440";
 
-export const buildOrderMessage = (items: CartItem[]) => {
+export const buildOrderMessage = (items) => {
   const lines = items.map(
     ({ product, quantity, selectedSize, selectedColor }) =>
       `• ${product.name} - Size ${selectedSize} - ${selectedColor} - Qty ${quantity} - ${formatKes(product.price * quantity)}`,
@@ -31,5 +30,5 @@ export const buildOrderMessage = (items: CartItem[]) => {
   ].join("\n");
 };
 
-export const buildWhatsAppUrl = (items: CartItem[]) =>
+export const buildWhatsAppUrl = (items) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildOrderMessage(items))}`;

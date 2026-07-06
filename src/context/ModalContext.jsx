@@ -1,28 +1,18 @@
 import { createContext, useContext, useState } from "react";
-import type { Product } from "@/types";
 import products from "@/data/products";
 
-type ModalContextValue = {
-  previewProduct: Product | null;
-  detailsProduct: Product | null;
-  openPreview: (productId: string) => void;
-  openDetails: (productId: string) => void;
-  closePreview: () => void;
-  closeDetails: () => void;
-};
+const ModalContext = createContext(undefined);
 
-const ModalContext = createContext<ModalContextValue | undefined>(undefined);
+export function ModalProvider({ children }) {
+  const [previewProduct, setPreviewProduct] = useState(null);
+  const [detailsProduct, setDetailsProduct] = useState(null);
 
-export function ModalProvider({ children }: { children: React.ReactNode }) {
-  const [previewProduct, setPreviewProduct] = useState<Product | null>(null);
-  const [detailsProduct, setDetailsProduct] = useState<Product | null>(null);
-
-  const openPreview = (productId: string) => {
+  const openPreview = (productId) => {
     const product = products.find((p) => p.id === productId) ?? null;
     setPreviewProduct(product);
   };
 
-  const openDetails = (productId: string) => {
+  const openDetails = (productId) => {
     const product = products.find((p) => p.id === productId) ?? null;
     setDetailsProduct(product);
   };

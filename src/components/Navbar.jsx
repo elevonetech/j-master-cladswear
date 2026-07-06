@@ -14,7 +14,7 @@ const links = [
   { label: "Saved", to: "/wishlist" },
 ];
 
-function KithomeLogo({ size = 36 }: { size?: number }) {
+function KithomeLogo({ size = 36 }) {
   return (
     <svg
       width={size}

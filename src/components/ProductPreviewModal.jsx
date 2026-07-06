@@ -4,19 +4,11 @@ import toast from "react-hot-toast";
 import { Star } from "lucide-react";
 import { useStore } from "@/context/StoreContext";
 import { useModal } from "@/context/ModalContext";
-import type { Product } from "@/types";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
 import products from "@/data/products";
 
-type ReviewItem = {
-  name: string;
-  rating: number;
-  date: string;
-  text: string;
-};
-
-const REVIEWS: ReviewItem[] = [
+const REVIEWS = [
   {
     name: "Alex Mwangi",
     rating: 5,
@@ -37,7 +29,7 @@ const REVIEWS: ReviewItem[] = [
   },
 ];
 
-function StarRating({ rating }: { rating: number }) {
+function StarRating({ rating }) {
   return (
     <span className="inline-flex items-center gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
@@ -55,7 +47,7 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-function ReviewCard({ name, rating, date, text }: ReviewItem) {
+function ReviewCard({ name, rating, date, text }) {
   return (
     <div className="rounded-[1.25rem] border border-white/8 bg-white/[0.04] p-4">
       <div className="flex items-start justify-between gap-3">
@@ -72,12 +64,7 @@ function ReviewCard({ name, rating, date, text }: ReviewItem) {
   );
 }
 
-type Props = {
-  product: Product | null;
-  onClose: () => void;
-};
-
-export function ProductPreviewModal({ product, onClose }: Props) {
+export function ProductPreviewModal({ product, onClose }) {
   const { addToCart, toggleWishlist, isWishlisted } = useStore();
   const { openDetails } = useModal();
   const [imageIndex, setImageIndex] = useState(0);
@@ -95,7 +82,7 @@ export function ProductPreviewModal({ product, onClose }: Props) {
   }, [product]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
+    const onKey = (e) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);

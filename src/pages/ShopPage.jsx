@@ -7,8 +7,6 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SkeletonGrid } from "@/components/SkeletonGrid";
 import { formatKes } from "@/utils/money";
 
-type SortOption = "featured" | "price-asc" | "price-desc" | "rating";
-
 export function ShopPage() {
   const [searchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
@@ -20,7 +18,7 @@ export function ShopPage() {
   const [selectedBrand, setSelectedBrand] = useState("All");
   const [selectedColor, setSelectedColor] = useState("All");
   const [priceLimit, setPriceLimit] = useState(5000);
-  const [sort, setSort] = useState<SortOption>("featured");
+  const [sort, setSort] = useState("featured");
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 700);
@@ -207,7 +205,7 @@ export function ShopPage() {
               </span>
               <select
                 value={sort}
-                onChange={(event) => setSort(event.target.value as SortOption)}
+                onChange={(event) => setSort(event.target.value)}
                 className="rounded-full bg-black/30 px-4 py-3 text-sm text-white outline-none shadow-inner shadow-white/5"
               >
                 <option value="featured" className="bg-black">

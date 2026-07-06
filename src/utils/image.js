@@ -21,9 +21,7 @@ const PLACEHOLDER = `data:image/svg+xml,${encodeURIComponent(
  * onError handler for product images.
  * Usage: <img src={...} onError={handleImgError} />
  */
-export function handleImgError(
-  event: React.SyntheticEvent<HTMLImageElement, Event>,
-): void {
+export function handleImgError(event) {
   const img = event.currentTarget;
   if (img.src !== PLACEHOLDER) {
     img.src = PLACEHOLDER;

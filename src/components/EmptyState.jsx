@@ -1,12 +1,6 @@
 import { motion } from "framer-motion";
 
-type Props = {
-  title: string;
-  description: string;
-  action?: React.ReactNode;
-};
-
-export function EmptyState({ title, description, action }: Props) {
+export function EmptyState({ title, description, action }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.96 }}

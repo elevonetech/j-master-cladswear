@@ -3,15 +3,10 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useStore } from "@/context/StoreContext";
 import { useModal } from "@/context/ModalContext";
-import type { Product } from "@/types";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
 
-type Props = {
-  product: Product;
-};
-
-export function ProductCard({ product }: Props) {
+export function ProductCard({ product }) {
   const { toggleWishlist, isWishlisted, addToCart } = useStore();
   const { openPreview, openDetails } = useModal();
   const wishlisted = isWishlisted(product.id);

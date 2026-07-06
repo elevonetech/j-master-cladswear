@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 
-type Item = {
-  label: string;
-  to?: string;
-};
-
-export function Breadcrumbs({ items }: { items: Item[] }) {
+export function Breadcrumbs({ items }) {
   return (
     <nav
       aria-label="Breadcrumb"
