@@ -14,7 +14,7 @@ export function ContactPage() {
 
       <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
         <form
-          className="glass rounded-[2rem] p-7 md:p-10"
+          className="bg-[#f8f8f8] rounded-[2rem] p-7 md:p-10"
           onSubmit={(event) => {
             event.preventDefault();
             setSubmitted(true);
@@ -24,24 +24,24 @@ export function ContactPage() {
             <input
               type="text"
               placeholder="Your name"
-              className="rounded-full bg-white/[0.04] px-5 py-4 text-sm text-white outline-none placeholder:text-white/35"
+              className="rounded-full bg-white px-5 py-4 text-sm text-[#111] outline-none placeholder:text-black/30 border border-black/10"
             />
             <input
               type="email"
               placeholder="Email address"
-              className="rounded-full bg-white/[0.04] px-5 py-4 text-sm text-white outline-none placeholder:text-white/35"
+              className="rounded-full bg-white px-5 py-4 text-sm text-[#111] outline-none placeholder:text-black/30 border border-black/10"
             />
           </div>
           <div className="mt-5 grid gap-5">
             <input
               type="text"
               placeholder="Subject"
-              className="rounded-full bg-white/[0.04] px-5 py-4 text-sm text-white outline-none placeholder:text-white/35"
+              className="rounded-full bg-white px-5 py-4 text-sm text-[#111] outline-none placeholder:text-black/30 border border-black/10"
             />
             <textarea
               rows={6}
               placeholder="Tell us what you need"
-              className="rounded-[1.5rem] bg-white/[0.04] px-5 py-4 text-sm text-white outline-none placeholder:text-white/35"
+              className="rounded-[1.5rem] bg-white px-5 py-4 text-sm text-[#111] outline-none placeholder:text-black/30 border border-black/10"
             />
           </div>
           <button
@@ -51,7 +51,7 @@ export function ContactPage() {
             Send message
           </button>
           {submitted ? (
-            <p className="mt-4 text-sm text-white/65">
+            <p className="mt-4 text-sm text-[#666]">
               Thanks, your message was captured locally. Connect on WhatsApp for
               the fastest response.
             </p>
@@ -59,16 +59,16 @@ export function ContactPage() {
         </form>
 
         <div className="space-y-5">
-          <div className="glass rounded-[2rem] p-7">
-            <h2 className="text-2xl font-semibold text-white">
+          <div className="bg-[#f8f8f8] rounded-[2rem] p-7">
+            <h2 className="text-2xl font-semibold text-[#111]">
               Contact details
             </h2>
-            <div className="mt-5 grid gap-4 text-sm text-white/68">
+            <div className="mt-5 grid gap-4 text-sm text-[#666]">
               <div>0712 643 440</div>
               <div>
                 <a
                   href="mailto:jamesmngandu@gmail.com"
-                  className="transition hover:text-white"
+                  className="transition hover:text-black"
                 >
                   jamesmngandu@gmail.com
                 </a>
@@ -79,7 +79,7 @@ export function ContactPage() {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="transition hover:text-white"
+                  className="transition hover:text-black"
                 >
                   Instagram
                 </a>
@@ -95,8 +95,8 @@ export function ContactPage() {
             </a>
           </div>
 
-          <div className="glass overflow-hidden rounded-[2rem]">
-            <div className="px-6 py-5 text-xs uppercase tracking-[0.35em] text-white/45">
+          <div className="bg-[#f8f8f8] overflow-hidden rounded-[2rem] shadow-sm">
+            <div className="px-6 py-5 text-xs uppercase tracking-[0.35em] text-black/40">
               Google Map Placeholder
             </div>
             <iframe
