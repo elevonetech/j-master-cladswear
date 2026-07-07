@@ -7,7 +7,6 @@ import { HomePage } from "@/pages/HomePage";
 import { ShopPage } from "@/pages/ShopPage";
 import { ProductPage } from "@/pages/ProductPage";
 import { CartPage } from "@/pages/CartPage";
-import { WishlistPage } from "@/pages/WishlistPage";
 import { CollectionsPage } from "@/pages/CollectionsPage";
 import { AboutPage } from "@/pages/AboutPage";
 import { ContactPage } from "@/pages/ContactPage";
@@ -69,7 +68,6 @@ function RoutedApp() {
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/collections" element={<CollectionsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />

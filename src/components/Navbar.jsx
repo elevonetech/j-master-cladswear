@@ -11,7 +11,6 @@ const links = [
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
   { label: "Cart", to: "/cart" },
-  { label: "Saved", to: "/wishlist" },
 ];
 
 function DapperLogo({ size = 36 }) {
