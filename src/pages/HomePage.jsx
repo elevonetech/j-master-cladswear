@@ -31,50 +31,18 @@ export function HomePage() {
   const hero = featured[0];
 
   return (
-    <div>
-      {/* ══════════════════════════════════════
-          HERO  — cinematic full-bleed, black
-      ══════════════════════════════════════ */}
-      <section
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ backgroundColor: "#080808" }}
-        aria-label="Hero section"
-      >
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <motion.img
-            src={hero.images[0]}
-            alt={hero.name}
-            onError={handleImgError}
-            initial={{ scale: 1.08 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 8, ease: "easeOut" }}
-            className="h-full w-full object-cover object-center opacity-30"
-          />
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080808] via-[#080808]/75 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent" />
-          {/* Subtle texture grain overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
-            }}
-          />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl px-5 sm:px-8 lg:px-10 py-32 w-full">
-          <motion.div
-            variants={stagger}
-            initial="initial"
-            animate="animate"
-            className="max-w-3xl text-left"
-          >
+    <div className="space-y-24 pb-20">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-10 rounded-[2.5rem] bg-white p-6 shadow-sm lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
+          <div className="space-y-8">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.45em] text-champagne font-body">
+              Luxury footwear, curated for Dapper
+            </p>
             <motion.h1
-              {...fadeUp(0.2)}
-              className="display-heading text-left text-5xl md:text-7xl lg:text-[5.5rem] text-white leading-[1.04] mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="max-w-3xl text-5xl font-medium tracking-wide text-[#111] font-heading md:text-7xl leading-[1.1]"
             >
               Step into
               <br />
@@ -82,11 +50,7 @@ export function HomePage() {
                 pure luxury.
               </em>
             </motion.h1>
-
-            <motion.p
-              {...fadeUp(0.32)}
-              className="max-w-lg text-sm leading-relaxed text-white/55 mb-10 text-left"
-            >
+            <p className="max-w-2xl text-xs leading-relaxed text-[#666] font-body md:text-sm">
               Discover refined sneakers, formal icons, rugged boots, and
               effortless casual pairs — designed to feel polished from first
               glance to final checkout.
@@ -98,7 +62,7 @@ export function HomePage() {
             >
               <Link
                 to="/shop"
-                className="btn-primary !px-8 !py-4 !text-[0.72rem] group"
+                className="btn-secondary px-6 py-3 text-xs font-semibold"
               >
                 Shop the Collection
                 <ArrowRight
@@ -108,7 +72,7 @@ export function HomePage() {
               </Link>
               <Link
                 to="/collections"
-                className="btn-ghost-dark !px-8 !py-4 !text-[0.72rem]"
+                className="btn-primary px-6 py-3 text-xs font-semibold"
               >
                 Explore Collections
               </Link>
@@ -120,16 +84,16 @@ export function HomePage() {
               className="mt-16 flex flex-wrap gap-x-10 gap-y-4 justify-start"
             >
               {[
-                { value: "1 tap", label: "WhatsApp checkout" },
-                { value: "24 styles", label: "Premium curation" },
-                { value: "Nationwide", label: "Trusted delivery" },
-              ].map((s) => (
-                <div key={s.label} className="text-left">
-                  <p className="text-2xl font-bold text-white font-heading">
-                    {s.value}
+                { label: "Fast WhatsApp checkout", value: "1 tap" },
+                { label: "Premium curation", value: "24 styles" },
+                { label: "Trusted delivery", value: "Nationwide" },
+              ].map((item) => (
+                <div key={item.label} className="bg-[#f8f8f8] rounded-2xl p-4 text-center font-body">
+                  <p className="text-xl font-semibold text-champagne">
+                    {item.value}
                   </p>
-                  <p className="mt-0.5 text-[0.6rem] uppercase tracking-[0.3em] text-white/38 font-semibold">
-                    {s.label}
+                  <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-black/40 font-semibold leading-relaxed">
+                    {item.label}
                   </p>
                 </div>
               ))}
@@ -156,40 +120,35 @@ export function HomePage() {
         </motion.div>
       </section>
 
-      {/* ══════════════════════════════════════
-          FEATURED — white, spacious
-      ══════════════════════════════════════ */}
-      <section className="bg-white py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
-            <SectionHeading
-              eyebrow="Featured selection"
-              title="Hand-picked luxury silhouettes"
-              description="Each pair balances a premium presence with everyday wearability."
+          <div className="relative min-h-[30rem] overflow-hidden rounded-[2.25rem] bg-[#f8f8f8] p-4">
+            <motion.img
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              src={featured[0].images[0]}
+              alt={featured[0].name}
+              onError={handleImgError}
+              className="min-h-[30rem] w-full rounded-[2rem] object-cover"
             />
-            <Link
-              to="/shop"
-              className="btn-secondary flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group"
-            >
-              View all
-              <ArrowRight
-                size={12}
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </Link>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {featured.map((product, i) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.55, delay: i * 0.08 }}
-              >
-                <ProductCard product={product} />
-              </motion.div>
-            ))}
+            <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-white/90 p-5 shadow-md font-body">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.35em] text-champagne font-semibold">
+                    Featured drop
+                  </p>
+                  <h2 className="mt-2 text-2xl font-medium tracking-wide text-[#111] font-heading">
+                    {featured[0].name}
+                  </h2>
+                </div>
+                <div className="rounded-full bg-champagne/10 px-3 py-1 text-[9px] uppercase tracking-[0.3em] text-champagne font-semibold">
+                  {featured[0].badge}
+                </div>
+              </div>
+              <div className="mt-4 flex items-center gap-4 text-xs font-semibold text-champagne">
+                <span>Premium finish</span>
+                <span>WhatsApp order</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -334,38 +293,23 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════
-          BEST SELLERS — charcoal/dark
-      ══════════════════════════════════════ */}
-      <section className="bg-[#111111] py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
-            <SectionHeading
-              dark
-              eyebrow="Best sellers"
-              title="Best Sellers"
-              description="The silhouettes customers keep coming back for, season after season."
-            />
-            <Link
-              to="/shop"
-              className="btn-ghost-dark flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group"
-            >
-              Shop all{" "}
-              <ArrowRight
-                size={12}
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </Link>
-          </div>
-          {/* Dark-tinted product cards */}
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {bestSellers.map((product, i) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.55, delay: i * 0.08 }}
+      <section className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+        <div className="bg-[#f8f8f8] rounded-[2rem] p-8">
+          <SectionHeading
+            eyebrow="Brand story"
+            title="Built for the modern luxury wardrobe"
+            description="Dapper Footwear brings premium footwear with a minimal black-and-white identity and a checkout experience designed around convenience."
+          />
+          <div className="grid gap-4 sm:grid-cols-2 font-body text-xs">
+            {[
+              "Curated premium shoes",
+              "Fast WhatsApp ordering",
+              "Streetwear to formal edits",
+              "Responsive across all devices",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-[1.25rem] bg-white p-4 text-[#666]"
               >
                 <ProductCard product={product} />
               </motion.div>
@@ -374,54 +318,55 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════
-          TRENDING — white
-      ══════════════════════════════════════ */}
-      <section className="bg-white py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
-            <SectionHeading
-              eyebrow="Trending now"
-              title="Trending Products"
-              description="Sharp lines, high contrast, and understated confidence."
-            />
-            <Link
-              to="/shop?sort=trending"
-              className="btn-secondary flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group"
-            >
-              View trending{" "}
-              <ArrowRight
-                size={12}
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </Link>
+        <div className="grid gap-6">
+          <div className="bg-[#f8f8f8] rounded-[2rem] p-8 font-body">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne">
+              Featured brands
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2.5">
+              {[
+                "Nike",
+                "Adidas",
+                "Puma",
+                "New Balance",
+                "Reebok",
+                "Asics",
+                "Clarks",
+                "Timberland",
+              ].map((brand) => (
+                <span
+                  key={brand}
+                  className="rounded-full bg-white px-4 py-2 text-xs text-[#666]"
+                >
+                  {brand}
+                </span>
+              ))}
+            </div>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {trending.map((product, i) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.55, delay: i * 0.08 }}
-              >
-                <ProductCard product={product} />
-              </motion.div>
-            ))}
+          <div className="bg-[#f8f8f8] rounded-[2rem] p-8 font-body">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne">
+              Testimonials
+            </p>
+            <div className="mt-4 space-y-4 text-xs text-[#666]">
+              {[
+                "The collection feels premium and the WhatsApp checkout is incredibly efficient.",
+                "The black and white styling gives the whole brand a luxury retail feel.",
+              ].map((quote) => (
+                <p
+                  key={quote}
+                  className="rounded-[1.25rem] bg-white p-4 leading-relaxed"
+                >
+                  {quote}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════
-          NEWSLETTER — obsidian with gold accent
-      ══════════════════════════════════════ */}
-      <section className="bg-[#080808] py-24 lg:py-28 relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.04]">
-          <div className="h-[700px] w-[700px] rounded-full border-[1.5px] border-champagne" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 font-body">
+        <div className="bg-[#f8f8f8] rounded-[2rem] p-8 md:p-10">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <SectionHeading
                 dark
@@ -432,12 +377,12 @@ export function HomePage() {
               <form className="flex flex-col gap-3 sm:flex-row mt-2">
                 <input
                   type="email"
-                  placeholder="Enter your email address"
-                  className="input-dark flex-1 !rounded-full"
+                  placeholder="Enter your email"
+                  className="min-w-0 flex-1 rounded-full bg-white px-5 py-3 text-xs text-[#111] outline-none placeholder:text-black/40 shadow-sm"
                 />
                 <button
                   type="button"
-                  className="btn-primary !py-3 !px-7 !text-[0.7rem] flex-shrink-0"
+                  className="btn-primary px-6 py-3 text-xs font-semibold"
                 >
                   Subscribe
                 </button>
@@ -450,11 +395,14 @@ export function HomePage() {
                 { value: "4.8/5", label: "Average rating" },
                 { value: "Same day", label: "WhatsApp response" },
               ].map((stat) => (
-                <div key={stat.label} className="stat-card-dark">
-                  <p className="text-2xl font-bold text-white font-heading">
+                <div
+                  key={stat.label}
+                  className="rounded-[1.5rem] bg-white p-5 text-center shadow-sm"
+                >
+                  <p className="text-2xl font-semibold text-champagne font-body">
                     {stat.value}
                   </p>
-                  <p className="mt-1.5 text-[0.58rem] uppercase tracking-[0.28em] text-white/38 font-semibold">
+                  <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-black/40 font-semibold">
                     {stat.label}
                   </p>
                 </div>

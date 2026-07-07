@@ -49,60 +49,73 @@ export function ContactPage() {
   ];
 
   return (
-    <div>
-      {/* Header */}
-      <section className="bg-white border-b border-black/5 py-16 px-5 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Contact"
-            title="Get in Touch"
-            description="Have a question about an order, a product, or anything else? We'd love to hear from you."
-          />
-        </div>
-      </section>
+    <div className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Contact"
+        title="Get in touch"
+        description="Use the form below or reach us instantly on WhatsApp for order support and product questions."
+      />
 
-      {/* Content */}
-      <section className="bg-[#faf9f7] py-20 pb-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.85fr] items-start">
-            {/* Contact Form */}
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
-              className="rounded-3xl bg-white border border-black/5 p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-            >
-              <h2 className="mb-7 text-2xl font-bold font-heading text-stone">
-                Send us a Message
-              </h2>
+      <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
+        <form
+          className="bg-[#f8f8f8] rounded-[2rem] p-7 md:p-10"
+          onSubmit={(event) => {
+            event.preventDefault();
+            setSubmitted(true);
+          }}
+        >
+          <div className="grid gap-5 sm:grid-cols-2">
+            <input
+              type="text"
+              placeholder="Your name"
+              className="rounded-full bg-white px-5 py-4 text-sm text-[#111] outline-none placeholder:text-black/30 border border-black/10"
+            />
+            <input
+              type="email"
+              placeholder="Email address"
+              className="rounded-full bg-white px-5 py-4 text-sm text-[#111] outline-none placeholder:text-black/30 border border-black/10"
+            />
+          </div>
+          <div className="mt-5 grid gap-5">
+            <input
+              type="text"
+              placeholder="Subject"
+              className="rounded-full bg-white px-5 py-4 text-sm text-[#111] outline-none placeholder:text-black/30 border border-black/10"
+            />
+            <textarea
+              rows={6}
+              placeholder="Tell us what you need"
+              className="rounded-[1.5rem] bg-white px-5 py-4 text-sm text-[#111] outline-none placeholder:text-black/30 border border-black/10"
+            />
+          </div>
+          <button
+            type="submit"
+            className="btn-secondary mt-5 px-6 py-4"
+          >
+            Send message
+          </button>
+          {submitted ? (
+            <p className="mt-4 text-sm text-[#666]">
+              Thanks, your message was captured locally. Connect on WhatsApp for
+              the fastest response.
+            </p>
+          ) : null}
+        </form>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="input-light"
-                />
-
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="input-light"
-                />
-              </div>
-
-              <div className="mt-4 grid gap-4">
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="input-light"
-                />
-
-                <textarea
-                  rows={6}
-                  placeholder="Tell us how we can help..."
-                  className="input-light !rounded-2xl !px-5 !py-4 resize-none"
-                />
+        <div className="space-y-5">
+          <div className="bg-[#f8f8f8] rounded-[2rem] p-7">
+            <h2 className="text-2xl font-semibold text-[#111]">
+              Contact details
+            </h2>
+            <div className="mt-5 grid gap-4 text-sm text-[#666]">
+              <div>0712 643 440</div>
+              <div>
+                <a
+                  href="mailto:jamesmngandu@gmail.com"
+                  className="transition hover:text-black"
+                >
+                  jamesmngandu@gmail.com
+                </a>
               </div>
 
               <button
@@ -157,28 +170,26 @@ export function ContactPage() {
                   href="https://wa.me/254712643440"
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-primary mt-8 flex w-full items-center justify-center gap-2 !py-3 !text-[0.72rem]"
+                  className="transition hover:text-black"
                 >
                   <MessageCircle size={16} />
                   Chat on WhatsApp
                 </a>
               </div>
+            </div>
+            <a
+              href="https://wa.me/254712643440"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-secondary mt-6 px-5 py-3"
+            >
+              WhatsApp us
+            </a>
+          </div>
 
-              {/* Map */}
-              <div className="overflow-hidden rounded-3xl bg-white border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-                <div className="border-b border-black/5 px-6 py-4">
-                  <p className="text-[0.65rem] uppercase tracking-[0.3em] text-stone/45 font-semibold">
-                    Our Location
-                  </p>
-                </div>
-
-                <iframe
-                  title="Kithome Shoes Location"
-                  src="https://www.google.com/maps?q=Nairobi&output=embed"
-                  loading="lazy"
-                  className="h-72 w-full"
-                />
-              </div>
+          <div className="bg-[#f8f8f8] overflow-hidden rounded-[2rem] shadow-sm">
+            <div className="px-6 py-5 text-xs uppercase tracking-[0.35em] text-black/40">
+              Google Map Placeholder
             </div>
           </div>
         </div>

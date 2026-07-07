@@ -7,10 +7,20 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { buildWhatsAppUrl } from "@/utils/whatsapp";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
-import { MessageCircle, Trash2, Plus, Minus } from "lucide-react";
+import products from "@/data/products";
 
 export function CartPage() {
-  const { cartItems, updateQuantity, removeFromCart, clearCart, cartSubtotal } = useStore();
+  const {
+    cartItems,
+    updateQuantity,
+    removeFromCart,
+    clearCart,
+    cartSubtotal,
+    wishlist,
+    toggleWishlist,
+  } = useStore();
+
+  const savedProducts = products.filter((p) => wishlist.includes(p.id));
   const [coupon, setCoupon] = useState("");
 
   const discount = useMemo(() => {
@@ -40,48 +50,96 @@ export function CartPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-12 pb-28">
-        {cartItems.length === 0 ? (
-          <EmptyState
-            title="Your cart is empty"
-            description="Add products from the shop or use quick preview to start building your order."
-            action={
-              <Link to="/shop" className="btn-primary inline-flex px-7 py-3.5">
+      {cartItems.length === 0 ? (
+        <EmptyState
+          title="Your cart is empty"
+          description="Add products from the shop or use quick preview to start building your order."
+          action={
+            <Link
+              to="/shop"
+              className="btn-secondary px-5 py-3"
+              >
                 Explore products
-              </Link>
-            }
-          />
-        ) : (
-          <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-start">
-
-            {/* ── Items ── */}
-            <div className="space-y-4">
-              {cartItems.map((item, index) => (
-                <motion.article
-                  key={`${item.product.id}-${item.selectedSize}-${item.selectedColor}`}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.06 }}
-                  className="flex flex-col md:flex-row gap-5 bg-white border border-black/07 rounded-3xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.05)]"
-                >
-                  <img
-                    src={item.product.images[0]}
-                    alt={item.product.name}
-                    onError={handleImgError}
-                    className="h-36 w-full md:w-36 rounded-2xl object-cover flex-shrink-0"
-                  />
-                  <div className="flex flex-1 flex-col justify-between gap-4 min-w-0">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <p className="text-[0.6rem] font-semibold uppercase tracking-[0.26em] text-champagne/80">{item.product.brand}</p>
-                        <h3 className="mt-1.5 text-[1rem] font-bold font-heading text-stone leading-snug">{item.product.name}</h3>
-                        <p className="mt-1.5 text-[0.75rem] text-stone/55">Size {item.selectedSize} · {item.selectedColor}</p>
-                      </div>
+            </Link>
+          }
+        />
+      ) : (
+        <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="space-y-4">
+            {cartItems.map((item, index) => (
+              <motion.article
+                key={`${item.product.id}-${item.selectedSize}-${item.selectedColor}`}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className="bg-[#f8f8f8] flex flex-col gap-5 rounded-[2rem] p-5 md:flex-row"
+              >
+                <img
+                  src={item.product.images[0]}
+                  alt={item.product.name}
+                  onError={handleImgError}
+                  className="h-40 w-full rounded-[1.5rem] object-cover md:w-40"
+                />
+                <div className="flex flex-1 flex-col justify-between gap-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.3em] text-champagne">
+                        {item.product.brand}
+                      </p>
+                      <h3 className="mt-2 text-xl font-semibold text-[#111]">
+                        {item.product.name}
+                      </h3>
+                      <p className="mt-2 text-sm text-[#666]">
+                        Size {item.selectedSize} · {item.selectedColor}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        removeFromCart(
+                          item.product.id,
+                          item.selectedSize,
+                          item.selectedColor,
+                        )
+                      }
+                      className="btn-primary px-4 py-2"
+                      >
+                        Remove
+                      </button>
+                  </div>
+                  <div className="flex flex-wrap items-center justify-between gap-4">
+                    <p className="text-lg font-semibold text-[#111]">
+                      {formatKes(item.product.price)}
+                    </p>
+                    <div className="flex items-center gap-1 rounded-full bg-white border border-black/10">
                       <button
                         type="button"
-                        onClick={() => removeFromCart(item.product.id, item.selectedSize, item.selectedColor)}
-                        aria-label="Remove item"
-                        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-black/08 text-stone/40 hover:bg-red-50 hover:border-red-200 hover:text-red-500 transition-all duration-220 cursor-pointer"
+                        onClick={() =>
+                          updateQuantity(
+                            item.product.id,
+                            item.selectedSize,
+                            item.selectedColor,
+                            item.quantity - 1,
+                          )
+                        }
+                        className="btn-secondary rounded-s-full px-3 py-2"
+                      >
+                        -
+                      </button>
+                      <span className="min-w-8 text-center text-sm text-[#111]">
+                        {item.quantity}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          updateQuantity(
+                            item.product.id,
+                            item.selectedSize,
+                            item.selectedColor,
+                            item.quantity + 1,
+                          )
+                        }
+                        className="btn-secondary rounded-e-full px-3 py-2"
                       >
                         <Trash2 size={13} />
                       </button>
@@ -115,67 +173,128 @@ export function CartPage() {
               ))}
             </div>
 
-            {/* ── Summary ── */}
-            <aside className="bg-white border border-black/07 rounded-3xl p-7 shadow-[0_2px_12px_rgba(0,0,0,0.06)] lg:sticky lg:top-28">
-              <h2 className="text-xl font-bold font-heading text-stone mb-6">Order summary</h2>
-
-              <div className="space-y-3.5 text-[0.82rem] text-stone/65">
-                <div className="flex justify-between">
-                  <span>Subtotal</span>
-                  <span className="font-medium text-stone">{formatKes(cartSubtotal)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Shipping</span>
-                  <span className={`font-medium ${shipping === 0 ? "text-green-600" : "text-stone"}`}>
-                    {shipping === 0 ? "Free" : formatKes(shipping)}
-                  </span>
-                </div>
-                {discount > 0 && (
-                  <div className="flex justify-between text-green-600">
-                    <span>Discount</span>
-                    <span className="font-medium">−{formatKes(discount)}</span>
-                  </div>
-                )}
-                <div className="border-t border-black/07 pt-3.5 flex justify-between text-base font-bold text-stone">
-                  <span>Total</span>
-                  <span>{formatKes(total)}</span>
-                </div>
+          <aside className="bg-[#f8f8f8] h-fit rounded-[2rem] p-6 md:p-8 lg:sticky lg:top-32">
+            <h2 className="text-2xl font-semibold text-[#111]">Cart summary</h2>
+            <div className="mt-6 space-y-4 text-sm text-[#666]">
+              <div className="flex items-center justify-between pb-3">
+                <span>Subtotal</span>
+                <span>{formatKes(cartSubtotal)}</span>
+              </div>
+              <div className="flex items-center justify-between pb-3">
+                <span>Shipping</span>
+                <span>{shipping === 0 ? "Free" : formatKes(shipping)}</span>
+              </div>
+              <div className="flex items-center justify-between pb-3">
+                <span>Discount</span>
+                <span>-{formatKes(discount)}</span>
+              </div>
+              <div className="flex items-center justify-between text-lg font-semibold text-[#111]">
+                <span>Total</span>
+                <span>{formatKes(total)}</span>
               </div>
 
-              <div className="mt-5 rounded-2xl bg-[#faf9f7] border border-black/06 p-4 text-[0.75rem] text-stone/55 leading-relaxed">
-                Premium packaging, tracked delivery, and WhatsApp order confirmation included.
-              </div>
+            <div className="mt-6 rounded-[1.5rem] bg-white p-4 text-sm text-[#666] shadow-sm">
+              Shipping information: premium packaging, tracked delivery, and
+              WhatsApp order confirmation.
+            </div>
 
-              <div className="mt-5 space-y-3">
-                <label className="grid gap-2">
-                  <span className="text-[0.6rem] font-semibold uppercase tracking-[0.28em] text-stone/45">Coupon code</span>
-                  <input
-                    value={coupon}
-                    onChange={(e) => setCoupon(e.target.value)}
-                    placeholder="KITHOME10 or FREESHIP"
-                    className="input-light"
+            <div className="mt-6 grid gap-3">
+              <label className="grid gap-2">
+                <span className="text-xs uppercase tracking-[0.3em] text-champagne">
+                  Coupon code
+                </span>
+                <input
+                  value={coupon}
+                  onChange={(event) => setCoupon(event.target.value)}
+                  placeholder="KITHOME10 or FREESHIP"
+                  className="rounded-full bg-white px-4 py-3 text-sm text-[#111] outline-none placeholder:text-black/30 border border-black/10"
+                />
+              </label>
+              <button
+                type="button"
+                onClick={checkout}
+                className="btn-secondary px-5 py-4"
+              >
+                Proceed to checkout
+              </button>
+              <button
+                type="button"
+                onClick={clearCart}
+                className="btn-primary px-5 py-4"
+              >
+                Clear cart
+              </button>
+            </div>
+          </aside>
+        </div>
+      )}
+
+      <hr className="my-16 border-black/5" />
+
+      <section>
+        <SectionHeading
+          eyebrow="Wishlist"
+          title="Your saved items"
+          description="Products you have saved for later review and purchasing."
+        />
+
+        {savedProducts.length === 0 ? (
+          <EmptyState
+            title="No saved items"
+            description="Browse the shop and save products you love for later."
+            action={
+              <Link
+                to="/shop"
+                className="btn-secondary px-5 py-3"
+              >
+                Browse shop
+              </Link>
+            }
+          />
+        ) : (
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            {savedProducts.map((product, index) => (
+              <motion.article
+                key={product.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.04 }}
+                className="overflow-hidden rounded-[2rem] bg-[#f8f8f8] shadow-sm"
+              >
+                <Link to={`/product/${product.id}`} className="block">
+                  <img
+                    src={product.images[0]}
+                    alt={product.name}
+                    onError={handleImgError}
+                    className="h-56 w-full object-cover"
                   />
-                </label>
-                <button
-                  type="button"
-                  onClick={checkout}
-                  className="btn-primary w-full !py-3.5 !text-[0.72rem] flex items-center justify-center gap-2"
-                >
-                  <MessageCircle size={14} />
-                  Checkout via WhatsApp
-                </button>
-                <button
-                  type="button"
-                  onClick={clearCart}
-                  className="btn-secondary w-full !py-3 !text-[0.68rem]"
-                >
-                  Clear cart
-                </button>
-              </div>
-            </aside>
+                </Link>
+                <div className="space-y-3 p-5">
+                  <p className="text-xs uppercase tracking-[0.3em] text-champagne">
+                    {product.brand}
+                  </p>
+                  <Link
+                    to={`/product/${product.id}`}
+                    className="block text-lg font-semibold text-[#111] transition"
+                  >
+                    {product.name}
+                  </Link>
+                  <p className="text-lg font-semibold text-[#111]">
+                    {formatKes(product.price)}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => toggleWishlist(product.id)}
+                    className="btn-primary flex h-11 w-full"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </motion.article>
+            ))}
           </div>
         )}
-      </div>
+      </section>
     </div>
   );
 }

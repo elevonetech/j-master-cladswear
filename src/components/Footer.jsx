@@ -66,13 +66,8 @@ function DapperLogoFooter() {
 
 export function Footer() {
   return (
-    <footer className="bg-[#080808] border-t border-white/[0.06]">
-      {/* ── Main grid ── */}
-      <div
-        className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-18 grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]"
-        style={{ paddingTop: "4.5rem", paddingBottom: "4.5rem" }}
-      >
-        {/* Brand column */}
+    <footer className="mt-24 bg-basalt">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:px-8">
         <div>
           <div className="flex items-center gap-3 mb-6">
             <DapperLogoFooter />
@@ -96,16 +91,14 @@ export function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              aria-label="Instagram"
-              className="flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.05] px-4 py-2 text-[0.68rem] font-medium text-white/60 hover:border-white/25 hover:text-white hover:bg-white/08 transition-all duration-240"
+              className="btn-secondary px-4 py-2 text-[10px] tracking-widest"
             >
               <Share2 size={12} />
               Instagram
             </a>
             <a
               href="mailto:jamesmngandu@gmail.com"
-              aria-label="Email"
-              className="flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.05] px-4 py-2 text-[0.68rem] font-medium text-white/60 hover:border-white/25 hover:text-white hover:bg-white/08 transition-all duration-240"
+              className="btn-secondary px-4 py-2 text-[10px] tracking-widest"
             >
               <Mail size={12} />
               Email
@@ -114,8 +107,7 @@ export function Footer() {
               href="https://wa.me/254712643440"
               target="_blank"
               rel="noreferrer"
-              aria-label="WhatsApp"
-              className="flex items-center gap-2 rounded-full border border-champagne/30 bg-champagne/10 px-4 py-2 text-[0.68rem] font-medium text-champagne hover:bg-champagne/18 transition-all duration-240"
+              className="btn-primary px-4 py-2 text-[10px] tracking-widest"
             >
               <MessageCircle size={12} />
               WhatsApp
@@ -185,6 +177,7 @@ export function Footer() {
           </div>
           <a
             href="https://wa.me/254712643440"
+            className="btn-secondary mt-6 px-5 py-2.5 text-xs"
             target="_blank"
             rel="noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full border border-champagne/30 bg-champagne/10 px-5 py-2.5 text-[0.68rem] font-semibold text-champagne hover:bg-champagne/18 transition-all duration-240"
@@ -194,17 +187,8 @@ export function Footer() {
           </a>
         </div>
       </div>
-
-      {/* ── Bottom bar ── */}
-      <div className="border-t border-white/[0.05] px-5 py-5 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[0.65rem] uppercase tracking-[0.3em] text-white/25">
-            © 2026 Dapper Footwear. All rights reserved.
-          </p>
-          <p className="text-[0.65rem] text-white/20">
-            Crafted with precision · Nairobi, Kenya
-          </p>
-        </div>
+      <div className="border-t border-white/5 px-4 py-5 text-center text-xs uppercase tracking-[0.35em] text-bone/45 sm:px-6 lg:px-8">
+        © 2026 Dapper Footwear. All rights reserved.
       </div>
     </footer>
   );

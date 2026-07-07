@@ -7,7 +7,6 @@ import { HomePage } from "@/pages/HomePage";
 import { ShopPage } from "@/pages/ShopPage";
 import { ProductPage } from "@/pages/ProductPage";
 import { CartPage } from "@/pages/CartPage";
-import { WishlistPage } from "@/pages/WishlistPage";
 import { CollectionsPage } from "@/pages/CollectionsPage";
 import { AboutPage } from "@/pages/AboutPage";
 import { ContactPage } from "@/pages/ContactPage";
