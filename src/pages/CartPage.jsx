@@ -59,9 +59,9 @@ export function CartPage() {
           action={
             <Link
               to="/shop"
-              className="btn-secondary inline-flex px-5 py-3 shadow-lg shadow-black/20"
-            >
-              Explore products
+              className="btn-secondary px-5 py-3"
+              >
+                Explore products
             </Link>
           }
         />
@@ -104,16 +104,16 @@ export function CartPage() {
                           item.selectedColor,
                         )
                       }
-                      className="btn-primary px-4 py-2 text-sm shadow-lg shadow-black/20"
-                    >
-                      Remove
-                    </button>
+                      className="btn-primary px-4 py-2 text-sm"
+                      >
+                        Remove
+                      </button>
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <p className="text-lg font-semibold text-white">
                       {formatKes(item.product.price)}
                     </p>
-                    <div className="flex items-center gap-1 rounded-full bg-white/5 shadow-inner shadow-white/5">
+                    <div className="flex items-center gap-1 rounded-full bg-white/5">
                       <button
                         type="button"
                         onClick={() =>
@@ -124,7 +124,7 @@ export function CartPage() {
                             item.quantity - 1,
                           )
                         }
-                        className="btn-secondary rounded-s-full px-3 py-2 text-sm shadow-none"
+                        className="btn-secondary rounded-s-full px-3 py-2 text-sm"
                       >
                         -
                       </button>
@@ -141,7 +141,7 @@ export function CartPage() {
                             item.quantity + 1,
                           )
                         }
-                        className="btn-secondary rounded-e-full px-3 py-2 text-sm shadow-none"
+                        className="btn-secondary rounded-e-full px-3 py-2 text-sm"
                       >
                         +
                       </button>
@@ -187,20 +187,20 @@ export function CartPage() {
                   value={coupon}
                   onChange={(event) => setCoupon(event.target.value)}
                   placeholder="KITHOME10 or FREESHIP"
-                  className="rounded-full bg-black/30 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35 shadow-inner shadow-white/5"
+                  className="rounded-full bg-white/[0.04] px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
                 />
               </label>
               <button
                 type="button"
                 onClick={checkout}
-                className="btn-secondary inline-flex items-center justify-center px-5 py-4 shadow-lg shadow-black/20"
+                className="btn-secondary px-5 py-4"
               >
                 Proceed to checkout
               </button>
               <button
                 type="button"
                 onClick={clearCart}
-                className="btn-primary px-5 py-4 text-sm shadow-lg shadow-black/20"
+                className="btn-primary px-5 py-4 text-sm"
               >
                 Clear cart
               </button>
@@ -209,7 +209,7 @@ export function CartPage() {
         </div>
       )}
 
-      <hr className="my-16 border-white/10" />
+      <hr className="my-16 border-transparent" />
 
       <section>
         <SectionHeading
@@ -225,7 +225,7 @@ export function CartPage() {
             action={
               <Link
                 to="/shop"
-                className="btn-secondary inline-flex px-5 py-3 shadow-lg shadow-black/20"
+                className="btn-secondary px-5 py-3"
               >
                 Browse shop
               </Link>
@@ -265,7 +265,7 @@ export function CartPage() {
                   <button
                     type="button"
                     onClick={() => toggleWishlist(product.id)}
-                    className="btn-primary flex h-11 w-full items-center justify-center text-sm"
+                    className="btn-primary flex h-11 w-full text-sm"
                   >
                     Remove
                   </button>

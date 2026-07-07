@@ -47,8 +47,8 @@ function StarRating({ rating }) {
           size={14}
           className={
             i < Math.round(rating)
-              ? "fill-white text-white"
-              : "fill-white/15 text-white/15"
+              ? "fill-champagne text-champagne"
+              : "fill-black/15 text-black/15"
           }
         />
       ))}
@@ -58,7 +58,7 @@ function StarRating({ rating }) {
 
 function ReviewCard({ name, rating, date, text }) {
   return (
-    <div className="rounded-[1.25rem] border border-white/8 bg-white/[0.04] p-5">
+    <div className="rounded-[1.25rem] bg-white/[0.04] p-5">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm font-semibold text-white">{name}</p>
@@ -66,11 +66,11 @@ function ReviewCard({ name, rating, date, text }) {
             <StarRating rating={rating} />
           </div>
         </div>
-        <p className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-white/40">
+        <p className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-black/40">
           {date}
         </p>
       </div>
-      <p className="mt-3 text-sm leading-7 text-white/65">{text}</p>
+      <p className="mt-3 text-sm leading-7 text-[#666]">{text}</p>
     </div>
   );
 }
@@ -110,7 +110,7 @@ export function ProductPage() {
         />
         <Link
           to="/shop"
-          className="btn-secondary inline-flex px-5 py-3 shadow-lg shadow-black/20"
+          className="btn-secondary px-5 py-3"
         >
           Back to shop
         </Link>
@@ -138,7 +138,7 @@ export function ProductPage() {
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="btn-secondary px-5 py-3 text-sm shadow-lg shadow-black/20"
+          className="btn-secondary px-5 py-3"
         >
           Back
         </button>
@@ -149,7 +149,7 @@ export function ProductPage() {
         className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]"
       >
         <div className="space-y-4">
-          <div className="relative overflow-hidden rounded-[2rem] bg-black/30 shadow-[0_24px_90px_rgba(0,0,0,0.32)]">
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#f8f8f8] shadow-md">
             <img
               src={product.images[imageIndex]}
               alt={product.name}
@@ -163,16 +163,16 @@ export function ProductPage() {
                   value === 0 ? product.images.length - 1 : value - 1,
                 )
               }
-              className="btn-secondary absolute left-4 top-1/2 -translate-y-1/2 px-4 py-2 text-sm shadow-lg shadow-black/30"
-            >
-              Previous
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                setImageIndex((value) => (value + 1) % product.images.length)
-              }
-              className="btn-secondary absolute right-4 top-1/2 -translate-y-1/2 px-4 py-2 text-sm shadow-lg shadow-black/30"
+              className="btn-secondary absolute left-4 top-1/2 -translate-y-1/2 px-4 py-2"
+              >
+                Previous
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  setImageIndex((value) => (value + 1) % product.images.length)
+                }
+                className="btn-secondary absolute right-4 top-1/2 -translate-y-1/2 px-4 py-2"
             >
               Next
             </button>
@@ -183,7 +183,7 @@ export function ProductPage() {
                 key={image}
                 type="button"
                 onClick={() => setImageIndex(index)}
-                className={`overflow-hidden rounded-[1.5rem] ${index === imageIndex ? "ring-2 ring-white/70" : ""}`}
+                className={`overflow-hidden rounded-[1.5rem] ${index === imageIndex ? "" : "opacity-60"}`}
               >
                 <img
                   src={image}
@@ -196,13 +196,13 @@ export function ProductPage() {
           </div>
         </div>
 
-        <div className="glass rounded-[2rem] p-6 md:p-8">
+        <div className="bg-[#f8f8f8] rounded-[2rem] p-6 md:p-8">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-white/45">
+              <p className="text-xs uppercase tracking-[0.35em] text-champagne">
                 {product.brand}
               </p>
-              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white">
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-[#111]">
                 {product.name}
               </h1>
             </div>
@@ -216,60 +216,60 @@ export function ProductPage() {
                     : "Product saved successfully.",
                 );
               }}
-              className="btn-primary px-4 py-2 text-sm shadow-lg shadow-black/20"
-            >
-              {isWishlisted(product.id) ? "Saved" : "Save"}
+              className="btn-primary px-4 py-2"
+              >
+                {isWishlisted(product.id) ? "Saved" : "Save"}
             </button>
           </div>
 
-          <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-white/68">
-            <span className="flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-2 shadow-inner shadow-white/5">
+          <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-[#666]">
+            <span className="flex items-center gap-1.5 rounded-full bg-white px-3 py-2">
               <StarRating rating={product.rating} />
               <span className="text-xs">{product.rating}/5</span>
             </span>
-            <span className="rounded-full bg-white/5 px-3 py-2 shadow-inner shadow-white/5">
+            <span className="rounded-full bg-white px-3 py-2">
               {product.category}
             </span>
-            <span className="rounded-full bg-white/5 px-3 py-2 shadow-inner shadow-white/5">
+            <span className="rounded-full bg-white px-3 py-2">
               {product.badge}
             </span>
           </div>
 
-          <p className="mt-6 text-3xl font-semibold text-white">
+          <p className="mt-6 text-3xl font-semibold text-[#111]">
             {formatKes(product.price)}
           </p>
-          <p className="mt-4 text-sm leading-8 text-white/65">
+          <p className="mt-4 text-sm leading-8 text-[#666]">
             {product.description}
           </p>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne">
                 Size
               </span>
               <select
                 value={selectedSize}
                 onChange={(event) => setSelectedSize(event.target.value)}
-                className="rounded-full bg-black/30 px-4 py-3 text-sm text-white outline-none shadow-inner shadow-white/5"
+                className="rounded-full bg-white px-4 py-3 text-sm text-[#111] outline-none border border-black/10"
               >
                 {product.sizes.map((size) => (
-                  <option key={size} value={size} className="bg-black">
+                  <option key={size} value={size} className="bg-white">
                     EU {size}
                   </option>
                 ))}
               </select>
             </label>
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne">
                 Color
               </span>
               <select
                 value={selectedColor}
                 onChange={(event) => setSelectedColor(event.target.value)}
-                className="rounded-full bg-black/30 px-4 py-3 text-sm text-white outline-none shadow-inner shadow-white/5"
+                className="rounded-full bg-white px-4 py-3 text-sm text-[#111] outline-none border border-black/10"
               >
                 {product.colors.map((color) => (
-                  <option key={color} value={color} className="bg-black">
+                  <option key={color} value={color} className="bg-white">
                     {color}
                   </option>
                 ))}
@@ -281,17 +281,17 @@ export function ProductPage() {
             <button
               type="button"
               onClick={() => setQuantity((value) => Math.max(1, value - 1))}
-              className="btn-secondary rounded-s-full px-4 py-3 text-sm shadow-md"
+              className="btn-secondary rounded-s-full px-4 py-3 text-sm"
             >
               -
             </button>
-            <div className="min-w-16 rounded-full bg-white/5 px-5 py-3 text-center text-sm text-white shadow-inner shadow-white/5">
+            <div className="min-w-16 rounded-full bg-[#f8f8f8] px-5 py-3 text-center text-sm text-[#111]">
               {quantity}
             </div>
             <button
               type="button"
               onClick={() => setQuantity((value) => value + 1)}
-              className="btn-secondary rounded-e-full px-4 py-3 text-sm shadow-md"
+              className="btn-secondary rounded-e-full px-4 py-3 text-sm"
             >
               +
             </button>
@@ -304,20 +304,20 @@ export function ProductPage() {
                 addToCart(product, quantity, selectedSize, selectedColor);
                 toast.success(`${product.name} added to cart`);
               }}
-              className="btn-secondary flex flex-1 items-center justify-center px-6 py-4 shadow-lg shadow-black/20"
-            >
-              Add to cart
-            </button>
-            <button
-              type="button"
-              onClick={openWhatsApp}
-              className="btn-primary flex flex-1 items-center justify-center px-6 py-4 shadow-lg shadow-black/20"
+              className="btn-secondary flex flex-1 px-6 py-4"
+              >
+                Add to cart
+              </button>
+              <button
+                type="button"
+                onClick={openWhatsApp}
+                className="btn-primary flex flex-1 px-6 py-4"
             >
               Order via WhatsApp
             </button>
           </div>
 
-          <div className="mt-8 grid gap-4 rounded-[1.5rem] bg-white/5 p-5 shadow-lg shadow-black/10 sm:grid-cols-2">
+          <div className="mt-8 grid gap-4 rounded-[1.5rem] bg-[#f8f8f8] p-5 sm:grid-cols-2">
             {[
               ["Stock availability", `${product.stock} units`],
               ["Sizes", product.sizes.join(", ")],
@@ -325,23 +325,23 @@ export function ProductPage() {
               ["Collection", product.collection],
             ].map(([label, value]) => (
               <div key={label}>
-                <p className="text-xs uppercase tracking-[0.3em] text-white/40">
+                <p className="text-xs uppercase tracking-[0.3em] text-black/40">
                   {label}
                 </p>
-                <p className="mt-2 text-sm text-white/72">{value}</p>
+                <p className="mt-2 text-sm text-black/60">{value}</p>
               </div>
             ))}
           </div>
 
           <div className="mt-8">
-            <h2 className="text-xl font-semibold text-white">
+            <h2 className="text-xl font-semibold text-[#111]">
               Product specifications
             </h2>
-            <ul className="mt-4 grid gap-3 text-sm text-white/68">
+            <ul className="mt-4 grid gap-3 text-sm text-[#666]">
               {product.specs.map((spec) => (
                 <li
                   key={spec}
-                  className="rounded-[1.25rem] bg-white/5 px-4 py-3 shadow-lg shadow-black/10"
+                  className="rounded-[1.25rem] bg-[#f8f8f8] px-4 py-3"
                 >
                   {spec}
                 </li>
@@ -392,7 +392,7 @@ export function ProductPage() {
                       <p className="text-sm font-medium text-white">
                         {item.name}
                       </p>
-                      <p className="text-xs uppercase tracking-[0.3em] text-white/45">
+                      <p className="text-xs uppercase tracking-[0.3em] text-champagne">
                         {formatKes(item.price)}
                       </p>
                     </div>
@@ -400,7 +400,7 @@ export function ProductPage() {
                 );
               })}
             {recentlyViewed.length <= 1 ? (
-              <p className="text-sm text-white/45">No recent products yet.</p>
+              <p className="text-sm text-black/40">No recent products yet.</p>
             ) : null}
           </div>
         </div>

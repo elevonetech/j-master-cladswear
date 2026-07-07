@@ -72,7 +72,7 @@ export function CollectionsPage() {
               </p>
               <Link
                 to="/shop"
-                className="btn-secondary mt-6 inline-flex px-5 py-3 text-sm shadow-lg shadow-black/20"
+                className="btn-secondary mt-6 px-5 py-3 text-sm"
               >
                 Browse
               </Link>

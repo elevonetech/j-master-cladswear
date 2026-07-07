@@ -66,9 +66,9 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-40 px-4 py-4 sm:px-6 lg:px-8">
+    <header className="fixed left-0 right-0 top-0 z-40 bg-white/90 backdrop-blur-md px-4 py-4 sm:px-6 lg:px-8">
       <div
-        className={`glass mx-auto max-w-7xl rounded-full px-5 py-3 transition-all duration-300 ${scrolled ? "shadow-2xl shadow-black/80 border-champagne/20" : ""}`}
+        className={`mx-auto max-w-7xl rounded-full bg-white shadow-sm px-5 py-3 transition-all duration-300 ${scrolled ? "shadow-md" : ""}`}
       >
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
@@ -77,7 +77,7 @@ export function Navbar() {
               <p className="text-[10px] uppercase tracking-[0.35em] text-champagne/70">
                 Premium Footwear
               </p>
-              <h1 className="text-sm font-semibold tracking-wider text-white font-body">
+              <h1 className="text-sm font-semibold tracking-wider text-[#111] font-body">
                 Dapper Footwear
               </h1>
             </div>
@@ -89,7 +89,7 @@ export function Navbar() {
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${isActive ? "bg-champagne text-basalt shadow-lg shadow-champagne/25 font-semibold" : "text-bone/70 hover:bg-champagne/10 hover:text-champagne"}`
+                   `rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${isActive ? "bg-[#111] text-white font-semibold" : "text-[#666] hover:text-[#111]"}`
                 }
               >
                 {link.label}
@@ -100,7 +100,7 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               to="/cart"
-              className="btn-secondary relative inline-flex h-12 w-12 items-center justify-center rounded-full border-champagne/20 hover:border-champagne text-champagne hover:bg-champagne/10 transition-all duration-300"
+              className="btn-secondary relative h-12 w-12"
               aria-label={`Cart with ${cartCount} item${cartCount === 1 ? "" : "s"}`}
             >
               <ShoppingCart size={18} />
@@ -112,7 +112,7 @@ export function Navbar() {
             </Link>
             <button
               type="button"
-              className="btn-primary px-5 py-2.5 text-xs rounded-full lg:hidden"
+              className="btn-primary px-5 py-2.5 text-xs lg:hidden"
               onClick={() => setOpen((value) => !value)}
             >
               {open ? "Close" : "Menu"}
@@ -126,7 +126,7 @@ export function Navbar() {
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
-              className="mt-4 rounded-[1.5rem] bg-basalt/95 border border-champagne/20 p-3 shadow-2xl shadow-black/80 lg:hidden"
+              className="mt-4 rounded-[1.5rem] bg-white shadow-lg border-0 p-3 lg:hidden"
             >
               <div className="grid gap-1">
                 {links.map((link) => (
@@ -135,7 +135,7 @@ export function Navbar() {
                     to={link.to}
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
-                      `rounded-xl px-4 py-3 text-sm font-medium transition-all ${isActive ? "bg-champagne text-basalt font-semibold" : "text-bone/70 hover:bg-champagne/10 hover:text-champagne"}`
+                       `rounded-xl px-4 py-3 text-sm font-medium transition-all ${isActive ? "bg-[#111] text-white font-semibold" : "text-[#666] hover:text-[#111]"}`
                     }
                   >
                     {link.label}

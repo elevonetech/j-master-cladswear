@@ -20,7 +20,7 @@ const categories = [
 
 export function Footer() {
   return (
-    <footer className="mt-24 bg-basalt border-t border-champagne/10">
+    <footer className="mt-24 bg-basalt">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:px-8">
         <div>
           <p className="text-xs uppercase tracking-[0.4em] text-champagne">
@@ -38,13 +38,13 @@ export function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              className="btn-secondary px-4 py-2 text-[10px] tracking-widest shadow-lg shadow-black/25 rounded-full"
+              className="btn-secondary px-4 py-2 text-[10px] tracking-widest"
             >
               Instagram
             </a>
             <a
               href="mailto:jamesmngandu@gmail.com"
-              className="btn-secondary px-4 py-2 text-[10px] tracking-widest shadow-lg shadow-black/25 rounded-full"
+              className="btn-secondary px-4 py-2 text-[10px] tracking-widest"
             >
               Email
             </a>
@@ -52,7 +52,7 @@ export function Footer() {
               href="https://wa.me/254712643440"
               target="_blank"
               rel="noreferrer"
-              className="btn-primary px-4 py-2 text-[10px] tracking-widest shadow-lg shadow-black/25 rounded-full"
+              className="btn-primary px-4 py-2 text-[10px] tracking-widest"
             >
               WhatsApp
             </a>
@@ -104,7 +104,7 @@ export function Footer() {
           </div>
           <a
             href="https://wa.me/254712643440"
-            className="btn-secondary mt-6 inline-flex px-5 py-2.5 text-xs rounded-full border-champagne/20 hover:border-champagne text-champagne hover:bg-champagne/10"
+            className="btn-secondary mt-6 px-5 py-2.5 text-xs"
             target="_blank"
             rel="noreferrer"
           >
@@ -112,7 +112,7 @@ export function Footer() {
           </a>
         </div>
       </div>
-      <div className="border-t border-champagne/5 px-4 py-5 text-center text-xs uppercase tracking-[0.35em] text-bone/45 sm:px-6 lg:px-8">
+      <div className="border-t border-white/5 px-4 py-5 text-center text-xs uppercase tracking-[0.35em] text-bone/45 sm:px-6 lg:px-8">
         © 2026 Dapper Footwear. All rights reserved.
       </div>
     </footer>

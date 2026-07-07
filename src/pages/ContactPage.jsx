@@ -24,29 +24,29 @@ export function ContactPage() {
             <input
               type="text"
               placeholder="Your name"
-              className="rounded-full bg-black/30 px-5 py-4 text-sm text-white outline-none placeholder:text-white/35 shadow-inner shadow-white/5"
+              className="rounded-full bg-white/[0.04] px-5 py-4 text-sm text-white outline-none placeholder:text-white/35"
             />
             <input
               type="email"
               placeholder="Email address"
-              className="rounded-full bg-black/30 px-5 py-4 text-sm text-white outline-none placeholder:text-white/35 shadow-inner shadow-white/5"
+              className="rounded-full bg-white/[0.04] px-5 py-4 text-sm text-white outline-none placeholder:text-white/35"
             />
           </div>
           <div className="mt-5 grid gap-5">
             <input
               type="text"
               placeholder="Subject"
-              className="rounded-full bg-black/30 px-5 py-4 text-sm text-white outline-none placeholder:text-white/35 shadow-inner shadow-white/5"
+              className="rounded-full bg-white/[0.04] px-5 py-4 text-sm text-white outline-none placeholder:text-white/35"
             />
             <textarea
               rows={6}
               placeholder="Tell us what you need"
-              className="rounded-[1.5rem] bg-black/30 px-5 py-4 text-sm text-white outline-none placeholder:text-white/35 shadow-inner shadow-white/5"
+              className="rounded-[1.5rem] bg-white/[0.04] px-5 py-4 text-sm text-white outline-none placeholder:text-white/35"
             />
           </div>
           <button
             type="submit"
-            className="btn-secondary mt-5 px-6 py-4 shadow-lg shadow-black/20"
+            className="btn-secondary mt-5 px-6 py-4"
           >
             Send message
           </button>
@@ -89,7 +89,7 @@ export function ContactPage() {
               href="https://wa.me/254712643440"
               target="_blank"
               rel="noreferrer"
-              className="btn-secondary mt-6 inline-flex px-5 py-3 shadow-lg shadow-black/20"
+              className="btn-secondary mt-6 px-5 py-3"
             >
               WhatsApp us
             </a>

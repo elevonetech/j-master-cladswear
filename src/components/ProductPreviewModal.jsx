@@ -49,17 +49,17 @@ function StarRating({ rating }) {
 
 function ReviewCard({ name, rating, date, text }) {
   return (
-    <div className="rounded-[1.25rem] border border-champagne/10 bg-basalt p-4">
+    <div className="rounded-[1.25rem] bg-[#f8f8f8] p-4">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-white font-heading tracking-wide">{name}</p>
+          <p className="text-sm font-semibold text-[#111] font-heading tracking-wide">{name}</p>
           <StarRating rating={rating} />
         </div>
-        <p className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-champagne/40">
+        <p className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-champagne">
           {date}
         </p>
       </div>
-      <p className="mt-2.5 text-xs leading-relaxed text-bone/65 font-body">{text}</p>
+      <p className="mt-2.5 text-xs leading-relaxed text-[#666] font-body">{text}</p>
     </div>
   );
 }
@@ -125,13 +125,13 @@ export function ProductPreviewModal({ product, onClose }) {
           exit={{ y: 30, opacity: 0 }}
           transition={{ duration: 0.3 }}
           onClick={(e) => e.stopPropagation()}
-          className="glass relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-[2rem] border border-champagne/20"
+          className="relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-[2rem] bg-white shadow-xl"
         >
           {/* Scrollable content */}
           <div className="overflow-y-auto">
             <div className="grid md:grid-cols-2">
               {/* Image side */}
-              <div className="relative min-h-[20rem] bg-basalt md:min-h-full">
+              <div className="relative min-h-[20rem] bg-[#fafafa] md:min-h-full">
                 <img
                   src={product.images[imageIndex]}
                   alt={product.name}
@@ -142,14 +142,14 @@ export function ProductPreviewModal({ product, onClose }) {
                   <button
                     type="button"
                     onClick={prevImage}
-                    className="btn-secondary rounded-full px-3 py-1.5 text-xs shadow-lg shadow-black/30 border-champagne/20 hover:border-champagne text-champagne hover:bg-champagne/10"
+                    className="btn-secondary px-3 py-1.5 text-xs"
                   >
                     Previous
                   </button>
                   <button
                     type="button"
                     onClick={nextImage}
-                    className="btn-secondary rounded-full px-3 py-1.5 text-xs shadow-lg shadow-black/30 border-champagne/20 hover:border-champagne text-champagne hover:bg-champagne/10"
+                    className="btn-secondary px-3 py-1.5 text-xs"
                   >
                     Next
                   </button>
@@ -157,68 +157,68 @@ export function ProductPreviewModal({ product, onClose }) {
               </div>
 
               {/* Content side */}
-              <div className="flex flex-col p-6 md:p-8 bg-basalt">
+              <div className="flex flex-col p-6 md:p-8">
                 <div className="flex-1 space-y-5">
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.35em] text-champagne/70 font-semibold font-body">
+                    <p className="text-[10px] uppercase tracking-[0.35em] text-champagne font-body">
                       {product.brand}
                     </p>
-                    <h3 className="mt-2 text-3xl font-medium text-white font-heading tracking-wide">
+                    <h3 className="mt-2 text-3xl font-medium text-[#111] font-heading tracking-wide">
                       {product.name}
                     </h3>
                   </div>
 
-                  <p className="text-2xl font-semibold text-white font-body">
+                  <p className="text-2xl font-semibold text-[#111] font-body">
                     {formatKes(product.price)}
                   </p>
-                  <p className="text-xs leading-relaxed text-bone/65 font-body">
+                  <p className="text-xs leading-relaxed text-[#666] font-body">
                     {product.description}
                   </p>
 
                   <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.3em] font-semibold text-champagne">
-                    <span className="rounded-full bg-basalt/60 border border-champagne/10 px-3 py-2 shadow-inner">
+                    <span className="rounded-full bg-[#f8f8f8] px-3 py-2">
                       {product.category}
                     </span>
-                    <span className="rounded-full bg-basalt/60 border border-champagne/10 px-3 py-2 shadow-inner">
+                    <span className="rounded-full bg-[#f8f8f8] px-3 py-2">
                       {product.rating} ★
                     </span>
-                    <span className="rounded-full bg-basalt/60 border border-champagne/10 px-3 py-2 shadow-inner">
+                    <span className="rounded-full bg-[#f8f8f8] px-3 py-2">
                       {product.stock} in stock
                     </span>
                   </div>
 
                   {/* Expanded details */}
                   {showDetails && (
-                    <div className="space-y-6 border-t border-champagne/10 pt-5">
+                    <div className="space-y-6 pt-5">
                       {/* Size & Color */}
                       <div className="grid grid-cols-2 gap-4 font-body">
                         <label className="grid gap-2">
-                          <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
+                          <span className="text-xs uppercase tracking-[0.3em] text-champagne font-semibold">
                             Size
                           </span>
                           <select
                             value={selectedSize}
                             onChange={(e) => setSelectedSize(e.target.value)}
-                            className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
+                            className="rounded-full bg-[#f8f8f8] px-4 py-2.5 text-xs text-[#111] outline-none cursor-pointer"
                           >
                             {product.sizes.map((s) => (
-                              <option key={s} value={s} className="bg-basalt">
+                              <option key={s} value={s} className="bg-white">
                                 EU {s}
                               </option>
                             ))}
                           </select>
                         </label>
                         <label className="grid gap-2">
-                          <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
+                          <span className="text-xs uppercase tracking-[0.3em] text-champagne font-semibold">
                             Color
                           </span>
                           <select
                             value={selectedColor}
                             onChange={(e) => setSelectedColor(e.target.value)}
-                            className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
+                            className="rounded-full bg-[#f8f8f8] px-4 py-2.5 text-xs text-[#111] outline-none cursor-pointer"
                           >
                             {product.colors.map((c) => (
-                              <option key={c} value={c} className="bg-basalt">
+                              <option key={c} value={c} className="bg-white">
                                 {c}
                               </option>
                             ))}
@@ -228,14 +228,14 @@ export function ProductPreviewModal({ product, onClose }) {
 
                       {/* Specs */}
                       <div>
-                        <h4 className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold font-body">
+                        <h4 className="text-xs uppercase tracking-[0.3em] text-champagne font-body">
                           Specifications
                         </h4>
-                        <ul className="mt-3 grid gap-2 text-xs text-bone/68 font-body">
+                        <ul className="mt-3 grid gap-2 text-xs text-[#666] font-body">
                           {product.specs.map((spec) => (
                             <li
                               key={spec}
-                              className="rounded-[1rem] bg-basalt border border-champagne/10 px-4 py-2.5 shadow-sm"
+                              className="rounded-[1rem] bg-[#f8f8f8] px-4 py-2.5"
                             >
                               {spec}
                             </li>
@@ -245,7 +245,7 @@ export function ProductPreviewModal({ product, onClose }) {
 
                       {/* Reviews */}
                       <div>
-                        <h4 className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold font-body">
+                        <h4 className="text-xs uppercase tracking-[0.3em] text-champagne font-body">
                           Customer Reviews
                         </h4>
                         <div className="mt-3 grid gap-3">
@@ -258,7 +258,7 @@ export function ProductPreviewModal({ product, onClose }) {
                       {/* Related products */}
                       {related.length > 0 && (
                         <div>
-                          <h4 className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold font-body">
+                          <h4 className="text-xs uppercase tracking-[0.3em] text-champagne font-body">
                             Related Products
                           </h4>
                           <div className="mt-3 grid grid-cols-2 gap-3">
@@ -270,7 +270,7 @@ export function ProductPreviewModal({ product, onClose }) {
                                   onClose();
                                   openDetails(r.id);
                                 }}
-                                className="overflow-hidden rounded-[1rem] bg-basalt border border-champagne/10 text-left transition duration-300 hover:border-champagne/30 cursor-pointer"
+                                className="overflow-hidden rounded-[1rem] bg-white text-left transition duration-300 cursor-pointer"
                               >
                                 <img
                                   src={r.images[0]}
@@ -279,7 +279,7 @@ export function ProductPreviewModal({ product, onClose }) {
                                   className="h-24 w-full object-cover"
                                 />
                                 <div className="p-2.5">
-                                  <p className="truncate text-xs font-semibold text-white font-heading">
+                                  <p className="truncate text-xs font-semibold text-[#111] font-heading">
                                     {r.name}
                                   </p>
                                   <p className="text-[10px] text-champagne font-body">
@@ -296,7 +296,7 @@ export function ProductPreviewModal({ product, onClose }) {
                 </div>
 
                 {/* Action buttons */}
-                <div className="mt-6 space-y-2.5 border-t border-champagne/10 pt-5">
+                <div className="mt-6 space-y-2.5 pt-5">
                   <div className="grid grid-cols-2 gap-2.5">
                     <button
                       type="button"
@@ -309,14 +309,14 @@ export function ProductPreviewModal({ product, onClose }) {
                         );
                         toast.success(`${product.name} added to cart`);
                       }}
-                      className="btn-secondary rounded-full flex h-12 items-center justify-center px-4 text-xs font-semibold shadow-lg shadow-black/20"
+                      className="btn-secondary h-12"
                     >
                       Add to cart
                     </button>
                     <button
                       type="button"
                       onClick={handleSave}
-                      className="btn-primary rounded-full flex h-12 items-center justify-center px-4 text-xs font-semibold shadow-lg shadow-black/20"
+                      className="btn-primary h-12"
                     >
                       {wishlisted ? "Saved" : "Save"}
                     </button>
@@ -325,14 +325,14 @@ export function ProductPreviewModal({ product, onClose }) {
                     <button
                       type="button"
                       onClick={() => setShowDetails((v) => !v)}
-                      className="btn-primary rounded-full flex h-12 items-center justify-center px-4 text-xs font-semibold shadow-lg shadow-black/20"
+                      className="btn-primary h-12"
                     >
                       {showDetails ? "Show less" : "View details"}
                     </button>
                     <button
                       type="button"
                       onClick={onClose}
-                      className="btn-secondary rounded-full flex h-12 items-center justify-center px-4 text-xs font-semibold shadow-lg shadow-black/20"
+                      className="btn-secondary h-12"
                     >
                       Close
                     </button>

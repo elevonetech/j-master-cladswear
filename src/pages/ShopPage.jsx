@@ -96,34 +96,34 @@ export function ShopPage() {
       />
 
       <div className="grid gap-6 xl:grid-cols-[300px_1fr]">
-        <aside className="bg-basalt border border-champagne/10 h-fit rounded-[2rem] p-5 shadow-xl xl:sticky xl:top-32">
+        <aside className="bg-[#f8f8f8] h-fit rounded-[2rem] p-5 xl:sticky xl:top-32">
           <div className="text-sm font-semibold text-champagne font-body uppercase tracking-wider">Filters</div>
           <div className="mt-5 space-y-5">
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne font-semibold">
                 Search
               </span>
-              <div className="flex items-center gap-3 rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 shadow-inner">
+              <div className="flex items-center gap-3 rounded-full bg-white px-4 py-2.5">
                 <input
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
                   placeholder="Search shoes"
-                  className="w-full bg-transparent text-xs text-white outline-none placeholder:text-bone/35"
+                  className="w-full bg-transparent text-xs text-[#111] outline-none placeholder:text-black/30"
                 />
               </div>
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne font-semibold">
                 Category
               </span>
               <select
                 value={selectedCategory}
                 onChange={(event) => setSelectedCategory(event.target.value)}
-                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
+                className="rounded-full bg-white px-4 py-2.5 text-xs text-[#111] outline-none cursor-pointer border border-black/10"
               >
                 {categories.map((category) => (
-                  <option key={category} value={category} className="bg-basalt">
+                  <option key={category} value={category} className="bg-white">
                     {category}
                   </option>
                 ))}
@@ -131,16 +131,16 @@ export function ShopPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne font-semibold">
                 Size
               </span>
               <select
                 value={selectedSize}
                 onChange={(event) => setSelectedSize(event.target.value)}
-                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
+                className="rounded-full bg-white px-4 py-2.5 text-xs text-[#111] outline-none cursor-pointer border border-black/10"
               >
                 {sizes.map((size) => (
-                  <option key={size} value={size} className="bg-basalt">
+                  <option key={size} value={size} className="bg-white">
                     {size}
                   </option>
                 ))}
@@ -148,16 +148,16 @@ export function ShopPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne font-semibold">
                 Brand
               </span>
               <select
                 value={selectedBrand}
                 onChange={(event) => setSelectedBrand(event.target.value)}
-                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
+                className="rounded-full bg-white px-4 py-2.5 text-xs text-[#111] outline-none cursor-pointer border border-black/10"
               >
                 {brands.map((brand) => (
-                  <option key={brand} value={brand} className="bg-basalt">
+                  <option key={brand} value={brand} className="bg-white">
                     {brand}
                   </option>
                 ))}
@@ -165,16 +165,16 @@ export function ShopPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne font-semibold">
                 Color
               </span>
               <select
                 value={selectedColor}
                 onChange={(event) => setSelectedColor(event.target.value)}
-                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
+                className="rounded-full bg-white px-4 py-2.5 text-xs text-[#111] outline-none cursor-pointer border border-black/10"
               >
                 {colors.map((color) => (
-                  <option key={color} value={color} className="bg-basalt">
+                  <option key={color} value={color} className="bg-white">
                     {color}
                   </option>
                 ))}
@@ -182,7 +182,7 @@ export function ShopPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne font-semibold">
                 Price cap
               </span>
               <input
@@ -194,30 +194,30 @@ export function ShopPage() {
                 onChange={(event) => setPriceLimit(Number(event.target.value))}
                 className="accent-champagne cursor-pointer"
               />
-              <span className="text-xs text-bone/70">
+              <span className="text-xs text-[#666]">
                 Up to {formatKes(priceLimit)}
               </span>
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne font-semibold">
                 Sort by
               </span>
               <select
                 value={sort}
                 onChange={(event) => setSort(event.target.value)}
-                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
+                className="rounded-full bg-white px-4 py-2.5 text-xs text-[#111] outline-none cursor-pointer border border-black/10"
               >
-                <option value="featured" className="bg-basalt">
+                <option value="featured" className="bg-white">
                   Featured
                 </option>
-                <option value="rating" className="bg-basalt">
+                <option value="rating" className="bg-white">
                   Top rated
                 </option>
-                <option value="price-asc" className="bg-basalt">
+                <option value="price-asc" className="bg-white">
                   Price low to high
                 </option>
-                <option value="price-desc" className="bg-basalt">
+                <option value="price-desc" className="bg-white">
                   Price high to low
                 </option>
               </select>
@@ -226,16 +226,16 @@ export function ShopPage() {
         </aside>
 
         <section>
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-[1.5rem] bg-basalt border border-champagne/10 px-5 py-4 text-xs text-bone/68 shadow-lg">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-[1.5rem] bg-[#f8f8f8] px-5 py-4 text-xs text-[#666]">
             <div>Showing {filteredProducts.length} products</div>
-            <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.3em] font-semibold text-champagne/70">
-              <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-2 shadow-inner">
+            <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.3em] font-semibold text-champagne">
+              <span className="rounded-full bg-white px-3 py-2">
                 Categories {categories.length - 1}
               </span>
-              <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-2 shadow-inner">
+              <span className="rounded-full bg-white px-3 py-2">
                 Brands {brands.length - 1}
               </span>
-              <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-2 shadow-inner">
+              <span className="rounded-full bg-white px-3 py-2">
                 Colors {colors.length - 1}
               </span>
             </div>

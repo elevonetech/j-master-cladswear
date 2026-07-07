@@ -20,20 +20,20 @@ export function HomePage() {
   return (
     <div className="space-y-24 pb-20">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-10 rounded-[2.5rem] bg-basalt border border-champagne/10 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.6)] lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
+        <div className="grid items-center gap-10 rounded-[2.5rem] bg-white p-6 shadow-sm lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
           <div className="space-y-8">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.45em] text-champagne/80 font-body">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.45em] text-champagne font-body">
               Luxury footwear, curated for Dapper
             </p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="max-w-3xl text-5xl font-medium tracking-wide text-white font-heading md:text-7xl leading-[1.1]"
+              className="max-w-3xl text-5xl font-medium tracking-wide text-[#111] font-heading md:text-7xl leading-[1.1]"
             >
               Minimal black and white shoe culture with a premium edge.
             </motion.h1>
-            <p className="max-w-2xl text-xs leading-relaxed text-bone/70 font-body md:text-sm">
+            <p className="max-w-2xl text-xs leading-relaxed text-[#666] font-body md:text-sm">
               Discover refined sneakers, formal icons, rugged boots, and
               effortless casual pairs designed to feel polished from first
               glance to final checkout.
@@ -41,13 +41,13 @@ export function HomePage() {
             <div className="flex flex-wrap gap-3 font-body">
               <Link
                 to="/shop"
-                className="btn-secondary inline-flex items-center rounded-full px-6 py-3 shadow-lg shadow-black/20 text-xs font-semibold"
+                className="btn-secondary px-6 py-3 text-xs font-semibold"
               >
                 Shop the collection
               </Link>
               <Link
                 to="/collections"
-                className="btn-primary inline-flex items-center rounded-full px-6 py-3 shadow-lg shadow-black/20 text-xs font-semibold"
+                className="btn-primary px-6 py-3 text-xs font-semibold"
               >
                 Explore collections
               </Link>
@@ -58,11 +58,11 @@ export function HomePage() {
                 { label: "Premium curation", value: "24 styles" },
                 { label: "Trusted delivery", value: "Nationwide" },
               ].map((item) => (
-                <div key={item.label} className="bg-basalt border border-champagne/10 rounded-2xl p-4 shadow-lg text-center font-body">
+                <div key={item.label} className="bg-[#f8f8f8] rounded-2xl p-4 text-center font-body">
                   <p className="text-xl font-semibold text-champagne">
                     {item.value}
                   </p>
-                  <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-bone/45 font-semibold leading-relaxed">
+                  <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-black/40 font-semibold leading-relaxed">
                     {item.label}
                   </p>
                 </div>
@@ -70,7 +70,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <div className="relative min-h-[30rem] overflow-hidden rounded-[2.25rem] bg-basalt border border-champagne/10 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.6)]">
+          <div className="relative min-h-[30rem] overflow-hidden rounded-[2.25rem] bg-[#f8f8f8] p-4">
             <motion.img
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -80,21 +80,21 @@ export function HomePage() {
               onError={handleImgError}
               className="min-h-[30rem] w-full rounded-[2rem] object-cover"
             />
-            <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-basalt/80 border border-champagne/20 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.7)] backdrop-blur-xl font-body">
+            <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-white/90 p-5 shadow-md font-body">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.35em] text-champagne/70 font-semibold">
+                  <p className="text-[10px] uppercase tracking-[0.35em] text-champagne font-semibold">
                     Featured drop
                   </p>
-                  <h2 className="mt-2 text-2xl font-medium tracking-wide text-white font-heading">
+                  <h2 className="mt-2 text-2xl font-medium tracking-wide text-[#111] font-heading">
                     {featured[0].name}
                   </h2>
                 </div>
-                <div className="rounded-full bg-champagne/10 border border-champagne/30 px-3 py-1 text-[9px] uppercase tracking-[0.3em] text-champagne font-semibold shadow-inner">
+                <div className="rounded-full bg-champagne/10 px-3 py-1 text-[9px] uppercase tracking-[0.3em] text-champagne font-semibold">
                   {featured[0].badge}
                 </div>
               </div>
-              <div className="mt-4 flex items-center gap-4 text-xs font-semibold text-champagne/80">
+              <div className="mt-4 flex items-center gap-4 text-xs font-semibold text-champagne">
                 <span>Premium finish</span>
                 <span>WhatsApp order</span>
               </div>
@@ -156,7 +156,7 @@ export function HomePage() {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-        <div className="bg-basalt border border-champagne/10 rounded-[2rem] p-8 shadow-xl">
+        <div className="bg-[#f8f8f8] rounded-[2rem] p-8">
           <SectionHeading
             eyebrow="Brand story"
             title="Built for the modern luxury wardrobe"
@@ -171,7 +171,7 @@ export function HomePage() {
             ].map((item) => (
               <div
                 key={item}
-                className="rounded-[1.25rem] bg-basalt border border-champagne/10 p-4 text-bone/80 shadow-md"
+                className="rounded-[1.25rem] bg-white p-4 text-[#666]"
               >
                 {item}
               </div>
@@ -180,8 +180,8 @@ export function HomePage() {
         </div>
 
         <div className="grid gap-6">
-          <div className="bg-basalt border border-champagne/10 rounded-[2rem] p-8 shadow-xl font-body">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne/70">
+          <div className="bg-[#f8f8f8] rounded-[2rem] p-8 font-body">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne">
               Featured brands
             </p>
             <div className="mt-4 flex flex-wrap gap-2.5">
@@ -197,25 +197,25 @@ export function HomePage() {
               ].map((brand) => (
                 <span
                   key={brand}
-                  className="rounded-full bg-basalt border border-champagne/10 px-4 py-2 text-xs text-bone/70 shadow-inner"
+                  className="rounded-full bg-white px-4 py-2 text-xs text-[#666]"
                 >
                   {brand}
                 </span>
               ))}
             </div>
           </div>
-          <div className="bg-basalt border border-champagne/10 rounded-[2rem] p-8 shadow-xl font-body">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne/70">
+          <div className="bg-[#f8f8f8] rounded-[2rem] p-8 font-body">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne">
               Testimonials
             </p>
-            <div className="mt-4 space-y-4 text-xs text-bone/70">
+            <div className="mt-4 space-y-4 text-xs text-[#666]">
               {[
                 "The collection feels premium and the WhatsApp checkout is incredibly efficient.",
                 "The black and white styling gives the whole brand a luxury retail feel.",
               ].map((quote) => (
                 <p
                   key={quote}
-                  className="rounded-[1.25rem] bg-basalt border border-champagne/10 p-4 leading-relaxed shadow-sm"
+                  className="rounded-[1.25rem] bg-white p-4 leading-relaxed"
                 >
                   {quote}
                 </p>
@@ -226,7 +226,7 @@ export function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 font-body">
-        <div className="bg-basalt border border-champagne/10 rounded-[2rem] p-8 md:p-10 shadow-xl">
+        <div className="bg-[#f8f8f8] rounded-[2rem] p-8 md:p-10">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <SectionHeading
@@ -238,11 +238,11 @@ export function HomePage() {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="min-w-0 flex-1 rounded-full bg-basalt/60 border border-champagne/20 px-5 py-3 text-xs text-white outline-none placeholder:text-bone/35 shadow-inner"
+                  className="min-w-0 flex-1 rounded-full bg-white px-5 py-3 text-xs text-[#111] outline-none placeholder:text-black/40 shadow-sm"
                 />
                 <button
                   type="button"
-                  className="btn-primary rounded-full px-6 py-3 shadow-lg shadow-black/20 text-xs font-semibold"
+                  className="btn-primary px-6 py-3 text-xs font-semibold"
                 >
                   Subscribe
                 </button>
@@ -256,12 +256,12 @@ export function HomePage() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-[1.5rem] bg-basalt border border-champagne/10 p-5 text-center shadow-lg"
+                  className="rounded-[1.5rem] bg-white p-5 text-center shadow-sm"
                 >
                   <p className="text-2xl font-semibold text-champagne font-body">
                     {stat.value}
                   </p>
-                  <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-bone/45 font-semibold">
+                  <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-black/40 font-semibold">
                     {stat.label}
                   </p>
                 </div>
