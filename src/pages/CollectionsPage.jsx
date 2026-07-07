@@ -59,20 +59,20 @@ export function CollectionsPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.04 }}
-              className="glass rounded-[2rem] p-6"
+              className="bg-[#f8f8f8] rounded-[2rem] p-6 shadow-sm"
             >
-              <p className="text-xs uppercase tracking-[0.35em] text-white/45">
+              <p className="text-xs uppercase tracking-[0.35em] text-black/40">
                 {count} styles
               </p>
-              <h2 className="mt-4 text-2xl font-semibold text-white">
+              <h2 className="mt-4 text-2xl font-semibold text-[#111]">
                 {section.title}
               </h2>
-              <p className="mt-3 text-sm leading-7 text-white/62">
+              <p className="mt-3 text-sm leading-7 text-[#666]">
                 {section.description}
               </p>
               <Link
                 to="/shop"
-                className="btn-secondary mt-6 px-5 py-3 text-sm"
+                className="btn-secondary mt-6 px-5 py-3"
               >
                 Browse
               </Link>

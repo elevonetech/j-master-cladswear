@@ -58,10 +58,10 @@ function StarRating({ rating }) {
 
 function ReviewCard({ name, rating, date, text }) {
   return (
-    <div className="rounded-[1.25rem] bg-white/[0.04] p-5">
+    <div className="rounded-[1.25rem] bg-white shadow-sm p-5">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-white">{name}</p>
+          <p className="text-sm font-semibold text-[#111]">{name}</p>
           <div className="mt-1">
             <StarRating rating={rating} />
           </div>
@@ -281,7 +281,7 @@ export function ProductPage() {
             <button
               type="button"
               onClick={() => setQuantity((value) => Math.max(1, value - 1))}
-              className="btn-secondary rounded-s-full px-4 py-3 text-sm"
+              className="btn-secondary rounded-s-full px-4 py-3"
             >
               -
             </button>
@@ -291,7 +291,7 @@ export function ProductPage() {
             <button
               type="button"
               onClick={() => setQuantity((value) => value + 1)}
-              className="btn-secondary rounded-e-full px-4 py-3 text-sm"
+              className="btn-secondary rounded-e-full px-4 py-3"
             >
               +
             </button>
@@ -352,7 +352,7 @@ export function ProductPage() {
       </motion.div>
 
       <section className="mt-16 grid gap-8 lg:grid-cols-[1fr_0.8fr]">
-        <div className="glass rounded-[2rem] p-6 md:p-8">
+        <div className="bg-[#f8f8f8] rounded-[2rem] p-6 md:p-8">
           <SectionHeading
             eyebrow="Reviews"
             title="Customer reviews"
@@ -364,7 +364,7 @@ export function ProductPage() {
             ))}
           </div>
         </div>
-        <div className="glass rounded-[2rem] p-6 md:p-8">
+        <div className="bg-[#f8f8f8] rounded-[2rem] p-6 md:p-8">
           <SectionHeading
             eyebrow="Recently viewed"
             title="Recently viewed"
@@ -380,7 +380,7 @@ export function ProductPage() {
                   <Link
                     key={item.id}
                     to={`/product/${item.id}`}
-                    className="flex items-center gap-4 rounded-[1.25rem] bg-white/5 p-3 shadow-lg shadow-black/10 transition hover:bg-white/10"
+                    className="flex items-center gap-4 rounded-[1.25rem] bg-white shadow-sm p-3 transition"
                   >
                     <img
                       src={item.images[0]}
@@ -389,7 +389,7 @@ export function ProductPage() {
                       className="h-16 w-16 rounded-[1rem] object-cover"
                     />
                     <div>
-                      <p className="text-sm font-medium text-white">
+                      <p className="text-sm font-medium text-[#111]">
                         {item.name}
                       </p>
                       <p className="text-xs uppercase tracking-[0.3em] text-champagne">

@@ -74,7 +74,7 @@ export function CartPage() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="glass flex flex-col gap-5 rounded-[2rem] p-5 md:flex-row"
+                className="bg-[#f8f8f8] flex flex-col gap-5 rounded-[2rem] p-5 md:flex-row"
               >
                 <img
                   src={item.product.images[0]}
@@ -85,13 +85,13 @@ export function CartPage() {
                 <div className="flex flex-1 flex-col justify-between gap-4">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-white/45">
+                      <p className="text-xs uppercase tracking-[0.3em] text-champagne">
                         {item.product.brand}
                       </p>
-                      <h3 className="mt-2 text-xl font-semibold text-white">
+                      <h3 className="mt-2 text-xl font-semibold text-[#111]">
                         {item.product.name}
                       </h3>
-                      <p className="mt-2 text-sm text-white/60">
+                      <p className="mt-2 text-sm text-[#666]">
                         Size {item.selectedSize} · {item.selectedColor}
                       </p>
                     </div>
@@ -104,16 +104,16 @@ export function CartPage() {
                           item.selectedColor,
                         )
                       }
-                      className="btn-primary px-4 py-2 text-sm"
+                      className="btn-primary px-4 py-2"
                       >
                         Remove
                       </button>
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-4">
-                    <p className="text-lg font-semibold text-white">
+                    <p className="text-lg font-semibold text-[#111]">
                       {formatKes(item.product.price)}
                     </p>
-                    <div className="flex items-center gap-1 rounded-full bg-white/5">
+                    <div className="flex items-center gap-1 rounded-full bg-white border border-black/10">
                       <button
                         type="button"
                         onClick={() =>
@@ -124,11 +124,11 @@ export function CartPage() {
                             item.quantity - 1,
                           )
                         }
-                        className="btn-secondary rounded-s-full px-3 py-2 text-sm"
+                        className="btn-secondary rounded-s-full px-3 py-2"
                       >
                         -
                       </button>
-                      <span className="min-w-8 text-center text-sm text-white">
+                      <span className="min-w-8 text-center text-sm text-[#111]">
                         {item.quantity}
                       </span>
                       <button
@@ -141,7 +141,7 @@ export function CartPage() {
                             item.quantity + 1,
                           )
                         }
-                        className="btn-secondary rounded-e-full px-3 py-2 text-sm"
+                        className="btn-secondary rounded-e-full px-3 py-2"
                       >
                         +
                       </button>
@@ -152,9 +152,9 @@ export function CartPage() {
             ))}
           </div>
 
-          <aside className="glass h-fit rounded-[2rem] p-6 md:p-8 lg:sticky lg:top-32">
-            <h2 className="text-2xl font-semibold text-white">Cart summary</h2>
-            <div className="mt-6 space-y-4 text-sm text-white/68">
+          <aside className="bg-[#f8f8f8] h-fit rounded-[2rem] p-6 md:p-8 lg:sticky lg:top-32">
+            <h2 className="text-2xl font-semibold text-[#111]">Cart summary</h2>
+            <div className="mt-6 space-y-4 text-sm text-[#666]">
               <div className="flex items-center justify-between pb-3">
                 <span>Subtotal</span>
                 <span>{formatKes(cartSubtotal)}</span>
@@ -167,27 +167,27 @@ export function CartPage() {
                 <span>Discount</span>
                 <span>-{formatKes(discount)}</span>
               </div>
-              <div className="flex items-center justify-between text-lg font-semibold text-white">
+              <div className="flex items-center justify-between text-lg font-semibold text-[#111]">
                 <span>Total</span>
                 <span>{formatKes(total)}</span>
               </div>
             </div>
 
-            <div className="mt-6 rounded-[1.5rem] bg-white/5 p-4 text-sm text-white/65 shadow-lg shadow-black/10">
+            <div className="mt-6 rounded-[1.5rem] bg-white p-4 text-sm text-[#666] shadow-sm">
               Shipping information: premium packaging, tracked delivery, and
               WhatsApp order confirmation.
             </div>
 
             <div className="mt-6 grid gap-3">
               <label className="grid gap-2">
-                <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+                <span className="text-xs uppercase tracking-[0.3em] text-champagne">
                   Coupon code
                 </span>
                 <input
                   value={coupon}
                   onChange={(event) => setCoupon(event.target.value)}
                   placeholder="KITHOME10 or FREESHIP"
-                  className="rounded-full bg-white/[0.04] px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
+                  className="rounded-full bg-white px-4 py-3 text-sm text-[#111] outline-none placeholder:text-black/30 border border-black/10"
                 />
               </label>
               <button
@@ -200,7 +200,7 @@ export function CartPage() {
               <button
                 type="button"
                 onClick={clearCart}
-                className="btn-primary px-5 py-4 text-sm"
+                className="btn-primary px-5 py-4"
               >
                 Clear cart
               </button>
@@ -209,7 +209,7 @@ export function CartPage() {
         </div>
       )}
 
-      <hr className="my-16 border-transparent" />
+      <hr className="my-16 border-black/5" />
 
       <section>
         <SectionHeading
@@ -239,7 +239,7 @@ export function CartPage() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.04 }}
-                className="overflow-hidden rounded-[2rem] bg-white/[0.04] shadow-[0_24px_90px_rgba(0,0,0,0.38)]"
+                className="overflow-hidden rounded-[2rem] bg-[#f8f8f8] shadow-sm"
               >
                 <Link to={`/product/${product.id}`} className="block">
                   <img
@@ -250,22 +250,22 @@ export function CartPage() {
                   />
                 </Link>
                 <div className="space-y-3 p-5">
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/45">
+                  <p className="text-xs uppercase tracking-[0.3em] text-champagne">
                     {product.brand}
                   </p>
                   <Link
                     to={`/product/${product.id}`}
-                    className="block text-lg font-semibold text-white transition hover:text-white/80"
+                    className="block text-lg font-semibold text-[#111] transition"
                   >
                     {product.name}
                   </Link>
-                  <p className="text-lg font-semibold text-white">
+                  <p className="text-lg font-semibold text-[#111]">
                     {formatKes(product.price)}
                   </p>
                   <button
                     type="button"
                     onClick={() => toggleWishlist(product.id)}
-                    className="btn-primary flex h-11 w-full text-sm"
+                    className="btn-primary flex h-11 w-full"
                   >
                     Remove
                   </button>

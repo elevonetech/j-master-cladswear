@@ -18,9 +18,9 @@ export function AboutPage() {
       />
 
       <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="glass rounded-[2rem] p-7 md:p-10">
-          <h2 className="text-3xl font-semibold text-white">Company story</h2>
-          <p className="mt-4 text-sm leading-8 text-white/65">
+        <div className="bg-[#f8f8f8] rounded-[2rem] p-7 md:p-10">
+          <h2 className="text-3xl font-semibold text-[#111]">Company story</h2>
+          <p className="mt-4 text-sm leading-8 text-[#666]">
             Kithome Shoe Collection was created to make premium footwear feel
             more direct, more stylish, and more accessible. The visual language
             stays dark, elegant, and precise while the buying experience remains
