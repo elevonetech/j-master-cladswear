@@ -6,255 +6,192 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SkeletonGrid } from "@/components/SkeletonGrid";
 import { formatKes } from "@/utils/money";
+import { SlidersHorizontal } from "lucide-react";
 
 export function ShopPage() {
   const [searchParams] = useSearchParams();
-  const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(
-    searchParams.get("category") ?? "All",
-  );
+  const [loading, setLoading]           = useState(true);
+  const [search, setSearch]             = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category") ?? "All");
   const [selectedSize, setSelectedSize] = useState("All");
   const [selectedBrand, setSelectedBrand] = useState("All");
   const [selectedColor, setSelectedColor] = useState("All");
-  const [priceLimit, setPriceLimit] = useState(5000);
-  const [sort, setSort] = useState("featured");
+  const [priceLimit, setPriceLimit]     = useState(5000);
+  const [sort, setSort]                 = useState("featured");
+  const [filtersOpen, setFiltersOpen]   = useState(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 700);
     return () => window.clearTimeout(timer);
   }, []);
 
-  const categories = [
-    "All",
-    ...new Set(products.map((product) => product.category)),
-  ];
-  const sizes = [
-    "All",
-    ...new Set(products.flatMap((product) => product.sizes)),
-  ];
-  const brands = ["All", ...new Set(products.map((product) => product.brand))];
-  const colors = [
-    "All",
-    ...new Set(products.flatMap((product) => product.colors)),
-  ];
+  const categories = ["All", ...new Set(products.map((p) => p.category))];
+  const sizes       = ["All", ...new Set(products.flatMap((p) => p.sizes))];
+  const brands      = ["All", ...new Set(products.map((p) => p.brand))];
+  const colors      = ["All", ...new Set(products.flatMap((p) => p.colors))];
 
   const filteredProducts = useMemo(() => {
-    const lowerSearch = search.trim().toLowerCase();
-
-    const next = products.filter((product) => {
-      const matchesSearch =
-        !lowerSearch ||
-        [
-          product.name,
-          product.brand,
-          product.category,
-          product.description,
-        ].some((value) => value.toLowerCase().includes(lowerSearch));
-      const matchesCategory =
-        selectedCategory === "All" || product.category === selectedCategory;
-      const matchesSize =
-        selectedSize === "All" || product.sizes.includes(selectedSize);
-      const matchesBrand =
-        selectedBrand === "All" || product.brand === selectedBrand;
-      const matchesColor =
-        selectedColor === "All" || product.colors.includes(selectedColor);
-      const matchesPrice = product.price <= priceLimit;
-
-      return (
-        matchesSearch &&
-        matchesCategory &&
-        matchesSize &&
-        matchesBrand &&
-        matchesColor &&
-        matchesPrice
-      );
+    const q = search.trim().toLowerCase();
+    const next = products.filter((p) => {
+      const matchesSearch = !q || [p.name, p.brand, p.category, p.description].some((v) => v.toLowerCase().includes(q));
+      const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
+      const matchesSize  = selectedSize  === "All" || p.sizes.includes(selectedSize);
+      const matchesBrand = selectedBrand === "All" || p.brand === selectedBrand;
+      const matchesColor = selectedColor === "All" || p.colors.includes(selectedColor);
+      const matchesPrice = p.price <= priceLimit;
+      return matchesSearch && matchesCategory && matchesSize && matchesBrand && matchesColor && matchesPrice;
     });
-
     return next.sort((a, b) => {
-      if (sort === "price-asc") return a.price - b.price;
+      if (sort === "price-asc")  return a.price - b.price;
       if (sort === "price-desc") return b.price - a.price;
-      if (sort === "rating") return b.rating - a.rating;
+      if (sort === "rating")     return b.rating - a.rating;
       return Number(b.featured) - Number(a.featured) || b.stock - a.stock;
     });
-  }, [
-    search,
-    selectedCategory,
-    selectedSize,
-    selectedBrand,
-    selectedColor,
-    priceLimit,
-    sort,
-  ]);
+  }, [search, selectedCategory, selectedSize, selectedBrand, selectedColor, priceLimit, sort]);
+
+  const filterLabel = (k, v) => (
+    <label key={k} className="grid gap-2.5">
+      <span className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-stone/50">{k}</span>
+      {v}
+    </label>
+  );
+
+  const selectField = (value, onChange, options, key = (o) => o) => (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="rounded-full bg-black/[0.04] border border-black/10 px-4 py-2.5 text-[0.75rem] text-stone outline-none cursor-pointer transition hover:border-champagne/40"
+    >
+      {options.map((o) => <option key={key(o)} value={o}>{o}</option>)}
+    </select>
+  );
 
   return (
-    <div className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8 font-body">
-      <SectionHeading
-        eyebrow="Shop"
-        title="Premium shoe collection"
-        description="Search, filter, sort, and preview the full catalog with a polished luxury retail feel."
-      />
+    <div style={{ backgroundColor: "#faf9f7" }}>
+      {/* ── Page header ── */}
+      <div className="bg-white border-b border-black/06 py-16 px-5 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Shop"
+            title="Premium shoe collection"
+            description="Search, filter, sort, and preview the full catalog with a polished luxury retail feel."
+          />
+        </div>
+      </div>
 
-      <div className="grid gap-6 xl:grid-cols-[300px_1fr]">
-        <aside className="bg-basalt border border-champagne/10 h-fit rounded-[2rem] p-5 shadow-xl xl:sticky xl:top-32">
-          <div className="text-sm font-semibold text-champagne font-body uppercase tracking-wider">Filters</div>
-          <div className="mt-5 space-y-5">
-            <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
-                Search
-              </span>
-              <div className="flex items-center gap-3 rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 shadow-inner">
-                <input
-                  value={search}
-                  onChange={(event) => setSearch(event.target.value)}
-                  placeholder="Search shoes"
-                  className="w-full bg-transparent text-xs text-white outline-none placeholder:text-bone/35"
-                />
-              </div>
-            </label>
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-12 pb-28">
+        {/* ── Mobile filter toggle ── */}
+        <div className="flex items-center justify-between mb-6 xl:hidden">
+          <p className="text-sm text-stone/60">
+            <span className="font-semibold text-stone">{filteredProducts.length}</span> products
+          </p>
+          <button
+            type="button"
+            onClick={() => setFiltersOpen((v) => !v)}
+            className="flex items-center gap-2 rounded-full border border-black/12 bg-white px-4 py-2.5 text-[0.72rem] font-semibold uppercase tracking-widest text-stone shadow-sm hover:bg-stone hover:text-white transition-all duration-250"
+          >
+            <SlidersHorizontal size={13} />
+            Filters
+          </button>
+        </div>
 
-            <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
-                Category
-              </span>
-              <select
-                value={selectedCategory}
-                onChange={(event) => setSelectedCategory(event.target.value)}
-                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
-              >
-                {categories.map((category) => (
-                  <option key={category} value={category} className="bg-basalt">
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
-                Size
-              </span>
-              <select
-                value={selectedSize}
-                onChange={(event) => setSelectedSize(event.target.value)}
-                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
-              >
-                {sizes.map((size) => (
-                  <option key={size} value={size} className="bg-basalt">
-                    {size}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
-                Brand
-              </span>
-              <select
-                value={selectedBrand}
-                onChange={(event) => setSelectedBrand(event.target.value)}
-                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
-              >
-                {brands.map((brand) => (
-                  <option key={brand} value={brand} className="bg-basalt">
-                    {brand}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
-                Color
-              </span>
-              <select
-                value={selectedColor}
-                onChange={(event) => setSelectedColor(event.target.value)}
-                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
-              >
-                {colors.map((color) => (
-                  <option key={color} value={color} className="bg-basalt">
-                    {color}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
-                Price cap
-              </span>
-              <input
-                type="range"
-                min={1200}
-                max={5000}
-                step={100}
-                value={priceLimit}
-                onChange={(event) => setPriceLimit(Number(event.target.value))}
-                className="accent-champagne cursor-pointer"
-              />
-              <span className="text-xs text-bone/70">
-                Up to {formatKes(priceLimit)}
-              </span>
-            </label>
-
-            <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
-                Sort by
-              </span>
-              <select
-                value={sort}
-                onChange={(event) => setSort(event.target.value)}
-                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
-              >
-                <option value="featured" className="bg-basalt">
-                  Featured
-                </option>
-                <option value="rating" className="bg-basalt">
-                  Top rated
-                </option>
-                <option value="price-asc" className="bg-basalt">
-                  Price low to high
-                </option>
-                <option value="price-desc" className="bg-basalt">
-                  Price high to low
-                </option>
-              </select>
-            </label>
-          </div>
-        </aside>
-
-        <section>
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-[1.5rem] bg-basalt border border-champagne/10 px-5 py-4 text-xs text-bone/68 shadow-lg">
-            <div>Showing {filteredProducts.length} products</div>
-            <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.3em] font-semibold text-champagne/70">
-              <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-2 shadow-inner">
-                Categories {categories.length - 1}
-              </span>
-              <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-2 shadow-inner">
-                Brands {brands.length - 1}
-              </span>
-              <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-2 shadow-inner">
-                Colors {colors.length - 1}
+        <div className="grid gap-8 xl:grid-cols-[280px_1fr]">
+          {/* ── Sidebar filters ── */}
+          <aside
+            className={`${filtersOpen ? "block" : "hidden"} xl:block bg-white border border-black/07 h-fit rounded-3xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] xl:sticky xl:top-24`}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-stone/60">Filters</p>
+              <span className="badge-light">
+                {filteredProducts.length} results
               </span>
             </div>
-          </div>
 
-          {loading ? (
-            <SkeletonGrid />
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-            >
-              {filteredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </motion.div>
-          )}
-        </section>
+            <div className="space-y-5">
+              {filterLabel("Search",
+                <div className="flex items-center rounded-full bg-black/[0.04] border border-black/10 px-4 py-2.5 focus-within:border-champagne/50 transition">
+                  <input
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Search shoes…"
+                    className="w-full bg-transparent text-[0.75rem] text-stone outline-none placeholder:text-stone/35"
+                  />
+                </div>
+              )}
+              {filterLabel("Category", selectField(selectedCategory, setSelectedCategory, categories))}
+              {filterLabel("Size",     selectField(selectedSize,     setSelectedSize,     sizes))}
+              {filterLabel("Brand",    selectField(selectedBrand,    setSelectedBrand,    brands))}
+              {filterLabel("Color",    selectField(selectedColor,    setSelectedColor,    colors))}
+
+              {filterLabel("Price cap",
+                <div className="space-y-2">
+                  <input
+                    type="range" min={1200} max={5000} step={100}
+                    value={priceLimit}
+                    onChange={(e) => setPriceLimit(Number(e.target.value))}
+                    className="w-full"
+                  />
+                  <p className="text-[0.72rem] text-stone/60">Up to {formatKes(priceLimit)}</p>
+                </div>
+              )}
+
+              {filterLabel("Sort by",
+                <select
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value)}
+                  className="rounded-full bg-black/[0.04] border border-black/10 px-4 py-2.5 text-[0.75rem] text-stone outline-none cursor-pointer"
+                >
+                  <option value="featured">Featured</option>
+                  <option value="rating">Top rated</option>
+                  <option value="price-asc">Price low → high</option>
+                  <option value="price-desc">Price high → low</option>
+                </select>
+              )}
+            </div>
+          </aside>
+
+          {/* ── Product grid ── */}
+          <section>
+            {/* Stat bar */}
+            <div className="mb-6 hidden xl:flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white border border-black/07 px-5 py-3.5 shadow-sm">
+              <p className="text-[0.75rem] text-stone/60">
+                Showing <span className="font-semibold text-stone">{filteredProducts.length}</span> products
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { label: "Categories", count: categories.length - 1 },
+                  { label: "Brands",     count: brands.length - 1 },
+                  { label: "Colors",     count: colors.length - 1 },
+                ].map(({ label, count }) => (
+                  <span key={label} className="badge-light">
+                    {label} · {count}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {loading ? (
+              <SkeletonGrid />
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+              >
+                {filteredProducts.map((product, i) => (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.04, duration: 0.42 }}
+                  >
+                    <ProductCard product={product} />
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </section>
+        </div>
       </div>
     </div>
   );

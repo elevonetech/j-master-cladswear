@@ -5,6 +5,7 @@ import { useStore } from "@/context/StoreContext";
 import { useModal } from "@/context/ModalContext";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
+import { Heart, Eye, ShoppingBag, Star } from "lucide-react";
 
 export function ProductCard({ product }) {
   const { toggleWishlist, isWishlisted, addToCart } = useStore();
@@ -14,71 +15,69 @@ export function ProductCard({ product }) {
 
   return (
     <motion.article
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.25 }}
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group overflow-hidden rounded-[2rem] bg-basalt border border-champagne/10 hover:border-champagne/30 transition-all duration-300 shadow-[0_24px_90px_rgba(0,0,0,0.6)]"
+      className="product-card group"
     >
-      <div className="relative overflow-hidden">
+      {/* ── Image ── */}
+      <div className="card-image">
         <button
           type="button"
           onClick={() => openDetails(product.id)}
           className="block w-full text-left cursor-pointer"
+          aria-label={`View details for ${product.name}`}
         >
-          <motion.img
+          <img
             src={product.images[0]}
             alt={product.name}
             loading="lazy"
             onError={handleImgError}
-            className="h-72 w-full object-cover transition duration-700 group-hover:scale-105"
           />
         </button>
-        <div className="absolute left-4 top-4 flex gap-2">
-          <span className="rounded-full bg-basalt/90 border border-champagne/30 px-3 py-1 text-[9px] uppercase tracking-[0.35em] text-champagne font-semibold shadow-md">
-            {product.badge}
-          </span>
+
+        {/* Badge top-left */}
+        <div className="absolute left-3.5 top-3.5">
+          <span className="badge-gold">{product.badge}</span>
         </div>
+
+        {/* Wishlist top-right */}
         <button
           type="button"
           onClick={() => {
             toggleWishlist(product.id);
             toast.success(
-              wishlisted
-                ? "Removed from saved items."
-                : "Product saved successfully.",
+              wishlisted ? "Removed from saved items." : "Saved to wishlist.",
             );
           }}
-          className={`absolute right-4 top-4 rounded-full px-3 py-1.5 text-[9px] uppercase tracking-[0.3em] font-semibold transition-all duration-300 shadow-lg cursor-pointer ${
-            wishlisted
-              ? "bg-champagne text-basalt border border-champagne"
-              : "bg-basalt/80 text-bone hover:bg-champagne hover:text-basalt border border-white/10 hover:border-champagne"
-          }`}
+          aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
+          className={`absolute right-3.5 top-3.5 flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-280 shadow-sm cursor-pointer
+            ${wishlisted
+              ? "bg-champagne border-champagne/60 text-white"
+              : "bg-white/90 border-black/10 text-stone/60 hover:bg-champagne hover:border-champagne hover:text-white"
+            }`}
         >
-          {wishlisted ? "Saved" : "Save"}
+          <Heart size={14} fill={wishlisted ? "currentColor" : "none"} />
         </button>
+
+        {/* Hover actions */}
         <AnimatePresence>
-          {hovered ? (
+          {hovered && (
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 6 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute bottom-3 left-3 right-3 grid grid-cols-3 gap-1.5"
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.2 }}
+              className="absolute bottom-3 left-3 right-3 flex gap-2"
             >
               <button
                 type="button"
                 onClick={() => openPreview(product.id)}
-                className="btn-secondary flex h-11 items-center justify-center rounded-full px-2 text-[10px] shadow-lg shadow-black/20"
+                className="flex flex-1 h-10 items-center justify-center gap-1.5 rounded-full bg-white/95 border border-black/10 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-stone shadow-md hover:bg-stone hover:text-white transition-all duration-220 cursor-pointer"
               >
+                <Eye size={11} />
                 Preview
-              </button>
-              <button
-                type="button"
-                onClick={() => openDetails(product.id)}
-                className="btn-secondary flex h-11 items-center justify-center rounded-full px-2 text-[10px] shadow-lg shadow-black/20"
-              >
-                Details
               </button>
               <button
                 type="button"
@@ -86,42 +85,50 @@ export function ProductCard({ product }) {
                   addToCart(product, 1, product.sizes[0], product.colors[0]);
                   toast.success(`${product.name} added to cart`);
                 }}
-                className="btn-primary flex h-11 items-center justify-center rounded-full px-2 text-[10px] shadow-lg shadow-black/25"
+                className="flex flex-1 h-10 items-center justify-center gap-1.5 rounded-full bg-champagne border border-champagne text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-white shadow-md hover:bg-amber-700 hover:border-amber-700 transition-all duration-220 cursor-pointer"
               >
-                Add cart
+                <ShoppingBag size={11} />
+                Add
               </button>
             </motion.div>
-          ) : null}
+          )}
         </AnimatePresence>
       </div>
-      <div className="space-y-4 p-5">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-champagne/60 font-semibold font-body">
+
+      {/* ── Info ── */}
+      <div className="p-5 space-y-3">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-champagne/80 font-body">
               {product.brand}
             </p>
             <button
               type="button"
               onClick={() => openDetails(product.id)}
-              className="mt-2 block text-left text-xl font-medium text-white font-heading tracking-wide transition hover:text-champagne cursor-pointer"
+              className="mt-1.5 block text-left text-[1.02rem] font-semibold text-stone leading-snug font-heading transition hover:text-champagne cursor-pointer truncate w-full"
             >
               {product.name}
             </button>
           </div>
-          <div className="rounded-full bg-basalt border border-champagne/20 px-3 py-1 text-xs text-champagne font-semibold shadow-inner shadow-white/5">
-            {product.rating} ★
+          <div className="flex items-center gap-1 flex-shrink-0 mt-0.5">
+            <Star size={10} className="text-champagne fill-champagne" />
+            <span className="text-[0.72rem] font-semibold text-stone/70 font-body">
+              {product.rating}
+            </span>
           </div>
         </div>
-        <p className="min-h-10 text-xs leading-relaxed text-bone/60 font-body">
+
+        <p className="text-[0.72rem] leading-relaxed text-stone/55 font-body line-clamp-2 min-h-[2.4rem]">
           {product.description}
         </p>
-        <div className="flex items-center justify-between border-t border-champagne/10 pt-4">
-          <p className="text-lg font-semibold text-white font-body">
+
+        <div className="flex items-center justify-between border-t border-black/06 pt-3.5">
+          <p className="text-[1.05rem] font-bold text-stone font-body">
             {formatKes(product.price)}
           </p>
-          <p className="text-[10px] uppercase tracking-[0.3em] text-bone/45 font-body">
-            Stock {product.stock}
-          </p>
+          <span className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-stone/40 font-body">
+            {product.stock > 5 ? "In stock" : product.stock > 0 ? `${product.stock} left` : "Out of stock"}
+          </span>
         </div>
       </div>
     </motion.article>

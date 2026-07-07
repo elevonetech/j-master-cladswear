@@ -6,19 +6,20 @@ import { BackToTop } from "@/components/BackToTop";
 
 export function Layout() {
   const location = useLocation();
+  const isHome = location.pathname === "/";
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative min-h-screen flex flex-col">
       <Navbar />
       <BackToTop />
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.35 }}
-          className="pt-32"
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.32, ease: "easeOut" }}
+          className={`flex-1 ${isHome ? "" : "pt-[72px]"}`}
         >
           <Outlet />
         </motion.main>
@@ -27,3 +28,4 @@ export function Layout() {
     </div>
   );
 }
+

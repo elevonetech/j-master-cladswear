@@ -1,4 +1,12 @@
 import { Link } from "react-router-dom";
+import {
+  Share2,
+  Mail,
+  MessageCircle,
+  MapPin,
+  Phone,
+  ArrowUpRight,
+} from "lucide-react";
 
 const footerLinks = [
   { label: "Home", to: "/" },
@@ -18,102 +26,185 @@ const categories = [
   "Sandals",
 ];
 
+function DapperLogoFooter() {
+  return (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect width="40" height="40" rx="10" fill="rgba(200,168,75,0.15)" />
+      <rect
+        width="40"
+        height="40"
+        rx="10"
+        stroke="rgba(200,168,75,0.25)"
+        strokeWidth="1"
+      />
+      <path
+        d="M6 28 Q8 31 20 31 Q32 31 34 28 Q34 26 32 25 L28 24 L24 22 Q20 20 16 21 Q11 22 8 25 Z"
+        fill="#c8a84b"
+      />
+      <path
+        d="M16 21 Q17 14 22 12 Q27 10 30 13 L32 16 L32 22 L28 24 L24 22 Q20 20 16 21 Z"
+        fill="#c8a84b"
+        opacity="0.75"
+      />
+      <path
+        d="M22 12 L23 20"
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        opacity="0.9"
+      />
+    </svg>
+  );
+}
+
 export function Footer() {
   return (
-    <footer className="mt-24 bg-basalt border-t border-champagne/10">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:px-8">
+    <footer className="bg-[#080808] border-t border-white/[0.06]">
+      {/* ── Main grid ── */}
+      <div
+        className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-18 grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]"
+        style={{ paddingTop: "4.5rem", paddingBottom: "4.5rem" }}
+      >
+        {/* Brand column */}
         <div>
-          <p className="text-xs uppercase tracking-[0.4em] text-champagne">
-            Dapper Footwear
+          <div className="flex items-center gap-3 mb-6">
+            <DapperLogoFooter />
+            <div>
+              <p className="text-[0.58rem] font-semibold uppercase tracking-[0.38em] text-champagne/60">
+                Premium Footwear
+              </p>
+              <p className="text-sm font-bold text-white font-heading">
+                Dapper Footwear
+              </p>
+            </div>
+          </div>
+          <p className="text-[0.8rem] leading-relaxed text-white/45 max-w-xs">
+            Premium silhouettes, timeless styling, and a WhatsApp-first shopping
+            experience designed for fast ordering.
           </p>
-          <h2 className="mt-4 text-3xl font-semibold text-white leading-snug">
-            Luxury footwear for modern wardrobes.
-          </h2>
-          <p className="mt-4 max-w-md text-sm leading-7 text-bone/60 font-body">
-            Premium silhouettes, timeless black-and-white styling, and a
-            WhatsApp-first shopping experience designed for fast ordering.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3 text-sm text-bone/70">
+
+          {/* Social / contact links */}
+          <div className="mt-7 flex flex-wrap gap-2.5">
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              className="btn-secondary px-4 py-2 text-[10px] tracking-widest shadow-lg shadow-black/25 rounded-full"
+              aria-label="Instagram"
+              className="flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.05] px-4 py-2 text-[0.68rem] font-medium text-white/60 hover:border-white/25 hover:text-white hover:bg-white/08 transition-all duration-240"
             >
+              <Share2 size={12} />
               Instagram
             </a>
             <a
               href="mailto:jamesmngandu@gmail.com"
-              className="btn-secondary px-4 py-2 text-[10px] tracking-widest shadow-lg shadow-black/25 rounded-full"
+              aria-label="Email"
+              className="flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.05] px-4 py-2 text-[0.68rem] font-medium text-white/60 hover:border-white/25 hover:text-white hover:bg-white/08 transition-all duration-240"
             >
+              <Mail size={12} />
               Email
             </a>
             <a
               href="https://wa.me/254712643440"
               target="_blank"
               rel="noreferrer"
-              className="btn-primary px-4 py-2 text-[10px] tracking-widest shadow-lg shadow-black/25 rounded-full"
+              aria-label="WhatsApp"
+              className="flex items-center gap-2 rounded-full border border-champagne/30 bg-champagne/10 px-4 py-2 text-[0.68rem] font-medium text-champagne hover:bg-champagne/18 transition-all duration-240"
             >
+              <MessageCircle size={12} />
               WhatsApp
             </a>
           </div>
         </div>
 
+        {/* Quick links */}
         <div>
-          <p className="text-xs uppercase tracking-[0.35em] text-champagne/70 font-semibold">
+          <p className="text-[0.6rem] font-semibold uppercase tracking-[0.32em] text-white/30 mb-5">
             Quick Links
           </p>
-          <div className="mt-4 grid gap-3 text-sm text-bone/68 font-body">
+          <nav className="grid gap-3.5" aria-label="Footer navigation">
             {footerLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="transition duration-300 hover:text-champagne"
+                className="group flex items-center gap-1 text-[0.8rem] text-white/50 hover:text-white transition-colors duration-220"
               >
                 {link.label}
+                <ArrowUpRight
+                  size={10}
+                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-220"
+                />
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
 
+        {/* Categories */}
         <div>
-          <p className="text-xs uppercase tracking-[0.35em] text-champagne/70 font-semibold">
+          <p className="text-[0.6rem] font-semibold uppercase tracking-[0.32em] text-white/30 mb-5">
             Shop Categories
           </p>
-          <div className="mt-4 grid gap-3 text-sm text-bone/68 font-body">
-            {categories.map((category) => (
+          <nav className="grid gap-3.5" aria-label="Category navigation">
+            {categories.map((cat) => (
               <Link
-                key={category}
+                key={cat}
                 to="/shop"
-                className="transition duration-300 hover:text-champagne"
+                className="text-[0.8rem] text-white/50 hover:text-white transition-colors duration-220"
               >
-                {category}
+                {cat}
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
 
+        {/* Support */}
         <div>
-          <p className="text-xs uppercase tracking-[0.35em] text-champagne/70 font-semibold">
+          <p className="text-[0.6rem] font-semibold uppercase tracking-[0.32em] text-white/30 mb-5">
             Customer Support
           </p>
-          <div className="mt-4 grid gap-4 text-sm text-bone/68 font-body">
-            <div>0712 643 440</div>
-            <div>jamesmngandu@gmail.com</div>
-            <div>Nairobi, Kenya</div>
+          <div className="space-y-4">
+            {[
+              { icon: Phone, text: "0712 643 440" },
+              { icon: Mail, text: "jamesmngandu@gmail.com" },
+              { icon: MapPin, text: "Nairobi, Kenya" },
+            ].map(({ icon: Icon, text }) => (
+              <div
+                key={text}
+                className="flex items-center gap-3 text-[0.78rem] text-white/50"
+              >
+                <Icon size={12} className="text-white/25 flex-shrink-0" />
+                {text}
+              </div>
+            ))}
           </div>
           <a
             href="https://wa.me/254712643440"
-            className="btn-secondary mt-6 inline-flex px-5 py-2.5 text-xs rounded-full border-champagne/20 hover:border-champagne text-champagne hover:bg-champagne/10"
             target="_blank"
             rel="noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-champagne/30 bg-champagne/10 px-5 py-2.5 text-[0.68rem] font-semibold text-champagne hover:bg-champagne/18 transition-all duration-240"
           >
+            <MessageCircle size={12} />
             Chat on WhatsApp
           </a>
         </div>
       </div>
-      <div className="border-t border-champagne/5 px-4 py-5 text-center text-xs uppercase tracking-[0.35em] text-bone/45 sm:px-6 lg:px-8">
-        © 2026 Dapper Footwear. All rights reserved.
+
+      {/* ── Bottom bar ── */}
+      <div className="border-t border-white/[0.05] px-5 py-5 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[0.65rem] uppercase tracking-[0.3em] text-white/25">
+            © 2026 Dapper Footwear. All rights reserved.
+          </p>
+          <p className="text-[0.65rem] text-white/20">
+            Crafted with precision · Nairobi, Kenya
+          </p>
+        </div>
       </div>
     </footer>
   );

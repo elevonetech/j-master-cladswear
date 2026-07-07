@@ -4,20 +4,21 @@ export function Breadcrumbs({ items }) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.3em] text-white/50"
+      className="flex flex-wrap items-center gap-2 text-[0.65rem] font-medium uppercase tracking-[0.28em] text-stone/45"
     >
       {items.map((item, index) => (
         <span key={item.label} className="flex items-center gap-2">
-          {index > 0 ? <span className="text-white/20">/</span> : null}
+          {index > 0 ? <span className="text-black/20">/</span> : null}
           {item.to ? (
-            <Link to={item.to} className="transition hover:text-white">
+            <Link to={item.to} className="transition hover:text-champagne">
               {item.label}
             </Link>
           ) : (
-            <span className="text-white">{item.label}</span>
+            <span className="text-stone/75">{item.label}</span>
           )}
         </span>
       ))}
     </nav>
   );
 }
+

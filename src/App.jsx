@@ -21,34 +21,41 @@ function LoadingScreen() {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6"
-      style={{
-        background:
-          "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 20%), radial-gradient(circle at 80% 0%, rgba(255,255,255,0.05), transparent 18%), linear-gradient(180deg, #060606 0%, #111111 46%, #090909 100%)",
-      }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-8"
+      style={{ backgroundColor: "#080808" }}
     >
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-white/5 shadow-2xl shadow-black/40"
-      >
-        <div className="h-5 w-5 rounded-full bg-white" />
-      </motion.div>
-      <div className="text-center">
+      {/* Animated ring */}
+      <div className="relative flex h-20 w-20 items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
+          className="absolute inset-0 rounded-full"
+          style={{
+            background: "conic-gradient(from 0deg, rgba(200,168,75,0) 0%, rgba(200,168,75,0.8) 100%)",
+            mask: "radial-gradient(transparent 60%, black 61%)",
+            WebkitMask: "radial-gradient(transparent 60%, black 61%)",
+          }}
+        />
+        <div className="h-8 w-8 rounded-full bg-champagne/15 border border-champagne/30 flex items-center justify-center">
+          <div className="h-3 w-3 rounded-full bg-champagne" />
+        </div>
+      </div>
+
+      <div className="text-center space-y-2">
         <motion.p
-          initial={{ opacity: 0, y: 6 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-xs uppercase tracking-[0.5em] text-white/50"
+          className="text-[0.6rem] uppercase tracking-[0.5em] text-white/35"
         >
-          Loading
+          Premium Footwear
         </motion.p>
         <motion.h2
-          initial={{ opacity: 0, y: 6 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mt-3 text-2xl font-semibold tracking-tight text-white font-heading"
+          transition={{ delay: 0.32 }}
+          className="text-2xl font-bold tracking-tight text-white font-heading"
         >
           Dapper Footwear
         </motion.h2>
@@ -58,22 +65,21 @@ function LoadingScreen() {
 }
 
 function RoutedApp() {
-  const { previewProduct, detailsProduct, closePreview, closeDetails } =
-    useModal();
+  const { previewProduct, detailsProduct, closePreview, closeDetails } = useModal();
 
   return (
     <>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/"            element={<HomePage />} />
+          <Route path="/shop"        element={<ShopPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/wishlist" element={<WishlistPage />} />
+          <Route path="/cart"        element={<CartPage />} />
+          <Route path="/wishlist"    element={<WishlistPage />} />
           <Route path="/collections" element={<CollectionsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/about"       element={<AboutPage />} />
+          <Route path="/contact"     element={<ContactPage />} />
+          <Route path="*"            element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
       <ProductPreviewModal product={previewProduct} onClose={closePreview} />
@@ -86,13 +92,11 @@ export default function App() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setReady(true), 900);
+    const timer = window.setTimeout(() => setReady(true), 1000);
     return () => window.clearTimeout(timer);
   }, []);
 
-  if (!ready) {
-    return <LoadingScreen />;
-  }
+  if (!ready) return <LoadingScreen />;
 
   return (
     <BrowserRouter>
@@ -102,11 +106,23 @@ export default function App() {
           <Toaster
             position="top-right"
             toastOptions={{
+              duration: 3000,
               style: {
-                background: "#111111",
-                color: "#ffffff",
-                border: "1px solid rgba(255,255,255,0.12)",
-                borderRadius: "18px",
+                background: "#ffffff",
+                color: "#111111",
+                border: "1px solid rgba(0,0,0,0.08)",
+                borderRadius: "16px",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.10)",
+                fontSize: "0.8rem",
+                fontFamily: "Inter, sans-serif",
+                fontWeight: "500",
+                padding: "12px 16px",
+              },
+              success: {
+                iconTheme: {
+                  primary: "hsl(43,68%,40%)",
+                  secondary: "#ffffff",
+                },
               },
             }}
           />
