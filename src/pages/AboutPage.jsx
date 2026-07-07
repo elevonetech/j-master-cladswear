@@ -39,23 +39,23 @@ export function AboutPage() {
             ].map(([title, copy]) => (
               <div
                 key={title}
-                className="rounded-[1.5rem] bg-white/5 p-5 shadow-lg shadow-black/10"
+                className="rounded-[1.5rem] bg-white p-5 shadow-sm"
               >
-                <p className="text-xs uppercase tracking-[0.3em] text-white/45">
+                <p className="text-xs uppercase tracking-[0.3em] text-black/40">
                   {title}
                 </p>
-                <p className="mt-3 text-sm leading-7 text-white/68">{copy}</p>
+                <p className="mt-3 text-sm leading-7 text-[#666]">{copy}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="space-y-5">
-          <div className="glass rounded-[2rem] p-7">
-            <h3 className="text-2xl font-semibold text-white">
+          <div className="bg-[#f8f8f8] rounded-[2rem] p-7">
+            <h3 className="text-2xl font-semibold text-[#111]">
               Why choose Kithome
             </h3>
-            <ul className="mt-5 grid gap-3 text-sm text-white/68">
+            <ul className="mt-5 grid gap-3 text-sm text-[#666]">
               {[
                 "Premium black and white visual identity",
                 "Clear size, color, and stock details",
@@ -64,18 +64,18 @@ export function AboutPage() {
               ].map((item) => (
                 <li
                   key={item}
-                  className="rounded-[1.25rem] bg-white/5 px-4 py-3 shadow-lg shadow-black/10"
+                  className="rounded-[1.25rem] bg-white px-4 py-3 shadow-sm"
                 >
                   {item}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="glass rounded-[2rem] p-7">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/45">
+          <div className="bg-[#f8f8f8] rounded-[2rem] p-7">
+            <p className="text-xs uppercase tracking-[0.35em] text-black/40">
               Customer satisfaction
             </p>
-            <p className="mt-4 text-sm leading-8 text-white/68">
+            <p className="mt-4 text-sm leading-8 text-[#666]">
               We prioritize clear product information, fast response time, and a
               premium checkout experience so customers can order with
               confidence.
@@ -92,10 +92,10 @@ export function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05 }}
-            className="glass rounded-[2rem] p-6 text-center"
+            className="bg-[#f8f8f8] rounded-[2rem] p-6 text-center shadow-sm"
           >
-            <p className="text-4xl font-semibold text-white">{stat.value}</p>
-            <p className="mt-3 text-xs uppercase tracking-[0.35em] text-white/45">
+            <p className="text-4xl font-semibold text-[#111]">{stat.value}</p>
+            <p className="mt-3 text-xs uppercase tracking-[0.35em] text-black/40">
               {stat.label}
             </p>
           </motion.div>
