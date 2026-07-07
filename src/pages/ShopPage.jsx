@@ -88,7 +88,7 @@ export function ShopPage() {
   ]);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8 font-body">
       <SectionHeading
         eyebrow="Shop"
         title="Premium shoe collection"
@@ -96,34 +96,34 @@ export function ShopPage() {
       />
 
       <div className="grid gap-6 xl:grid-cols-[300px_1fr]">
-        <aside className="glass h-fit rounded-[2rem] p-5 xl:sticky xl:top-32">
-          <div className="text-sm font-medium text-white">Filters</div>
+        <aside className="bg-basalt border border-champagne/10 h-fit rounded-[2rem] p-5 shadow-xl xl:sticky xl:top-32">
+          <div className="text-sm font-semibold text-champagne font-body uppercase tracking-wider">Filters</div>
           <div className="mt-5 space-y-5">
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                 Search
               </span>
-              <div className="flex items-center gap-3 rounded-full bg-black/30 px-4 py-3 shadow-inner shadow-white/5">
+              <div className="flex items-center gap-3 rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 shadow-inner">
                 <input
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
                   placeholder="Search shoes"
-                  className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/35"
+                  className="w-full bg-transparent text-xs text-white outline-none placeholder:text-bone/35"
                 />
               </div>
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                 Category
               </span>
               <select
                 value={selectedCategory}
                 onChange={(event) => setSelectedCategory(event.target.value)}
-                className="rounded-full bg-black/30 px-4 py-3 text-sm text-white outline-none shadow-inner shadow-white/5"
+                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
               >
                 {categories.map((category) => (
-                  <option key={category} value={category} className="bg-black">
+                  <option key={category} value={category} className="bg-basalt">
                     {category}
                   </option>
                 ))}
@@ -131,16 +131,16 @@ export function ShopPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                 Size
               </span>
               <select
                 value={selectedSize}
                 onChange={(event) => setSelectedSize(event.target.value)}
-                className="rounded-full bg-black/30 px-4 py-3 text-sm text-white outline-none shadow-inner shadow-white/5"
+                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
               >
                 {sizes.map((size) => (
-                  <option key={size} value={size} className="bg-black">
+                  <option key={size} value={size} className="bg-basalt">
                     {size}
                   </option>
                 ))}
@@ -148,16 +148,16 @@ export function ShopPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                 Brand
               </span>
               <select
                 value={selectedBrand}
                 onChange={(event) => setSelectedBrand(event.target.value)}
-                className="rounded-full bg-black/30 px-4 py-3 text-sm text-white outline-none shadow-inner shadow-white/5"
+                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
               >
                 {brands.map((brand) => (
-                  <option key={brand} value={brand} className="bg-black">
+                  <option key={brand} value={brand} className="bg-basalt">
                     {brand}
                   </option>
                 ))}
@@ -165,16 +165,16 @@ export function ShopPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                 Color
               </span>
               <select
                 value={selectedColor}
                 onChange={(event) => setSelectedColor(event.target.value)}
-                className="rounded-full bg-black/30 px-4 py-3 text-sm text-white outline-none shadow-inner shadow-white/5"
+                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
               >
                 {colors.map((color) => (
-                  <option key={color} value={color} className="bg-black">
+                  <option key={color} value={color} className="bg-basalt">
                     {color}
                   </option>
                 ))}
@@ -182,7 +182,7 @@ export function ShopPage() {
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                 Price cap
               </span>
               <input
@@ -192,32 +192,32 @@ export function ShopPage() {
                 step={100}
                 value={priceLimit}
                 onChange={(event) => setPriceLimit(Number(event.target.value))}
-                className="accent-white"
+                className="accent-champagne cursor-pointer"
               />
-              <span className="text-sm text-white/70">
+              <span className="text-xs text-bone/70">
                 Up to {formatKes(priceLimit)}
               </span>
             </label>
 
             <label className="grid gap-3">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                 Sort by
               </span>
               <select
                 value={sort}
                 onChange={(event) => setSort(event.target.value)}
-                className="rounded-full bg-black/30 px-4 py-3 text-sm text-white outline-none shadow-inner shadow-white/5"
+                className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
               >
-                <option value="featured" className="bg-black">
+                <option value="featured" className="bg-basalt">
                   Featured
                 </option>
-                <option value="rating" className="bg-black">
+                <option value="rating" className="bg-basalt">
                   Top rated
                 </option>
-                <option value="price-asc" className="bg-black">
+                <option value="price-asc" className="bg-basalt">
                   Price low to high
                 </option>
-                <option value="price-desc" className="bg-black">
+                <option value="price-desc" className="bg-basalt">
                   Price high to low
                 </option>
               </select>
@@ -226,16 +226,16 @@ export function ShopPage() {
         </aside>
 
         <section>
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-[1.5rem] bg-white/5 px-5 py-4 text-sm text-white/68 shadow-lg shadow-black/10">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-[1.5rem] bg-basalt border border-champagne/10 px-5 py-4 text-xs text-bone/68 shadow-lg">
             <div>Showing {filteredProducts.length} products</div>
-            <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/45">
-              <span className="rounded-full bg-white/5 px-3 py-2 shadow-inner shadow-white/5">
+            <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.3em] font-semibold text-champagne/70">
+              <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-2 shadow-inner">
                 Categories {categories.length - 1}
               </span>
-              <span className="rounded-full bg-white/5 px-3 py-2 shadow-inner shadow-white/5">
+              <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-2 shadow-inner">
                 Brands {brands.length - 1}
               </span>
-              <span className="rounded-full bg-white/5 px-3 py-2 shadow-inner shadow-white/5">
+              <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-2 shadow-inner">
                 Colors {colors.length - 1}
               </span>
             </div>

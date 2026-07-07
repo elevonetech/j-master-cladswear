@@ -50,8 +50,8 @@ function StarRating({ rating, max = 5 }) {
           size={13}
           className={
             i < Math.round(rating)
-              ? "fill-white text-white"
-              : "fill-white/15 text-white/15"
+              ? "fill-champagne text-champagne"
+              : "fill-champagne/15 text-champagne/15"
           }
         />
       ))}
@@ -61,17 +61,17 @@ function StarRating({ rating, max = 5 }) {
 
 function ReviewCard({ name, rating, date, text }) {
   return (
-    <div className="rounded-[1.25rem] border border-white/8 bg-white/[0.04] p-5">
+    <div className="rounded-[1.25rem] border border-champagne/10 bg-basalt p-5">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-white">{name}</p>
+          <p className="text-sm font-semibold text-white font-heading tracking-wide">{name}</p>
           <StarRating rating={rating} />
         </div>
-        <p className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-white/40">
+        <p className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-champagne/40">
           {date}
         </p>
       </div>
-      <p className="mt-3 text-sm leading-7 text-white/65">{text}</p>
+      <p className="mt-3 text-xs leading-relaxed text-bone/65 font-body">{text}</p>
     </div>
   );
 }
@@ -130,13 +130,13 @@ export function ProductDetailsModal({ product, onClose }) {
           exit={{ y: 40, opacity: 0 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
           onClick={(e) => e.stopPropagation()}
-          className="glass relative my-8 w-full max-w-5xl rounded-[2rem] overflow-hidden"
+          className="glass relative my-8 w-full max-w-5xl rounded-[2rem] overflow-hidden border border-champagne/20 bg-basalt"
         >
           {/* Close button */}
           <button
             type="button"
             onClick={onClose}
-            className="btn-secondary absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center shadow-lg shadow-black/30"
+            className="btn-secondary absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border-champagne/20 hover:border-champagne text-champagne hover:bg-champagne/10 shadow-lg cursor-pointer"
             aria-label="Close details"
           >
             <X size={18} />
@@ -145,7 +145,7 @@ export function ProductDetailsModal({ product, onClose }) {
           {/* Top section: image + info */}
           <div className="grid lg:grid-cols-[1fr_1fr]">
             {/* Image gallery */}
-            <div className="relative min-h-[22rem] bg-black/40 lg:min-h-[34rem]">
+            <div className="relative min-h-[22rem] bg-basalt lg:min-h-[34rem]">
               <img
                 src={product.images[imageIndex]}
                 alt={product.name}
@@ -155,27 +155,27 @@ export function ProductDetailsModal({ product, onClose }) {
               <button
                 type="button"
                 onClick={prevImage}
-                className="btn-secondary absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center shadow-lg shadow-black/30"
+                className="btn-secondary absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border-champagne/20 hover:border-champagne text-champagne hover:bg-champagne/10 shadow-lg cursor-pointer"
               >
                 <ChevronLeft size={18} />
               </button>
               <button
                 type="button"
                 onClick={nextImage}
-                className="btn-secondary absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center shadow-lg shadow-black/30"
+                className="btn-secondary absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border-champagne/20 hover:border-champagne text-champagne hover:bg-champagne/10 shadow-lg cursor-pointer"
               >
                 <ChevronRight size={18} />
               </button>
               {/* Thumbnail strip */}
-              <div className="absolute inset-x-0 bottom-0 flex gap-2 overflow-x-auto bg-gradient-to-t from-black/60 px-4 pb-3 pt-6">
+              <div className="absolute inset-x-0 bottom-0 flex gap-2 overflow-x-auto bg-gradient-to-t from-basalt/80 px-4 pb-3 pt-6">
                 {product.images.map((img, i) => (
                   <button
                     key={img}
                     type="button"
                     onClick={() => setImageIndex(i)}
-                    className={`shrink-0 overflow-hidden rounded-xl transition ${
+                    className={`shrink-0 overflow-hidden rounded-xl transition-all duration-300 cursor-pointer ${
                       i === imageIndex
-                        ? "ring-2 ring-white"
+                        ? "ring-2 ring-champagne scale-105"
                         : "opacity-60 hover:opacity-100"
                     }`}
                   >
@@ -193,49 +193,49 @@ export function ProductDetailsModal({ product, onClose }) {
             {/* Product info */}
             <div className="flex flex-col p-6 md:p-8">
               <div>
-                <p className="text-xs uppercase tracking-[0.35em] text-white/45">
+                <p className="text-[10px] uppercase tracking-[0.35em] text-champagne/70 font-semibold font-body">
                   {product.brand}
                 </p>
-                <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">
+                <h2 className="mt-2 text-3xl font-medium tracking-wide text-white font-heading">
                   {product.name}
                 </h2>
-                <div className="mt-3 flex flex-wrap items-center gap-3">
+                <div className="mt-3 flex flex-wrap items-center gap-3 font-body">
                   <div className="flex items-center gap-2">
                     <StarRating rating={product.rating} />
-                    <span className="text-sm text-white/60">
-                      {product.rating}/5
+                    <span className="text-sm text-champagne font-semibold">
+                      {product.rating} / 5
                     </span>
                   </div>
-                  <span className="text-white/30">|</span>
-                  <span className="text-sm text-white/60">
+                  <span className="text-champagne/20">|</span>
+                  <span className="text-xs text-bone/60">
                     {product.reviews} reviews
                   </span>
                 </div>
               </div>
 
-              <p className="mt-5 text-3xl font-semibold text-white">
+              <p className="mt-5 text-3xl font-semibold text-white font-body">
                 {formatKes(product.price)}
               </p>
 
-              <p className="mt-4 text-sm leading-7 text-white/65">
+              <p className="mt-4 text-xs leading-relaxed text-bone/65 font-body">
                 {product.description}
               </p>
 
               {/* Category, stock badges */}
-              <div className="mt-5 flex flex-wrap gap-2">
-                <span className="rounded-full bg-white/5 px-3 py-1.5 text-xs uppercase tracking-[0.3em] text-white/55 shadow-inner shadow-white/5">
+              <div className="mt-5 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.3em] font-semibold text-champagne">
+                <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-1.5 shadow-inner">
                   {product.category}
                 </span>
-                <span className="rounded-full bg-white/5 px-3 py-1.5 text-xs uppercase tracking-[0.3em] text-white/55 shadow-inner shadow-white/5">
+                <span className="rounded-full bg-basalt border border-champagne/10 px-3 py-1.5 shadow-inner">
                   {product.collection}
                 </span>
                 <span
-                  className={`rounded-full px-3 py-1.5 text-xs uppercase tracking-[0.3em] shadow-inner ${
+                  className={`rounded-full px-3 py-1.5 border shadow-inner transition-all duration-300 ${
                     product.stock > 10
-                      ? "bg-white/5 text-white/55 shadow-white/5"
+                      ? "bg-basalt border-champagne/10 text-champagne"
                       : product.stock > 0
-                        ? "bg-white/10 text-white/70 shadow-white/5"
-                        : "bg-white/5 text-white/30 shadow-white/5"
+                        ? "bg-basalt border-champagne/20 text-champagne"
+                        : "bg-basalt border-red-500/20 text-red-400"
                   }`}
                 >
                   {product.stock > 0 ? `${product.stock} in stock` : "Out of stock"}
@@ -243,34 +243,34 @@ export function ProductDetailsModal({ product, onClose }) {
               </div>
 
               {/* Size and Color */}
-              <div className="mt-6 grid grid-cols-2 gap-4">
+              <div className="mt-6 grid grid-cols-2 gap-4 font-body">
                 <label className="grid gap-2">
-                  <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+                  <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                     Size
                   </span>
                   <select
                     value={selectedSize}
                     onChange={(e) => setSelectedSize(e.target.value)}
-                    className="rounded-full bg-black/30 px-4 py-2.5 text-sm text-white outline-none shadow-inner shadow-white/5"
+                    className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
                   >
                     {product.sizes.map((s) => (
-                      <option key={s} value={s} className="bg-black">
+                      <option key={s} value={s} className="bg-basalt">
                         EU {s}
                       </option>
                     ))}
                   </select>
                 </label>
                 <label className="grid gap-2">
-                  <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+                  <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                     Color
                   </span>
                   <select
                     value={selectedColor}
                     onChange={(e) => setSelectedColor(e.target.value)}
-                    className="rounded-full bg-black/30 px-4 py-2.5 text-sm text-white outline-none shadow-inner shadow-white/5"
+                    className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
                   >
                     {product.colors.map((c) => (
-                      <option key={c} value={c} className="bg-black">
+                      <option key={c} value={c} className="bg-basalt">
                         {c}
                       </option>
                     ))}
@@ -279,25 +279,25 @@ export function ProductDetailsModal({ product, onClose }) {
               </div>
 
               {/* Quantity */}
-              <div className="mt-5 flex items-center gap-3">
-                <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <div className="mt-5 flex items-center gap-3 font-body">
+                <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                   Qty
                 </span>
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setQuantity((v) => Math.max(1, v - 1))}
-                    className="btn-secondary flex h-9 w-9 items-center justify-center text-sm shadow-sm"
+                    className="btn-secondary flex h-9 w-9 items-center justify-center rounded-full text-sm border-champagne/20 text-champagne hover:bg-champagne/10 cursor-pointer"
                   >
                     -
                   </button>
-                  <span className="min-w-10 rounded-full bg-white/5 px-3 py-2 text-center text-sm text-white">
+                  <span className="min-w-10 rounded-full bg-basalt border border-champagne/20 px-3 py-2 text-center text-xs text-white font-semibold">
                     {quantity}
                   </span>
                   <button
                     type="button"
                     onClick={() => setQuantity((v) => v + 1)}
-                    className="btn-secondary flex h-9 w-9 items-center justify-center text-sm shadow-sm"
+                    className="btn-secondary flex h-9 w-9 items-center justify-center rounded-full text-sm border-champagne/20 text-champagne hover:bg-champagne/10 cursor-pointer"
                   >
                     +
                   </button>
@@ -312,7 +312,7 @@ export function ProductDetailsModal({ product, onClose }) {
                     addToCart(product, quantity, selectedSize, selectedColor);
                     toast.success(`${product.name} added to cart`);
                   }}
-                  className="btn-secondary flex h-12 items-center justify-center px-4 text-sm shadow-lg shadow-black/20"
+                  className="btn-secondary rounded-full flex h-12 items-center justify-center px-4 text-xs font-semibold shadow-lg shadow-black/20"
                 >
                   Add to cart
                 </button>
@@ -326,7 +326,7 @@ export function ProductDetailsModal({ product, onClose }) {
                         : "Product saved successfully.",
                     );
                   }}
-                  className="btn-primary flex h-12 items-center justify-center px-4 text-sm shadow-lg shadow-black/20"
+                  className="btn-primary rounded-full flex h-12 items-center justify-center px-4 text-xs font-semibold shadow-lg shadow-black/20"
                 >
                   {wishlisted ? "Saved" : "Save to wishlist"}
                 </button>
@@ -335,35 +335,35 @@ export function ProductDetailsModal({ product, onClose }) {
           </div>
 
           {/* Bottom section: specs + reviews + related */}
-          <div className="border-t border-white/8 p-6 md:p-8">
+          <div className="border-t border-champagne/10 p-6 md:p-8">
             <div className="grid gap-8 lg:grid-cols-2">
               {/* Specifications */}
               <div>
-                <h3 className="text-xs uppercase tracking-[0.35em] text-white/45">
+                <h3 className="text-xs uppercase tracking-[0.35em] text-champagne/70 font-semibold font-body">
                   Specifications
                 </h3>
-                <ul className="mt-4 grid gap-2">
+                <ul className="mt-4 grid gap-2 font-body text-xs text-bone/68">
                   {product.specs.map((spec) => (
                     <li
                       key={spec}
-                      className="rounded-[1rem] bg-white/[0.04] px-4 py-3 text-sm text-white/68 shadow-sm"
+                      className="rounded-[1rem] bg-basalt border border-champagne/10 px-4 py-3 shadow-sm"
                     >
                       {spec}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
+                <div className="mt-5 grid grid-cols-2 gap-3 text-xs font-body">
                   {[
                     ["Sizes available", product.sizes.join(", ")],
                     ["Colors", product.colors.join(", ")],
                     ["Gender", product.gender],
                     ["Collection", product.collection],
                   ].map(([label, value]) => (
-                    <div key={label} className="rounded-[1rem] bg-white/[0.04] p-3">
-                      <p className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+                    <div key={label} className="rounded-[1rem] bg-basalt border border-champagne/10 p-3">
+                      <p className="text-[9px] uppercase tracking-[0.3em] text-champagne/60 font-semibold">
                         {label}
                       </p>
-                      <p className="mt-1.5 text-sm text-white/70">{value}</p>
+                      <p className="mt-1.5 text-xs text-bone/80">{value}</p>
                     </div>
                   ))}
                 </div>
@@ -371,7 +371,7 @@ export function ProductDetailsModal({ product, onClose }) {
 
               {/* Customer Reviews */}
               <div>
-                <h3 className="text-xs uppercase tracking-[0.35em] text-white/45">
+                <h3 className="text-xs uppercase tracking-[0.35em] text-champagne/70 font-semibold font-body">
                   Customer Reviews
                 </h3>
                 <div className="mt-4 grid gap-3">
@@ -385,7 +385,7 @@ export function ProductDetailsModal({ product, onClose }) {
             {/* Related Products */}
             {related.length > 0 && (
               <div className="mt-8">
-                <h3 className="text-xs uppercase tracking-[0.35em] text-white/45">
+                <h3 className="text-xs uppercase tracking-[0.35em] text-champagne/70 font-semibold font-body">
                   Related Products
                 </h3>
                 <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -394,7 +394,7 @@ export function ProductDetailsModal({ product, onClose }) {
                       key={r.id}
                       type="button"
                       onClick={() => openDetails(r.id)}
-                      className="overflow-hidden rounded-[1.25rem] bg-white/[0.04] text-left transition hover:bg-white/[0.08]"
+                      className="overflow-hidden rounded-[1.25rem] bg-basalt border border-champagne/10 text-left transition duration-300 hover:border-champagne/30 cursor-pointer"
                     >
                       <img
                         src={r.images[0]}
@@ -403,10 +403,10 @@ export function ProductDetailsModal({ product, onClose }) {
                         className="h-28 w-full object-cover"
                       />
                       <div className="p-3">
-                        <p className="truncate text-xs font-semibold text-white">
+                        <p className="truncate text-xs font-semibold text-white font-heading">
                           {r.name}
                         </p>
-                        <p className="mt-1 text-[11px] text-white/50">
+                        <p className="mt-1 text-[10px] text-champagne font-body">
                           {formatKes(r.price)}
                         </p>
                       </div>

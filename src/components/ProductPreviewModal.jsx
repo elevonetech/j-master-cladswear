@@ -38,8 +38,8 @@ function StarRating({ rating }) {
           size={11}
           className={
             i < Math.round(rating)
-              ? "fill-white text-white"
-              : "fill-white/15 text-white/15"
+              ? "fill-champagne text-champagne"
+              : "fill-champagne/15 text-champagne/15"
           }
         />
       ))}
@@ -49,17 +49,17 @@ function StarRating({ rating }) {
 
 function ReviewCard({ name, rating, date, text }) {
   return (
-    <div className="rounded-[1.25rem] border border-white/8 bg-white/[0.04] p-4">
+    <div className="rounded-[1.25rem] border border-champagne/10 bg-basalt p-4">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-white">{name}</p>
+          <p className="text-sm font-semibold text-white font-heading tracking-wide">{name}</p>
           <StarRating rating={rating} />
         </div>
-        <p className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-white/40">
+        <p className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-champagne/40">
           {date}
         </p>
       </div>
-      <p className="mt-2.5 text-sm leading-6 text-white/65">{text}</p>
+      <p className="mt-2.5 text-xs leading-relaxed text-bone/65 font-body">{text}</p>
     </div>
   );
 }
@@ -116,7 +116,7 @@ export function ProductPreviewModal({ product, onClose }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
         onClick={onClose}
       >
         <motion.div
@@ -125,13 +125,13 @@ export function ProductPreviewModal({ product, onClose }) {
           exit={{ y: 30, opacity: 0 }}
           transition={{ duration: 0.3 }}
           onClick={(e) => e.stopPropagation()}
-          className="glass relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-[2rem]"
+          className="glass relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-[2rem] border border-champagne/20"
         >
           {/* Scrollable content */}
           <div className="overflow-y-auto">
             <div className="grid md:grid-cols-2">
               {/* Image side */}
-              <div className="relative min-h-[20rem] bg-black md:min-h-full">
+              <div className="relative min-h-[20rem] bg-basalt md:min-h-full">
                 <img
                   src={product.images[imageIndex]}
                   alt={product.name}
@@ -142,14 +142,14 @@ export function ProductPreviewModal({ product, onClose }) {
                   <button
                     type="button"
                     onClick={prevImage}
-                    className="btn-secondary px-3 py-1.5 text-xs shadow-lg shadow-black/30"
+                    className="btn-secondary rounded-full px-3 py-1.5 text-xs shadow-lg shadow-black/30 border-champagne/20 hover:border-champagne text-champagne hover:bg-champagne/10"
                   >
                     Previous
                   </button>
                   <button
                     type="button"
                     onClick={nextImage}
-                    className="btn-secondary px-3 py-1.5 text-xs shadow-lg shadow-black/30"
+                    className="btn-secondary rounded-full px-3 py-1.5 text-xs shadow-lg shadow-black/30 border-champagne/20 hover:border-champagne text-champagne hover:bg-champagne/10"
                   >
                     Next
                   </button>
@@ -157,68 +157,68 @@ export function ProductPreviewModal({ product, onClose }) {
               </div>
 
               {/* Content side */}
-              <div className="flex flex-col p-6 md:p-8">
+              <div className="flex flex-col p-6 md:p-8 bg-basalt">
                 <div className="flex-1 space-y-5">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.35em] text-white/45">
+                    <p className="text-[10px] uppercase tracking-[0.35em] text-champagne/70 font-semibold font-body">
                       {product.brand}
                     </p>
-                    <h3 className="mt-2 text-2xl font-semibold text-white md:text-3xl">
+                    <h3 className="mt-2 text-3xl font-medium text-white font-heading tracking-wide">
                       {product.name}
                     </h3>
                   </div>
 
-                  <p className="text-2xl font-semibold text-white">
+                  <p className="text-2xl font-semibold text-white font-body">
                     {formatKes(product.price)}
                   </p>
-                  <p className="text-sm leading-7 text-white/65">
+                  <p className="text-xs leading-relaxed text-bone/65 font-body">
                     {product.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/55">
-                    <span className="rounded-full bg-white/5 px-3 py-2 shadow-inner shadow-white/5">
+                  <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.3em] font-semibold text-champagne">
+                    <span className="rounded-full bg-basalt/60 border border-champagne/10 px-3 py-2 shadow-inner">
                       {product.category}
                     </span>
-                    <span className="rounded-full bg-white/5 px-3 py-2 shadow-inner shadow-white/5">
-                      {product.rating}/5 stars
+                    <span className="rounded-full bg-basalt/60 border border-champagne/10 px-3 py-2 shadow-inner">
+                      {product.rating} ★
                     </span>
-                    <span className="rounded-full bg-white/5 px-3 py-2 shadow-inner shadow-white/5">
+                    <span className="rounded-full bg-basalt/60 border border-champagne/10 px-3 py-2 shadow-inner">
                       {product.stock} in stock
                     </span>
                   </div>
 
                   {/* Expanded details */}
                   {showDetails && (
-                    <div className="space-y-6 border-t border-white/10 pt-5">
+                    <div className="space-y-6 border-t border-champagne/10 pt-5">
                       {/* Size & Color */}
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-2 gap-4 font-body">
                         <label className="grid gap-2">
-                          <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+                          <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                             Size
                           </span>
                           <select
                             value={selectedSize}
                             onChange={(e) => setSelectedSize(e.target.value)}
-                            className="rounded-full bg-black/30 px-4 py-2.5 text-sm text-white outline-none shadow-inner shadow-white/5"
+                            className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
                           >
                             {product.sizes.map((s) => (
-                              <option key={s} value={s} className="bg-black">
+                              <option key={s} value={s} className="bg-basalt">
                                 EU {s}
                               </option>
                             ))}
                           </select>
                         </label>
                         <label className="grid gap-2">
-                          <span className="text-xs uppercase tracking-[0.3em] text-white/45">
+                          <span className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold">
                             Color
                           </span>
                           <select
                             value={selectedColor}
                             onChange={(e) => setSelectedColor(e.target.value)}
-                            className="rounded-full bg-black/30 px-4 py-2.5 text-sm text-white outline-none shadow-inner shadow-white/5"
+                            className="rounded-full bg-basalt border border-champagne/20 px-4 py-2.5 text-xs text-white outline-none shadow-inner cursor-pointer"
                           >
                             {product.colors.map((c) => (
-                              <option key={c} value={c} className="bg-black">
+                              <option key={c} value={c} className="bg-basalt">
                                 {c}
                               </option>
                             ))}
@@ -228,14 +228,14 @@ export function ProductPreviewModal({ product, onClose }) {
 
                       {/* Specs */}
                       <div>
-                        <h4 className="text-xs uppercase tracking-[0.3em] text-white/45">
+                        <h4 className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold font-body">
                           Specifications
                         </h4>
-                        <ul className="mt-3 grid gap-2 text-sm text-white/68">
+                        <ul className="mt-3 grid gap-2 text-xs text-bone/68 font-body">
                           {product.specs.map((spec) => (
                             <li
                               key={spec}
-                              className="rounded-[1rem] bg-white/5 px-4 py-2.5 shadow-sm"
+                              className="rounded-[1rem] bg-basalt border border-champagne/10 px-4 py-2.5 shadow-sm"
                             >
                               {spec}
                             </li>
@@ -245,7 +245,7 @@ export function ProductPreviewModal({ product, onClose }) {
 
                       {/* Reviews */}
                       <div>
-                        <h4 className="text-xs uppercase tracking-[0.3em] text-white/45">
+                        <h4 className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold font-body">
                           Customer Reviews
                         </h4>
                         <div className="mt-3 grid gap-3">
@@ -258,7 +258,7 @@ export function ProductPreviewModal({ product, onClose }) {
                       {/* Related products */}
                       {related.length > 0 && (
                         <div>
-                          <h4 className="text-xs uppercase tracking-[0.3em] text-white/45">
+                          <h4 className="text-xs uppercase tracking-[0.3em] text-champagne/70 font-semibold font-body">
                             Related Products
                           </h4>
                           <div className="mt-3 grid grid-cols-2 gap-3">
@@ -270,7 +270,7 @@ export function ProductPreviewModal({ product, onClose }) {
                                   onClose();
                                   openDetails(r.id);
                                 }}
-                                className="overflow-hidden rounded-[1rem] bg-white/5 text-left transition hover:bg-white/10"
+                                className="overflow-hidden rounded-[1rem] bg-basalt border border-champagne/10 text-left transition duration-300 hover:border-champagne/30 cursor-pointer"
                               >
                                 <img
                                   src={r.images[0]}
@@ -279,10 +279,10 @@ export function ProductPreviewModal({ product, onClose }) {
                                   className="h-24 w-full object-cover"
                                 />
                                 <div className="p-2.5">
-                                  <p className="truncate text-xs font-medium text-white">
+                                  <p className="truncate text-xs font-semibold text-white font-heading">
                                     {r.name}
                                   </p>
-                                  <p className="text-[10px] text-white/50">
+                                  <p className="text-[10px] text-champagne font-body">
                                     {formatKes(r.price)}
                                   </p>
                                 </div>
@@ -296,7 +296,7 @@ export function ProductPreviewModal({ product, onClose }) {
                 </div>
 
                 {/* Action buttons */}
-                <div className="mt-6 space-y-2.5 border-t border-white/10 pt-5">
+                <div className="mt-6 space-y-2.5 border-t border-champagne/10 pt-5">
                   <div className="grid grid-cols-2 gap-2.5">
                     <button
                       type="button"
@@ -309,14 +309,14 @@ export function ProductPreviewModal({ product, onClose }) {
                         );
                         toast.success(`${product.name} added to cart`);
                       }}
-                      className="btn-secondary flex h-12 items-center justify-center px-4 text-sm shadow-lg shadow-black/20"
+                      className="btn-secondary rounded-full flex h-12 items-center justify-center px-4 text-xs font-semibold shadow-lg shadow-black/20"
                     >
                       Add to cart
                     </button>
                     <button
                       type="button"
                       onClick={handleSave}
-                      className="btn-primary flex h-12 items-center justify-center px-4 text-sm shadow-lg shadow-black/20"
+                      className="btn-primary rounded-full flex h-12 items-center justify-center px-4 text-xs font-semibold shadow-lg shadow-black/20"
                     >
                       {wishlisted ? "Saved" : "Save"}
                     </button>
@@ -325,14 +325,14 @@ export function ProductPreviewModal({ product, onClose }) {
                     <button
                       type="button"
                       onClick={() => setShowDetails((v) => !v)}
-                      className="btn-primary flex h-12 items-center justify-center px-4 text-sm shadow-lg shadow-black/20"
+                      className="btn-primary rounded-full flex h-12 items-center justify-center px-4 text-xs font-semibold shadow-lg shadow-black/20"
                     >
                       {showDetails ? "Show less" : "View details"}
                     </button>
                     <button
                       type="button"
                       onClick={onClose}
-                      className="btn-secondary flex h-12 items-center justify-center px-4 text-sm shadow-lg shadow-black/20"
+                      className="btn-secondary rounded-full flex h-12 items-center justify-center px-4 text-xs font-semibold shadow-lg shadow-black/20"
                     >
                       Close
                     </button>

@@ -48,9 +48,9 @@ function LoadingScreen() {
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mt-3 text-2xl font-semibold tracking-tight text-white"
+          className="mt-3 text-2xl font-semibold tracking-tight text-white font-heading"
         >
-          Kithome Shoe Collection
+          Dapper Footwear
         </motion.h2>
       </div>
     </motion.div>

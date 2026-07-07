@@ -18,36 +18,36 @@ export function HomePage() {
     .slice(0, 4);
 
   return (
-    <div className="space-y-24">
+    <div className="space-y-24 pb-20">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-10 rounded-[2.5rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-6 shadow-[0_30px_120px_rgba(0,0,0,0.45)] lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
+        <div className="grid items-center gap-10 rounded-[2.5rem] bg-basalt border border-champagne/10 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.6)] lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
           <div className="space-y-8">
-            <p className="text-xs uppercase tracking-[0.45em] text-white/50">
-              Luxury footwear, curated for Kithome
+            <p className="text-[10px] font-semibold uppercase tracking-[0.45em] text-champagne/80 font-body">
+              Luxury footwear, curated for Dapper
             </p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="max-w-3xl text-5xl font-semibold tracking-tight text-white md:text-7xl"
+              className="max-w-3xl text-5xl font-medium tracking-wide text-white font-heading md:text-7xl leading-[1.1]"
             >
               Minimal black and white shoe culture with a premium edge.
             </motion.h1>
-            <p className="max-w-2xl text-base leading-8 text-white/65 md:text-lg">
+            <p className="max-w-2xl text-xs leading-relaxed text-bone/70 font-body md:text-sm">
               Discover refined sneakers, formal icons, rugged boots, and
               effortless casual pairs designed to feel polished from first
               glance to final checkout.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 font-body">
               <Link
                 to="/shop"
-                className="btn-secondary inline-flex items-center px-6 py-3 shadow-lg shadow-black/20"
+                className="btn-secondary inline-flex items-center rounded-full px-6 py-3 shadow-lg shadow-black/20 text-xs font-semibold"
               >
                 Shop the collection
               </Link>
               <Link
                 to="/collections"
-                className="btn-primary inline-flex items-center px-6 py-3 shadow-lg shadow-black/20"
+                className="btn-primary inline-flex items-center rounded-full px-6 py-3 shadow-lg shadow-black/20 text-xs font-semibold"
               >
                 Explore collections
               </Link>
@@ -58,11 +58,11 @@ export function HomePage() {
                 { label: "Premium curation", value: "24 styles" },
                 { label: "Trusted delivery", value: "Nationwide" },
               ].map((item) => (
-                <div key={item.label} className="glass rounded-[1.5rem] p-4">
-                  <p className="text-2xl font-semibold text-white">
+                <div key={item.label} className="bg-basalt border border-champagne/10 rounded-2xl p-4 shadow-lg text-center font-body">
+                  <p className="text-xl font-semibold text-champagne">
                     {item.value}
                   </p>
-                  <p className="mt-2 text-xs uppercase tracking-[0.3em] text-white/45">
+                  <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-bone/45 font-semibold leading-relaxed">
                     {item.label}
                   </p>
                 </div>
@@ -70,7 +70,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <div className="relative min-h-[30rem] overflow-hidden rounded-[2.25rem] bg-black/40 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.32)]">
+          <div className="relative min-h-[30rem] overflow-hidden rounded-[2.25rem] bg-basalt border border-champagne/10 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.6)]">
             <motion.img
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -80,21 +80,21 @@ export function HomePage() {
               onError={handleImgError}
               className="min-h-[30rem] w-full rounded-[2rem] object-cover"
             />
-            <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-black/55 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+            <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-basalt/80 border border-champagne/20 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.7)] backdrop-blur-xl font-body">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.35em] text-white/45">
+                  <p className="text-[10px] uppercase tracking-[0.35em] text-champagne/70 font-semibold">
                     Featured drop
                   </p>
-                  <h2 className="mt-2 text-2xl font-semibold text-white">
+                  <h2 className="mt-2 text-2xl font-medium tracking-wide text-white font-heading">
                     {featured[0].name}
                   </h2>
                 </div>
-                <div className="rounded-full bg-white/5 px-3 py-2 text-xs uppercase tracking-[0.3em] text-white/70 shadow-inner shadow-white/5">
+                <div className="rounded-full bg-champagne/10 border border-champagne/30 px-3 py-1 text-[9px] uppercase tracking-[0.3em] text-champagne font-semibold shadow-inner">
                   {featured[0].badge}
                 </div>
               </div>
-              <div className="mt-4 flex items-center gap-4 text-sm text-white/65">
+              <div className="mt-4 flex items-center gap-4 text-xs font-semibold text-champagne/80">
                 <span>Premium finish</span>
                 <span>WhatsApp order</span>
               </div>
@@ -156,13 +156,13 @@ export function HomePage() {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-        <div className="glass rounded-[2rem] p-8">
+        <div className="bg-basalt border border-champagne/10 rounded-[2rem] p-8 shadow-xl">
           <SectionHeading
             eyebrow="Brand story"
             title="Built for the modern luxury wardrobe"
-            description="Kithome Shoe Collection brings premium footwear with a minimal black-and-white identity and a checkout experience designed around convenience."
+            description="Dapper Footwear brings premium footwear with a minimal black-and-white identity and a checkout experience designed around convenience."
           />
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2 font-body text-xs">
             {[
               "Curated premium shoes",
               "Fast WhatsApp ordering",
@@ -171,7 +171,7 @@ export function HomePage() {
             ].map((item) => (
               <div
                 key={item}
-                className="rounded-[1.25rem] bg-white/5 p-4 text-sm text-white/68 shadow-lg shadow-black/10"
+                className="rounded-[1.25rem] bg-basalt border border-champagne/10 p-4 text-bone/80 shadow-md"
               >
                 {item}
               </div>
@@ -180,11 +180,11 @@ export function HomePage() {
         </div>
 
         <div className="grid gap-6">
-          <div className="glass rounded-[2rem] p-8">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/45">
+          <div className="bg-basalt border border-champagne/10 rounded-[2rem] p-8 shadow-xl font-body">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne/70">
               Featured brands
             </p>
-            <div className="mt-4 flex flex-wrap gap-3">
+            <div className="mt-4 flex flex-wrap gap-2.5">
               {[
                 "Nike",
                 "Adidas",
@@ -197,25 +197,25 @@ export function HomePage() {
               ].map((brand) => (
                 <span
                   key={brand}
-                  className="rounded-full bg-white/5 px-4 py-2 text-sm text-white/75 shadow-inner shadow-white/5"
+                  className="rounded-full bg-basalt border border-champagne/10 px-4 py-2 text-xs text-bone/70 shadow-inner"
                 >
                   {brand}
                 </span>
               ))}
             </div>
           </div>
-          <div className="glass rounded-[2rem] p-8">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/45">
+          <div className="bg-basalt border border-champagne/10 rounded-[2rem] p-8 shadow-xl font-body">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne/70">
               Testimonials
             </p>
-            <div className="mt-4 space-y-5 text-sm text-white/68">
+            <div className="mt-4 space-y-4 text-xs text-bone/70">
               {[
                 "The collection feels premium and the WhatsApp checkout is incredibly efficient.",
                 "The black and white styling gives the whole brand a luxury retail feel.",
               ].map((quote) => (
                 <p
                   key={quote}
-                  className="rounded-[1.25rem] bg-white/5 p-4 leading-7 shadow-lg shadow-black/10"
+                  className="rounded-[1.25rem] bg-basalt border border-champagne/10 p-4 leading-relaxed shadow-sm"
                 >
                   {quote}
                 </p>
@@ -225,8 +225,8 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="glass rounded-[2rem] p-8 md:p-10">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 font-body">
+        <div className="bg-basalt border border-champagne/10 rounded-[2rem] p-8 md:p-10 shadow-xl">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <SectionHeading
@@ -234,15 +234,15 @@ export function HomePage() {
                 title="Get updates on new drops"
                 description="Subscribe for curated arrivals, limited editions, and exclusive style releases."
               />
-              <form className="flex flex-col gap-3 sm:flex-row">
+              <form className="flex flex-col gap-3 sm:flex-row mt-6">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="min-w-0 flex-1 rounded-full bg-black/30 px-5 py-4 text-sm text-white outline-none placeholder:text-white/35 shadow-inner shadow-white/5"
+                  className="min-w-0 flex-1 rounded-full bg-basalt/60 border border-champagne/20 px-5 py-3 text-xs text-white outline-none placeholder:text-bone/35 shadow-inner"
                 />
                 <button
                   type="button"
-                  className="btn-secondary px-6 py-4 shadow-lg shadow-black/20"
+                  className="btn-primary rounded-full px-6 py-3 shadow-lg shadow-black/20 text-xs font-semibold"
                 >
                   Subscribe
                 </button>
@@ -256,12 +256,12 @@ export function HomePage() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-[1.5rem] bg-white/5 p-5 text-center shadow-lg shadow-black/10"
+                  className="rounded-[1.5rem] bg-basalt border border-champagne/10 p-5 text-center shadow-lg"
                 >
-                  <p className="text-2xl font-semibold text-white">
+                  <p className="text-2xl font-semibold text-champagne font-body">
                     {stat.value}
                   </p>
-                  <p className="mt-2 text-xs uppercase tracking-[0.3em] text-white/45">
+                  <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-bone/45 font-semibold">
                     {stat.label}
                   </p>
                 </div>
