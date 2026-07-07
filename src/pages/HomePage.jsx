@@ -17,16 +17,21 @@ const stagger = {
 };
 
 export function HomePage() {
-  const featured    = products.filter((p) => p.featured).slice(0, 4);
-  const newArrivals = products.filter((p) => p.collection === "New Arrivals").slice(0, 4);
-  const bestSellers = products.filter((p) => p.badge === "Best Seller").slice(0, 4);
-  const trending    = products.filter((p) => p.collection === "Trending").slice(0, 4);
+  const featured = products.filter((p) => p.featured).slice(0, 4);
+  const newArrivals = products
+    .filter((p) => p.collection === "New Arrivals")
+    .slice(0, 4);
+  const bestSellers = products
+    .filter((p) => p.badge === "Best Seller")
+    .slice(0, 4);
+  const trending = products
+    .filter((p) => p.collection === "Trending")
+    .slice(0, 4);
 
   const hero = featured[0];
 
   return (
     <div>
-
       {/* ══════════════════════════════════════
           HERO  — cinematic full-bleed, black
       ══════════════════════════════════════ */}
@@ -50,28 +55,26 @@ export function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#080808] via-[#080808]/75 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent" />
           {/* Subtle texture grain overlay */}
-          <div className="absolute inset-0 opacity-[0.03]"
-            style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")" }} />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+            }}
+          />
         </div>
 
         {/* Content */}
-        <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-32">
+        <div className="relative z-10 max-w-7xl px-5 sm:px-8 lg:px-10 py-32 w-full">
           <motion.div
             variants={stagger}
             initial="initial"
             animate="animate"
-            className="max-w-3xl"
+            className="max-w-3xl text-left"
           >
-            <motion.p
-              {...fadeUp(0.1)}
-              className="text-[0.62rem] font-semibold uppercase tracking-[0.45em] text-champagne mb-6"
-            >
-              Luxury Footwear — Curated for Dapper
-            </motion.p>
-
             <motion.h1
               {...fadeUp(0.2)}
-              className="display-heading text-5xl md:text-7xl lg:text-[5.5rem] text-white leading-[1.04] mb-8"
+              className="display-heading text-left text-5xl md:text-7xl lg:text-[5.5rem] text-white leading-[1.04] mb-8"
             >
               Step into
               <br />
@@ -82,20 +85,26 @@ export function HomePage() {
 
             <motion.p
               {...fadeUp(0.32)}
-              className="max-w-lg text-sm leading-relaxed text-white/55 mb-10"
+              className="max-w-lg text-sm leading-relaxed text-white/55 mb-10 text-left"
             >
               Discover refined sneakers, formal icons, rugged boots, and
               effortless casual pairs — designed to feel polished from first
               glance to final checkout.
             </motion.p>
 
-            <motion.div {...fadeUp(0.42)} className="flex flex-wrap gap-3">
+            <motion.div
+              {...fadeUp(0.42)}
+              className="flex flex-wrap gap-3 justify-start"
+            >
               <Link
                 to="/shop"
                 className="btn-primary !px-8 !py-4 !text-[0.72rem] group"
               >
                 Shop the Collection
-                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                <ArrowRight
+                  size={14}
+                  className="transition-transform group-hover:translate-x-1"
+                />
               </Link>
               <Link
                 to="/collections"
@@ -108,16 +117,20 @@ export function HomePage() {
             {/* Stats strip */}
             <motion.div
               {...fadeUp(0.54)}
-              className="mt-16 flex flex-wrap gap-x-10 gap-y-4"
+              className="mt-16 flex flex-wrap gap-x-10 gap-y-4 justify-start"
             >
               {[
-                { value: "1 tap",       label: "WhatsApp checkout" },
-                { value: "24 styles",   label: "Premium curation" },
-                { value: "Nationwide",  label: "Trusted delivery" },
+                { value: "1 tap", label: "WhatsApp checkout" },
+                { value: "24 styles", label: "Premium curation" },
+                { value: "Nationwide", label: "Trusted delivery" },
               ].map((s) => (
-                <div key={s.label}>
-                  <p className="text-2xl font-bold text-white font-heading">{s.value}</p>
-                  <p className="mt-0.5 text-[0.6rem] uppercase tracking-[0.3em] text-white/38 font-semibold">{s.label}</p>
+                <div key={s.label} className="text-left">
+                  <p className="text-2xl font-bold text-white font-heading">
+                    {s.value}
+                  </p>
+                  <p className="mt-0.5 text-[0.6rem] uppercase tracking-[0.3em] text-white/38 font-semibold">
+                    {s.label}
+                  </p>
                 </div>
               ))}
             </motion.div>
@@ -131,7 +144,9 @@ export function HomePage() {
           transition={{ delay: 1.4 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
-          <span className="text-[0.6rem] uppercase tracking-[0.35em] text-white/35">Scroll</span>
+          <span className="text-[0.6rem] uppercase tracking-[0.35em] text-white/35">
+            Scroll
+          </span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
@@ -157,7 +172,10 @@ export function HomePage() {
               className="btn-secondary flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group"
             >
               View all
-              <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+              <ArrowRight
+                size={12}
+                className="transition-transform group-hover:translate-x-1"
+              />
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -195,10 +213,10 @@ export function HomePage() {
               />
               <div className="grid gap-3 sm:grid-cols-2 mt-8">
                 {[
-                  { icon: Award,  text: "Curated premium shoes" },
-                  { icon: Zap,    text: "Fast WhatsApp ordering" },
-                  { icon: Globe,  text: "Streetwear to formal edits" },
-                  { icon: Award,  text: "Responsive across all devices" },
+                  { icon: Award, text: "Curated premium shoes" },
+                  { icon: Zap, text: "Fast WhatsApp ordering" },
+                  { icon: Globe, text: "Streetwear to formal edits" },
+                  { icon: Award, text: "Responsive across all devices" },
                 ].map(({ icon: Icon, text }) => (
                   <div
                     key={text}
@@ -210,7 +228,10 @@ export function HomePage() {
                 ))}
               </div>
               <div className="mt-8">
-                <Link to="/about" className="btn-ghost-dark !py-3 !px-7 !text-[0.68rem]">
+                <Link
+                  to="/about"
+                  className="btn-ghost-dark !py-3 !px-7 !text-[0.68rem]"
+                >
                   Our Story
                 </Link>
               </div>
@@ -221,7 +242,16 @@ export function HomePage() {
               <div className="rounded-3xl border border-white/08 bg-white/[0.04] p-8">
                 <p className="eyebrow-dark mb-5">Featured brands</p>
                 <div className="flex flex-wrap gap-2.5">
-                  {["Nike","Adidas","Puma","New Balance","Reebok","Asics","Clarks","Timberland"].map((brand) => (
+                  {[
+                    "Nike",
+                    "Adidas",
+                    "Puma",
+                    "New Balance",
+                    "Reebok",
+                    "Asics",
+                    "Clarks",
+                    "Timberland",
+                  ].map((brand) => (
                     <span
                       key={brand}
                       className="rounded-full border border-white/10 bg-white/05 px-4 py-1.5 text-[0.72rem] text-white/62 transition hover:border-champagne/30 hover:text-white/80"
@@ -236,15 +266,27 @@ export function HomePage() {
                 <p className="eyebrow-dark mb-5">Testimonials</p>
                 <div className="space-y-3">
                   {[
-                    { quote: "The collection feels premium and the WhatsApp checkout is incredibly efficient.", author: "Nairobi customer" },
-                    { quote: "The black and white styling gives the whole brand a luxury retail feel.", author: "Verified buyer" },
+                    {
+                      quote:
+                        "The collection feels premium and the WhatsApp checkout is incredibly efficient.",
+                      author: "Nairobi customer",
+                    },
+                    {
+                      quote:
+                        "The black and white styling gives the whole brand a luxury retail feel.",
+                      author: "Verified buyer",
+                    },
                   ].map(({ quote, author }) => (
                     <div
                       key={quote}
                       className="rounded-2xl border border-white/06 bg-white/[0.03] p-5"
                     >
-                      <p className="text-[0.8rem] leading-relaxed text-white/60 italic">"{quote}"</p>
-                      <p className="mt-2.5 text-[0.62rem] uppercase tracking-[0.25em] text-champagne/60 font-semibold">— {author}</p>
+                      <p className="text-[0.8rem] leading-relaxed text-white/60 italic">
+                        "{quote}"
+                      </p>
+                      <p className="mt-2.5 text-[0.62rem] uppercase tracking-[0.25em] text-champagne/60 font-semibold">
+                        — {author}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -265,8 +307,15 @@ export function HomePage() {
               title="New Arrivals"
               description="Newest additions with sleek silhouettes and elevated materials."
             />
-            <Link to="/shop?collection=new-arrivals" className="btn-secondary flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group">
-              See all new <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+            <Link
+              to="/shop?collection=new-arrivals"
+              className="btn-secondary flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group"
+            >
+              See all new{" "}
+              <ArrowRight
+                size={12}
+                className="transition-transform group-hover:translate-x-1"
+              />
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -297,8 +346,15 @@ export function HomePage() {
               title="Best Sellers"
               description="The silhouettes customers keep coming back for, season after season."
             />
-            <Link to="/shop" className="btn-ghost-dark flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group">
-              Shop all <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+            <Link
+              to="/shop"
+              className="btn-ghost-dark flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group"
+            >
+              Shop all{" "}
+              <ArrowRight
+                size={12}
+                className="transition-transform group-hover:translate-x-1"
+              />
             </Link>
           </div>
           {/* Dark-tinted product cards */}
@@ -329,8 +385,15 @@ export function HomePage() {
               title="Trending Products"
               description="Sharp lines, high contrast, and understated confidence."
             />
-            <Link to="/shop?sort=trending" className="btn-secondary flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group">
-              View trending <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+            <Link
+              to="/shop?sort=trending"
+              className="btn-secondary flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group"
+            >
+              View trending{" "}
+              <ArrowRight
+                size={12}
+                className="transition-transform group-hover:translate-x-1"
+              />
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -383,20 +446,23 @@ export function HomePage() {
 
             <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               {[
-                { value: "24",       label: "Style options" },
-                { value: "4.8/5",    label: "Average rating" },
+                { value: "24", label: "Style options" },
+                { value: "4.8/5", label: "Average rating" },
                 { value: "Same day", label: "WhatsApp response" },
               ].map((stat) => (
                 <div key={stat.label} className="stat-card-dark">
-                  <p className="text-2xl font-bold text-white font-heading">{stat.value}</p>
-                  <p className="mt-1.5 text-[0.58rem] uppercase tracking-[0.28em] text-white/38 font-semibold">{stat.label}</p>
+                  <p className="text-2xl font-bold text-white font-heading">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1.5 text-[0.58rem] uppercase tracking-[0.28em] text-white/38 font-semibold">
+                    {stat.label}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }
