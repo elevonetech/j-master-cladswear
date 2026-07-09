@@ -65,7 +65,7 @@ export function Navbar() {
               </p>
               <h1 className="text-sm font-semibold tracking-wider text-[#111] font-body">
                 Dapper Footwear
-              </p>
+              </h1>
             </div>
           </Link>
 

@@ -56,6 +56,7 @@ export function ShopPage() {
     </label>
   );
 
+  return (
       <div className="grid gap-6 xl:grid-cols-[300px_1fr]">
         <aside className="bg-[#f8f8f8] h-fit rounded-[2rem] p-5 xl:sticky xl:top-32">
           <div className="text-sm font-semibold text-champagne font-body uppercase tracking-wider">Filters</div>
@@ -122,8 +123,8 @@ export function ShopPage() {
                     {brand}
                   </option>
                 ))}
-              </div>
-            </div>
+              </select>
+            </label>
 
             <label className="grid gap-3">
               <span className="text-xs uppercase tracking-[0.3em] text-champagne font-semibold">
@@ -217,6 +218,5 @@ export function ShopPage() {
           )}
         </section>
       </div>
-    </div>
   );
 }

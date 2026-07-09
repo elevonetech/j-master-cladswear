@@ -54,7 +54,7 @@ export function HomePage() {
               Discover refined sneakers, formal icons, rugged boots, and
               effortless casual pairs — designed to feel polished from first
               glance to final checkout.
-            </motion.p>
+            </p>
 
             <motion.div
               {...fadeUp(0.42)}
@@ -98,7 +98,7 @@ export function HomePage() {
                 </div>
               ))}
             </motion.div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll cue */}
@@ -120,6 +120,7 @@ export function HomePage() {
         </motion.div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-24">
           <div className="relative min-h-[30rem] overflow-hidden rounded-[2.25rem] bg-[#f8f8f8] p-4">
             <motion.img
               initial={{ opacity: 0, scale: 1.05 }}
@@ -150,7 +151,6 @@ export function HomePage() {
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* ══════════════════════════════════════
@@ -289,77 +289,6 @@ export function HomePage() {
                 <ProductCard product={product} />
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
-        <div className="bg-[#f8f8f8] rounded-[2rem] p-8">
-          <SectionHeading
-            eyebrow="Brand story"
-            title="Built for the modern luxury wardrobe"
-            description="Dapper Footwear brings premium footwear with a minimal black-and-white identity and a checkout experience designed around convenience."
-          />
-          <div className="grid gap-4 sm:grid-cols-2 font-body text-xs">
-            {[
-              "Curated premium shoes",
-              "Fast WhatsApp ordering",
-              "Streetwear to formal edits",
-              "Responsive across all devices",
-            ].map((item) => (
-              <div
-                key={item}
-                className="rounded-[1.25rem] bg-white p-4 text-[#666]"
-              >
-                <ProductCard product={product} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-        <div className="grid gap-6">
-          <div className="bg-[#f8f8f8] rounded-[2rem] p-8 font-body">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne">
-              Featured brands
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2.5">
-              {[
-                "Nike",
-                "Adidas",
-                "Puma",
-                "New Balance",
-                "Reebok",
-                "Asics",
-                "Clarks",
-                "Timberland",
-              ].map((brand) => (
-                <span
-                  key={brand}
-                  className="rounded-full bg-white px-4 py-2 text-xs text-[#666]"
-                >
-                  {brand}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="bg-[#f8f8f8] rounded-[2rem] p-8 font-body">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne">
-              Testimonials
-            </p>
-            <div className="mt-4 space-y-4 text-xs text-[#666]">
-              {[
-                "The collection feels premium and the WhatsApp checkout is incredibly efficient.",
-                "The black and white styling gives the whole brand a luxury retail feel.",
-              ].map((quote) => (
-                <p
-                  key={quote}
-                  className="rounded-[1.25rem] bg-white p-4 leading-relaxed"
-                >
-                  {quote}
-                </p>
-              ))}
-            </div>
           </div>
         </div>
       </section>

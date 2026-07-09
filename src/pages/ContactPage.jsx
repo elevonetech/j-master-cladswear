@@ -107,84 +107,47 @@ export function ContactPage() {
             <h2 className="text-2xl font-semibold text-[#111]">
               Contact details
             </h2>
-            <div className="mt-5 grid gap-4 text-sm text-[#666]">
-              <div>0712 643 440</div>
-              <div>
-                <a
-                  href="mailto:jamesmngandu@gmail.com"
-                  className="transition hover:text-black"
-                >
-                  jamesmngandu@gmail.com
-                </a>
-              </div>
+            <div className="rounded-3xl bg-white border border-black/5 p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+              <h2 className="mb-6 text-xl font-bold font-heading text-stone">
+                Contact Details
+              </h2>
 
-              <button
-                type="submit"
-                className="btn-primary mt-6 w-full !py-3.5 !text-[0.75rem]"
-              >
-                Send Message
-              </button>
-
-              {submitted && (
-                <p className="mt-4 text-center text-[0.8rem] text-stone/60">
-                  ✓ Thank you! We'll get back to you as soon as possible.
-                </p>
-              )}
-            </form>
-
-            {/* Sidebar */}
-            <div className="space-y-6">
-              {/* Contact Details */}
-              <div className="rounded-3xl bg-white border border-black/5 p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-                <h2 className="mb-6 text-xl font-bold font-heading text-stone">
-                  Contact Details
-                </h2>
-
-                <div className="space-y-5">
-                  {contactItems.map(
-                    ({ icon: Icon, text, href, external = false }) => (
-                      <div key={text} className="flex items-center gap-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-champagne/10 border border-champagne/20">
-                          <Icon size={16} className="text-champagne" />
-                        </div>
-
-                        {href ? (
-                          <a
-                            href={href}
-                            target={external ? "_blank" : undefined}
-                            rel={external ? "noreferrer" : undefined}
-                            className="text-sm text-stone/70 transition-colors duration-300 hover:text-champagne"
-                          >
-                            {text}
-                          </a>
-                        ) : (
-                          <span className="text-sm text-stone/70">{text}</span>
-                        )}
+              <div className="space-y-5">
+                {contactItems.map(
+                  ({ icon: Icon, text, href, external = false }) => (
+                    <div key={text} className="flex items-center gap-4">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-champagne/10 border border-champagne/20">
+                        <Icon size={16} className="text-champagne" />
                       </div>
-                    ),
-                  )}
-                </div>
 
-                {/* WhatsApp Button */}
-                <a
-                  href="https://wa.me/254712643440"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition hover:text-black"
-                >
-                  <MessageCircle size={16} />
-                  Chat on WhatsApp
-                </a>
+                      {href ? (
+                        <a
+                          href={href}
+                          target={external ? "_blank" : undefined}
+                          rel={external ? "noreferrer" : undefined}
+                          className="text-sm text-stone/70 transition-colors duration-300 hover:text-champagne"
+                        >
+                          {text}
+                        </a>
+                      ) : (
+                        <span className="text-sm text-stone/70">{text}</span>
+                      )}
+                    </div>
+                  ),
+                )}
               </div>
+
+              {/* WhatsApp Button */}
+              <a
+                href="https://wa.me/254712643440"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-secondary mt-6 flex items-center gap-2 px-5 py-3"
+              >
+                <MessageCircle size={16} />
+                Chat on WhatsApp
+              </a>
             </div>
-            <a
-              href="https://wa.me/254712643440"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-secondary mt-6 px-5 py-3"
-            >
-              WhatsApp us
-            </a>
           </div>
 
           <div className="bg-[#f8f8f8] overflow-hidden rounded-[2rem] shadow-sm">
@@ -193,7 +156,7 @@ export function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

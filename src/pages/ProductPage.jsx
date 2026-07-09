@@ -134,7 +134,7 @@ export function ProductPage() {
               type="button"
               onClick={() =>
                 setImageIndex((value) =>
-                  value === 0 ? product.images.length - 1 : value - 1,
+                  value === 0 ? product.images.length - 1 : value - 1
                 )
               }
               className="btn-secondary absolute left-4 top-1/2 -translate-y-1/2 px-4 py-2"
@@ -151,23 +151,7 @@ export function ProductPage() {
               Next
             </button>
           </div>
-
-          {/* ── Product details ── */}
-          <div className="bg-white border border-black/07 rounded-3xl p-7 md:p-9 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-            {/* Brand + name */}
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-champagne">{product.brand}</p>
-                <h1 className="mt-2 text-3xl md:text-4xl font-bold font-heading text-stone leading-tight">{product.name}</h1>
-              </div>
-              <button
-                type="button"
-                onClick={() => setImageIndex(index)}
-                className={`overflow-hidden rounded-[1.5rem] ${index === imageIndex ? "" : "opacity-60"}`}
-              >
-                <Heart size={16} fill={wishlisted ? "currentColor" : "none"} />
-              </button>
-            </div>
+        </div>
 
         <div className="bg-[#f8f8f8] rounded-[2rem] p-6 md:p-8">
           <div className="flex items-start justify-between gap-4">
@@ -289,7 +273,8 @@ export function ProductPage() {
               Order via WhatsApp
             </button>
           </div>
-        </motion.div>
+        </div>
+      </motion.div>
 
           <div className="mt-8 grid gap-4 rounded-[1.5rem] bg-[#f8f8f8] p-5 sm:grid-cols-2">
             {[
@@ -320,7 +305,7 @@ export function ProductPage() {
                   {spec}
                 </li>
               ))}
-            </div>
+            </ul>
           </div>
 
       <section className="mt-16 grid gap-8 lg:grid-cols-[1fr_0.8fr]">
@@ -375,8 +360,8 @@ export function ProductPage() {
               <p className="text-sm text-black/40">No recent products yet.</p>
             ) : null}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

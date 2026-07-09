@@ -169,9 +169,10 @@ export function CartPage() {
                       </div>
                     </div>
                   </div>
-                </motion.article>
-              ))}
-            </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
 
           <aside className="bg-[#f8f8f8] h-fit rounded-[2rem] p-6 md:p-8 lg:sticky lg:top-32">
             <h2 className="text-2xl font-semibold text-[#111]">Cart summary</h2>
@@ -192,6 +193,8 @@ export function CartPage() {
                 <span>Total</span>
                 <span>{formatKes(total)}</span>
               </div>
+
+            </div>
 
             <div className="mt-6 rounded-[1.5rem] bg-white p-4 text-sm text-[#666] shadow-sm">
               Shipping information: premium packaging, tracked delivery, and
