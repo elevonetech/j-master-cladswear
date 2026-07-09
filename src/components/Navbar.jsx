@@ -8,8 +8,9 @@ const links = [
   { label: "Home",        to: "/" },
   { label: "Shop",        to: "/shop" },
   { label: "Collections", to: "/collections" },
-  { label: "About",       to: "/about" },
-  { label: "Contact",     to: "/contact" },
+  { label: "About", to: "/about" },
+  { label: "Contact", to: "/contact" },
+  { label: "Cart", to: "/cart" },
 ];
 
 function DapperLogo({ dark = false }) {
@@ -51,20 +52,18 @@ export function Navbar() {
     "bg-transparent";
 
   return (
-    <header className={`${navBase} ${scrolled ? navScrolled : navTop}`}>
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="flex h-[72px] items-center justify-between gap-6">
-
-          {/* ── Logo ── */}
-          <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
-            <div className="transition-transform duration-300 group-hover:scale-105">
-              <DapperLogo dark={scrolled} />
-            </div>
+    <header className="fixed left-0 right-0 top-0 z-40 bg-white/90 backdrop-blur-md px-4 py-4 sm:px-6 lg:px-8">
+      <div
+        className={`mx-auto max-w-7xl rounded-full bg-white shadow-sm px-5 py-3 transition-all duration-300 ${scrolled ? "shadow-md" : ""}`}
+      >
+        <div className="flex items-center justify-between gap-4">
+          <Link to="/" className="flex items-center gap-3">
+            <DapperLogo size={40} />
             <div>
               <p className={`text-[8px] font-semibold uppercase tracking-[0.42em] transition-colors duration-300 ${scrolled ? "text-champagne" : "text-champagne/90"}`}>
                 Premium Footwear
               </p>
-              <p className={`text-sm font-bold tracking-tight font-heading transition-colors duration-300 ${scrolled ? "text-stone" : "text-white"}`}>
+              <h1 className="text-sm font-semibold tracking-wider text-[#111] font-body">
                 Dapper Footwear
               </p>
             </div>
@@ -77,15 +76,7 @@ export function Navbar() {
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `relative px-4 py-2 text-[0.78rem] font-medium tracking-wide transition-all duration-250 rounded-full
-                  ${scrolled
-                    ? isActive
-                      ? "text-[#0a0a0a] font-semibold bg-black/[0.06]"
-                      : "text-stone/70 hover:text-stone hover:bg-black/[0.04]"
-                    : isActive
-                      ? "text-white font-semibold bg-white/15"
-                      : "text-white/75 hover:text-white hover:bg-white/10"
-                  }`
+                   `rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${isActive ? "bg-[#111] text-white font-semibold" : "text-[#666] hover:text-[#111]"}`
                 }
               >
                 {link.label}
@@ -111,12 +102,8 @@ export function Navbar() {
             {/* Cart */}
             <Link
               to="/cart"
-              aria-label={`Cart – ${cartCount} item${cartCount === 1 ? "" : "s"}`}
-              className={`relative flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-250
-                ${scrolled
-                  ? "border-black/10 text-stone/70 hover:bg-black/[0.04] hover:text-stone"
-                  : "border-white/20 text-white/75 hover:bg-white/10 hover:text-white"
-                }`}
+              className="btn-secondary relative h-12 w-12"
+              aria-label={`Cart with ${cartCount} item${cartCount === 1 ? "" : "s"}`}
             >
               <ShoppingCart size={16} />
               {cartCount > 0 && (
@@ -137,13 +124,8 @@ export function Navbar() {
             {/* Hamburger – mobile */}
             <button
               type="button"
-              aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen((v) => !v)}
-              className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-250 lg:hidden
-                ${scrolled
-                  ? "border-black/10 text-stone hover:bg-black/[0.04]"
-                  : "border-white/20 text-white hover:bg-white/10"
-                }`}
+              className="btn-primary px-5 py-2.5 text-xs lg:hidden"
+              onClick={() => setOpen((value) => !value)}
             >
               {open ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -154,40 +136,24 @@ export function Navbar() {
         <AnimatePresence>
           {open && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.28, ease: "easeInOut" }}
-              className="overflow-hidden"
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              className="mt-4 rounded-[1.5rem] bg-white shadow-lg border-0 p-3 lg:hidden"
             >
-              <div className="border-t border-black/08 pb-5 pt-4">
-                <div className="grid gap-0.5">
-                  {[...links, { label: "Cart", to: "/cart" }, { label: "Saved", to: "/wishlist" }].map((link) => (
-                    <NavLink
-                      key={link.to}
-                      to={link.to}
-                      onClick={() => setOpen(false)}
-                      className={({ isActive }) =>
-                        `rounded-xl px-4 py-3 text-sm font-medium transition-all
-                        ${isActive
-                          ? "bg-black/[0.06] text-stone font-semibold"
-                          : "text-stone/70 hover:bg-black/[0.03] hover:text-stone"
-                        }`
-                      }
-                    >
-                      {link.label}
-                    </NavLink>
-                  ))}
-                  <div className="mt-3 px-4">
-                    <Link
-                      to="/shop"
-                      onClick={() => setOpen(false)}
-                      className="btn-primary w-full !text-[0.7rem] !py-3"
-                    >
-                      Shop Collection
-                    </Link>
-                  </div>
-                </div>
+              <div className="grid gap-1">
+                {links.map((link) => (
+                  <NavLink
+                    key={link.to}
+                    to={link.to}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                       `rounded-xl px-4 py-3 text-sm font-medium transition-all ${isActive ? "bg-[#111] text-white font-semibold" : "text-[#666] hover:text-[#111]"}`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                ))}
               </div>
             </motion.div>
           )}

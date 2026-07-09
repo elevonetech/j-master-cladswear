@@ -20,6 +20,7 @@ export function ProductCard({ product }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="product-card group"
+      className="group overflow-hidden rounded-[2rem] bg-white shadow-sm hover:shadow-md transition-all duration-300"
     >
       {/* ── Image ── */}
       <div className="card-image">
@@ -36,10 +37,10 @@ export function ProductCard({ product }) {
             onError={handleImgError}
           />
         </button>
-
-        {/* Badge top-left */}
-        <div className="absolute left-3.5 top-3.5">
-          <span className="badge-gold">{product.badge}</span>
+        <div className="absolute left-4 top-4 flex gap-2">
+          <span className="rounded-full bg-[#f8f8f8] px-3 py-1 text-[9px] uppercase tracking-[0.35em] text-champagne">
+            {product.badge}
+          </span>
         </div>
 
         {/* Wishlist top-right */}
@@ -51,12 +52,11 @@ export function ProductCard({ product }) {
               wishlisted ? "Removed from saved items." : "Saved to wishlist.",
             );
           }}
-          aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
-          className={`absolute right-3.5 top-3.5 flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-280 shadow-sm cursor-pointer
-            ${wishlisted
-              ? "bg-champagne border-champagne/60 text-white"
-              : "bg-white/90 border-black/10 text-stone/60 hover:bg-champagne hover:border-champagne hover:text-white"
-            }`}
+          className={`absolute right-4 top-4 px-3 py-1.5 text-[9px] uppercase tracking-[0.3em] transition-all duration-300 cursor-pointer ${
+            wishlisted
+              ? "bg-champagne text-white"
+              : "bg-[#f5f5f5] text-[#111] hover:bg-champagne hover:text-white"
+          }`}
         >
           <Heart size={14} fill={wishlisted ? "currentColor" : "none"} />
         </button>
@@ -74,10 +74,17 @@ export function ProductCard({ product }) {
               <button
                 type="button"
                 onClick={() => openPreview(product.id)}
-                className="flex flex-1 h-10 items-center justify-center gap-1.5 rounded-full bg-white/95 border border-black/10 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-stone shadow-md hover:bg-stone hover:text-white transition-all duration-220 cursor-pointer"
+                className="btn-secondary h-11 text-[10px]"
               >
                 <Eye size={11} />
                 Preview
+              </button>
+              <button
+                type="button"
+                onClick={() => openDetails(product.id)}
+                className="btn-secondary h-11 text-[10px]"
+              >
+                Details
               </button>
               <button
                 type="button"
@@ -85,7 +92,7 @@ export function ProductCard({ product }) {
                   addToCart(product, 1, product.sizes[0], product.colors[0]);
                   toast.success(`${product.name} added to cart`);
                 }}
-                className="flex flex-1 h-10 items-center justify-center gap-1.5 rounded-full bg-champagne border border-champagne text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-white shadow-md hover:bg-amber-700 hover:border-amber-700 transition-all duration-220 cursor-pointer"
+                className="btn-primary h-11 text-[10px]"
               >
                 <ShoppingBag size={11} />
                 Add
@@ -94,41 +101,34 @@ export function ProductCard({ product }) {
           )}
         </AnimatePresence>
       </div>
-
-      {/* ── Info ── */}
-      <div className="p-5 space-y-3">
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <p className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-champagne/80 font-body">
+      <div className="space-y-4 p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-champagne font-body">
               {product.brand}
             </p>
             <button
               type="button"
               onClick={() => openDetails(product.id)}
-              className="mt-1.5 block text-left text-[1.02rem] font-semibold text-stone leading-snug font-heading transition hover:text-champagne cursor-pointer truncate w-full"
+              className="mt-2 block text-left text-xl font-medium text-[#111] font-heading tracking-wide transition hover:text-champagne cursor-pointer"
             >
               {product.name}
             </button>
           </div>
-          <div className="flex items-center gap-1 flex-shrink-0 mt-0.5">
-            <Star size={10} className="text-champagne fill-champagne" />
-            <span className="text-[0.72rem] font-semibold text-stone/70 font-body">
-              {product.rating}
-            </span>
+          <div className="rounded-full bg-[#f8f8f8] px-3 py-1 text-champagne">
+            {product.rating} ★
           </div>
         </div>
-
-        <p className="text-[0.72rem] leading-relaxed text-stone/55 font-body line-clamp-2 min-h-[2.4rem]">
+        <p className="min-h-10 text-xs leading-relaxed text-[#666] font-body">
           {product.description}
         </p>
-
-        <div className="flex items-center justify-between border-t border-black/06 pt-3.5">
-          <p className="text-[1.05rem] font-bold text-stone font-body">
+        <div className="flex items-center justify-between pt-4">
+          <p className="text-lg font-semibold text-[#111] font-body">
             {formatKes(product.price)}
           </p>
-          <span className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-stone/40 font-body">
-            {product.stock > 5 ? "In stock" : product.stock > 0 ? `${product.stock} left` : "Out of stock"}
-          </span>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-black/40 font-body">
+            Stock {product.stock}
+          </p>
         </div>
       </div>
     </motion.article>

@@ -45,45 +45,32 @@ export function CollectionsPage() {
 
               const isDark = index % 2 === 1;
 
-              return (
-                <motion.article
-                  key={section.title}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ delay: index * 0.06, duration: 0.55 }}
-                  whileHover={{ y: -4 }}
-                  className={`rounded-3xl p-7 flex flex-col transition-shadow duration-300 ${
-                    isDark
-                      ? "bg-[#0a0a0a] border border-white/07 hover:border-champagne/20 shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
-                      : "bg-white border border-black/07 hover:border-champagne/30 shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)]"
-                  }`}
-                >
-                  <div className="mb-auto">
-                    <span className={`text-[0.6rem] font-semibold uppercase tracking-[0.32em] ${isDark ? "text-champagne/70" : "text-champagne/80"}`}>
-                      {count} styles
-                    </span>
-                    <h2 className={`mt-3 text-2xl font-bold font-heading leading-snug ${isDark ? "text-white" : "text-stone"}`}>
-                      {section.title}
-                    </h2>
-                    <p className={`mt-3 text-sm leading-relaxed ${isDark ? "text-white/55" : "text-stone/55"}`}>
-                      {section.description}
-                    </p>
-                  </div>
-                  <Link
-                    to="/shop"
-                    className={`mt-8 inline-flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] group transition-colors duration-220 ${
-                      isDark ? "text-champagne hover:text-white" : "text-stone hover:text-champagne"
-                    }`}
-                  >
-                    Browse
-                    <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </motion.article>
-              );
-            })}
-          </div>
-        </div>
+          return (
+            <motion.article
+              key={section.title}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.04 }}
+              className="bg-[#f8f8f8] rounded-[2rem] p-6 shadow-sm"
+            >
+              <p className="text-xs uppercase tracking-[0.35em] text-black/40">
+                {count} styles
+              </p>
+              <h2 className="mt-4 text-2xl font-semibold text-[#111]">
+                {section.title}
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-[#666]">
+                {section.description}
+              </p>
+              <Link
+                to="/shop"
+                className="btn-secondary mt-6 px-5 py-3"
+              >
+                Browse
+              </Link>
+            </motion.article>
+          );
+        })}
       </div>
     </div>
   );
