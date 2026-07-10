@@ -13,7 +13,7 @@ const values = [
   {
     icon: Award,
     title: "Premium curation",
-    copy: "We hand-select every silhouette for quality, design, and versatility — so every pair earns its place.",
+    copy: "We hand-select every silhouette for quality, design, and versatility, so every pair earns its place.",
   },
   {
     icon: Zap,
@@ -28,7 +28,7 @@ const values = [
   {
     icon: Shield,
     title: "Trusted quality",
-    copy: "Our 4.8★ average rating reflects a commitment to authentic products and honest service.",
+    copy: "Our 4.8 average rating reflects a commitment to authentic products and honest service.",
   },
 ];
 
@@ -136,26 +136,6 @@ export function AboutPage() {
           </div>
         </div>
       </section>
-
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4 px-5 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl w-full col-span-full">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="bg-[#f8f8f8] rounded-[2rem] p-6 text-center shadow-sm"
-            >
-              <p className="text-4xl font-semibold text-[#111]">{stat.value}</p>
-              <p className="mt-3 text-xs uppercase tracking-[0.35em] text-black/40">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

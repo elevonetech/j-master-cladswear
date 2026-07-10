@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
+import { Minus, Plus } from "lucide-react";
 import { useStore } from "@/context/StoreContext";
 import { EmptyState } from "@/components/EmptyState";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -102,16 +103,16 @@ export function CartPage() {
                           item.selectedColor,
                         )
                       }
-                      className="btn-primary px-4 py-2"
-                      >
-                        Remove
-                      </button>
+                      className="btn-secondary px-4 py-2 text-[10px] text-red-500 border-red-200 hover:bg-red-50 hover:border-red-300"
+                    >
+                      Remove
+                    </button>
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <p className="text-lg font-semibold text-[#111]">
-                      {formatKes(item.product.price)}
+                      {formatKes(item.product.price * item.quantity)}
                     </p>
-                    <div className="flex items-center gap-1 rounded-full bg-white border border-black/10">
+                    <div className="flex items-center gap-0 rounded-full border border-black/10 bg-white overflow-hidden">
                       <button
                         type="button"
                         onClick={() =>
@@ -122,11 +123,11 @@ export function CartPage() {
                             item.quantity - 1,
                           )
                         }
-                        className="btn-secondary rounded-s-full px-3 py-2"
+                        className="flex h-9 w-9 items-center justify-center text-[#666] hover:bg-black hover:text-white transition-all duration-200 cursor-pointer"
                       >
-                        -
+                        <Minus size={12} />
                       </button>
-                      <span className="min-w-8 text-center text-sm text-[#111]">
+                      <span className="min-w-[2rem] text-center text-[0.82rem] font-semibold text-[#111] px-1">
                         {item.quantity}
                       </span>
                       <button
@@ -139,34 +140,10 @@ export function CartPage() {
                             item.quantity + 1,
                           )
                         }
-                        className="btn-secondary rounded-e-full px-3 py-2"
+                        className="flex h-9 w-9 items-center justify-center text-[#666] hover:bg-black hover:text-white transition-all duration-200 cursor-pointer"
                       >
-                        <Trash2 size={13} />
+                        <Plus size={12} />
                       </button>
-                    </div>
-                    <div className="flex flex-wrap items-center justify-between gap-4">
-                      <p className="text-[1.1rem] font-bold text-stone font-body">
-                        {formatKes(item.product.price * item.quantity)}
-                      </p>
-                      <div className="flex items-center gap-0 rounded-full border border-black/08 bg-[#faf9f7] overflow-hidden">
-                        <button
-                          type="button"
-                          onClick={() => updateQuantity(item.product.id, item.selectedSize, item.selectedColor, item.quantity - 1)}
-                          className="flex h-9 w-9 items-center justify-center text-stone/60 hover:bg-stone hover:text-white transition-all duration-200 cursor-pointer"
-                        >
-                          <Minus size={12} />
-                        </button>
-                        <span className="min-w-[2rem] text-center text-[0.82rem] font-semibold text-stone px-1">
-                          {item.quantity}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => updateQuantity(item.product.id, item.selectedSize, item.selectedColor, item.quantity + 1)}
-                          className="flex h-9 w-9 items-center justify-center text-stone/60 hover:bg-stone hover:text-white transition-all duration-200 cursor-pointer"
-                        >
-                          <Plus size={12} />
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -216,14 +193,14 @@ export function CartPage() {
               <button
                 type="button"
                 onClick={checkout}
-                className="btn-secondary px-5 py-4"
+                className="btn-primary px-5 py-4 text-[11px]"
               >
                 Proceed to checkout
               </button>
               <button
                 type="button"
                 onClick={clearCart}
-                className="btn-primary px-5 py-4"
+                className="btn-secondary px-5 py-4 text-[11px]"
               >
                 Clear cart
               </button>

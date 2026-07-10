@@ -10,6 +10,7 @@ import { CartPage } from "@/pages/CartPage";
 import { CollectionsPage } from "@/pages/CollectionsPage";
 import { AboutPage } from "@/pages/AboutPage";
 import { ContactPage } from "@/pages/ContactPage";
+import { WishlistPage } from "@/pages/WishlistPage";
 import { StoreProvider } from "@/context/StoreContext";
 import { ModalProvider, useModal } from "@/context/ModalContext";
 import { ProductPreviewModal } from "@/components/ProductPreviewModal";

@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { EmptyState } from "@/components/EmptyState";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
-import { Trash2, ShoppingBag } from "lucide-react";
+import { Trash2 } from "lucide-react";
 
 export function WishlistPage() {
   const { wishlist, toggleWishlist } = useStore();

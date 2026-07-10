@@ -312,7 +312,7 @@ export function ProductDetailsModal({ product, onClose }) {
                     addToCart(product, quantity, selectedSize, selectedColor);
                     toast.success(`${product.name} added to cart`);
                   }}
-                  className="btn-secondary h-12"
+                  className="btn-primary h-12 text-[11px]"
                 >
                   Add to cart
                 </button>
@@ -326,7 +326,7 @@ export function ProductDetailsModal({ product, onClose }) {
                         : "Product saved successfully.",
                     );
                   }}
-                  className="btn-primary h-12"
+                  className="btn-secondary h-12 text-[11px]"
                 >
                   {wishlisted ? "Saved" : "Save to wishlist"}
                 </button>

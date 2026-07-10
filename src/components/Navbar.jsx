@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { ShoppingCart, Heart, Search, X, Menu } from "lucide-react";
+import { ShoppingCart, Heart, X, Menu } from "lucide-react";
 import { useStore } from "@/context/StoreContext";
 
 const links = [
@@ -10,7 +10,6 @@ const links = [
   { label: "Collections", to: "/collections" },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
-  { label: "Cart", to: "/cart" },
 ];
 
 function DapperLogo({ dark = false }) {
@@ -43,13 +42,6 @@ export function Navbar() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const navBase =
-    "fixed left-0 right-0 top-0 z-40 transition-all duration-500 ease-out";
-  const navScrolled =
-    "bg-white/95 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.07),0_4px_24px_rgba(0,0,0,0.06)]";
-  const navTop =
-    "bg-transparent";
 
   return (
     <header className="fixed left-0 right-0 top-0 z-40 bg-white/90 backdrop-blur-md px-4 py-4 sm:px-6 lg:px-8">
@@ -113,18 +105,10 @@ export function Navbar() {
               )}
             </Link>
 
-            {/* CTA – desktop */}
-            <Link
-              to="/shop"
-              className="hidden lg:inline-flex btn-primary ml-1 !py-2.5 !text-[0.68rem]"
-            >
-              Shop Now
-            </Link>
-
-            {/* Hamburger – mobile */}
+            {/* Hamburger – mobile only */}
             <button
               type="button"
-              className="btn-primary px-5 py-2.5 text-xs lg:hidden"
+              className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-champagne text-white text-xs font-semibold transition-all duration-250 hover:bg-[#b8942e] cursor-pointer"
               onClick={() => setOpen((value) => !value)}
             >
               {open ? <X size={18} /> : <Menu size={18} />}

@@ -180,7 +180,7 @@ export function ProductPreviewModal({ product, onClose }) {
                       {product.category}
                     </span>
                     <span className="rounded-full bg-[#f8f8f8] px-3 py-2">
-                      {product.rating} ★
+                      {product.rating}
                     </span>
                     <span className="rounded-full bg-[#f8f8f8] px-3 py-2">
                       {product.stock} in stock
@@ -296,7 +296,7 @@ export function ProductPreviewModal({ product, onClose }) {
                 </div>
 
                 {/* Action buttons */}
-                <div className="mt-6 space-y-2.5 pt-5">
+                <div className="mt-6 pt-5 space-y-3">
                   <div className="grid grid-cols-2 gap-2.5">
                     <button
                       type="button"
@@ -309,14 +309,14 @@ export function ProductPreviewModal({ product, onClose }) {
                         );
                         toast.success(`${product.name} added to cart`);
                       }}
-                      className="btn-secondary h-12"
+                      className="btn-primary h-11 text-[11px]"
                     >
                       Add to cart
                     </button>
                     <button
                       type="button"
                       onClick={handleSave}
-                      className="btn-primary h-12"
+                      className="btn-secondary h-11 text-[11px]"
                     >
                       {wishlisted ? "Saved" : "Save"}
                     </button>
@@ -325,14 +325,14 @@ export function ProductPreviewModal({ product, onClose }) {
                     <button
                       type="button"
                       onClick={() => setShowDetails((v) => !v)}
-                      className="btn-primary h-12"
+                      className="btn-secondary h-11 text-[11px]"
                     >
                       {showDetails ? "Show less" : "View details"}
                     </button>
                     <button
                       type="button"
                       onClick={onClose}
-                      className="btn-secondary h-12"
+                      className="btn-secondary h-11 text-[11px]"
                     >
                       Close
                     </button>

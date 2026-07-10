@@ -14,7 +14,6 @@ const footerLinks = [
   { label: "Collections", to: "/collections" },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
-  { label: "Cart", to: "/cart" },
 ];
 
 const categories = [
@@ -66,7 +65,7 @@ function DapperLogoFooter() {
 
 export function Footer() {
   return (
-    <footer className="mt-24 bg-basalt">
+    <footer className="mt-24 bg-black">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:px-8">
         <div>
           <div className="flex items-center gap-3 mb-6">
@@ -177,10 +176,9 @@ export function Footer() {
           </div>
           <a
             href="https://wa.me/254712643440"
-            className="btn-secondary mt-6 px-5 py-2.5 text-xs"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-champagne/30 bg-champagne/10 px-5 py-2.5 text-[0.68rem] font-semibold text-champagne hover:bg-champagne/18 transition-all duration-240"
             target="_blank"
             rel="noreferrer"
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-champagne/30 bg-champagne/10 px-5 py-2.5 text-[0.68rem] font-semibold text-champagne hover:bg-champagne/18 transition-all duration-240"
           >
             <MessageCircle size={12} />
             Chat on WhatsApp

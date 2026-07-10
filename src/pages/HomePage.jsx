@@ -4,7 +4,8 @@ import products from "@/data/products";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ProductCard } from "@/components/ProductCard";
 import { handleImgError } from "@/utils/image";
-import { ArrowRight, ChevronDown, Zap, Globe, Award } from "lucide-react";
+import { ArrowRight, Zap, Globe, Award } from "lucide-react";
+import { formatKes } from "@/utils/money";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -32,9 +33,11 @@ export function HomePage() {
 
   return (
     <div className="space-y-24 pb-20">
+      {/* Hero Section */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-10 rounded-[2.5rem] bg-white p-6 shadow-sm lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
-          <div className="space-y-8">
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-8 rounded-[2.5rem] bg-[#f8f8f8] overflow-hidden">
+          {/* Left column - Content */}
+          <div className="space-y-8 p-8 md:p-12 lg:p-14">
             <p className="text-[10px] font-semibold uppercase tracking-[0.45em] text-champagne font-body">
               Luxury footwear, curated for Dapper
             </p>
@@ -42,7 +45,7 @@ export function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="max-w-3xl text-5xl font-medium tracking-wide text-[#111] font-heading md:text-7xl leading-[1.1]"
+              className="max-w-xl text-4xl font-medium tracking-wide text-[#111] font-heading md:text-6xl lg:text-7xl leading-[1.08]"
             >
               Step into
               <br />
@@ -50,9 +53,9 @@ export function HomePage() {
                 pure luxury.
               </em>
             </motion.h1>
-            <p className="max-w-2xl text-xs leading-relaxed text-[#666] font-body md:text-sm">
+            <p className="max-w-md text-xs leading-relaxed text-[#666] font-body md:text-sm">
               Discover refined sneakers, formal icons, rugged boots, and
-              effortless casual pairs — designed to feel polished from first
+              effortless casual pairs, designed to feel polished from first
               glance to final checkout.
             </p>
 
@@ -62,17 +65,14 @@ export function HomePage() {
             >
               <Link
                 to="/shop"
-                className="btn-secondary px-6 py-3 text-xs font-semibold"
+                className="btn-primary px-6 py-3 text-xs font-semibold"
               >
                 Shop the Collection
-                <ArrowRight
-                  size={14}
-                  className="transition-transform group-hover:translate-x-1"
-                />
+                <ArrowRight size={14} />
               </Link>
               <Link
                 to="/collections"
-                className="btn-primary px-6 py-3 text-xs font-semibold"
+                className="btn-secondary px-6 py-3 text-xs font-semibold"
               >
                 Explore Collections
               </Link>
@@ -81,43 +81,55 @@ export function HomePage() {
             {/* Stats strip */}
             <motion.div
               {...fadeUp(0.54)}
-              className="mt-16 flex flex-wrap gap-x-10 gap-y-4 justify-start"
+              className="flex flex-wrap gap-x-8 gap-y-4 justify-start pt-4"
             >
               {[
-                { label: "Fast WhatsApp checkout", value: "1 tap" },
-                { label: "Premium curation", value: "24 styles" },
-                { label: "Trusted delivery", value: "Nationwide" },
+                { label: "Fast checkout", value: "1 tap" },
+                { label: "Premium styles", value: "24+" },
+                { label: "Delivery", value: "Nationwide" },
               ].map((item) => (
-                <div key={item.label} className="bg-[#f8f8f8] rounded-2xl p-4 text-center font-body">
-                  <p className="text-xl font-semibold text-champagne">
+                <div key={item.label} className="text-center font-body">
+                  <p className="text-lg font-semibold text-champagne">
                     {item.value}
                   </p>
-                  <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-black/40 font-semibold leading-relaxed">
+                  <p className="mt-1 text-[9px] uppercase tracking-[0.3em] text-black/40 font-semibold">
                     {item.label}
                   </p>
                 </div>
               ))}
             </motion.div>
           </div>
-        </div>
 
-        {/* Scroll cue */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
-          <span className="text-[0.6rem] uppercase tracking-[0.35em] text-white/35">
-            Scroll
-          </span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ChevronDown size={16} className="text-white/35" />
-          </motion.div>
-        </motion.div>
+          {/* Right column - Hero Image */}
+          <div className="relative hidden lg:flex items-center justify-center h-full min-h-[28rem]">
+            <motion.img
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              src={hero.images[0]}
+              alt={hero.name}
+              onError={handleImgError}
+              className="w-full h-full object-cover rounded-tl-[2.5rem] rounded-bl-[2.5rem]"
+            />
+            {/* Floating badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="absolute bottom-8 left-8 rounded-2xl bg-white/95 backdrop-blur-sm p-4 shadow-lg"
+            >
+              <p className="text-[9px] uppercase tracking-[0.35em] text-champagne font-semibold">
+                Featured
+              </p>
+              <p className="mt-1 text-sm font-semibold text-[#111] font-heading">
+                {hero.name}
+              </p>
+              <p className="mt-1 text-xs text-champagne font-body">
+                {formatKes(hero.price)}
+              </p>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-24">
@@ -154,7 +166,7 @@ export function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════
-          BRAND STORY — obsidian band
+          BRAND STORY
       ══════════════════════════════════════ */}
       <section className="bg-[#0a0a0a] py-24 lg:py-36 relative overflow-hidden">
         {/* decorative circle */}
@@ -244,7 +256,7 @@ export function HomePage() {
                         "{quote}"
                       </p>
                       <p className="mt-2.5 text-[0.62rem] uppercase tracking-[0.25em] text-champagne/60 font-semibold">
-                        — {author}
+                        {author}
                       </p>
                     </div>
                   ))}
@@ -256,7 +268,7 @@ export function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════
-          NEW ARRIVALS — ivory
+          NEW ARRIVALS
       ══════════════════════════════════════ */}
       <section className="bg-[#faf9f7] py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">

@@ -4,15 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   BadgeCheck,
-  Grid3X3,
   MessageCircle,
   Package,
-  RotateCcw,
-  ShieldCheck,
   Sparkles,
-  Star,
-  Tag,
-  Users,
 } from "lucide-react";
 
 const asset = (name) => `/assets/brands/${encodeURIComponent(name)}`;
@@ -22,29 +16,6 @@ const HERO_SHOES = [
   { src: asset("sports shoes.jpg"), label: "Performance Runners" },
   { src: asset("AirForceCustom.jpg"), label: "Custom Air Force" },
   { src: asset("Nike Air Force.jpg"), label: "Nike Air Force 1" },
-];
-
-const VALUE_PROPS = [
-  {
-    icon: ShieldCheck,
-    title: "100% Authentic",
-    copy: "Genuine products from authorized brands.",
-  },
-  {
-    icon: Grid3X3,
-    title: "Wide Selection",
-    copy: "Top brands, every style. All in one place.",
-  },
-  {
-    icon: Tag,
-    title: "Best Prices",
-    copy: "Competitive prices every day.",
-  },
-  {
-    icon: RotateCcw,
-    title: "Easy Returns",
-    copy: "Hassle-free returns within 7 days.",
-  },
 ];
 
 const POPULAR_BRANDS = [
@@ -90,12 +61,6 @@ const PARTNER_BRANDS = [
   { name: "Reebok Delta", logo: asset("White Board paint, Dry Erase Paint, Whiteboard Paint _ IdeaPaint.jpg") },
   { name: "New Balance", logo: asset("941182022140420099.jpg") },
   { name: "Playboy", logo: asset("764063893067536285.jpg") },
-];
-
-const CTA_SHOES = [
-  asset("Jordan1.jpg"),
-  asset("sports shoes.jpg"),
-  asset("Nike Air Force.jpg"),
 ];
 
 function BrandMark({ mark, name }) {
@@ -276,13 +241,6 @@ function BrandCard({ brand, index }) {
 }
 
 export function CollectionsPage() {
-  const [email, setEmail] = useState("");
-
-  const handleSubscribe = (event) => {
-    event.preventDefault();
-    setEmail("");
-  };
-
   return (
     <div className="collections-page relative -mt-[72px] overflow-hidden bg-[#050505] text-white">
       <style>{`
@@ -355,7 +313,7 @@ export function CollectionsPage() {
             className="space-y-7"
           >
             <p className="text-[0.62rem] font-semibold uppercase tracking-[0.48em] text-champagne/70">
-              Curated for Kenya
+              Discover our collection
             </p>
             <h1 className="font-heading text-4xl font-bold leading-[1.05] tracking-wide sm:text-5xl lg:text-6xl">
               <span className="block text-white">TOP BRANDS.</span>
@@ -365,7 +323,7 @@ export function CollectionsPage() {
             </h1>
             <p className="max-w-lg text-sm leading-7 text-white/60 sm:text-base">
               We partner with the world&apos;s best brands to bring you authentic
-              style and comfort — from street icons to timeless classics.
+              style and comfort, from street icons to timeless classics.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -394,30 +352,6 @@ export function CollectionsPage() {
             <HeroShoeCarousel />
           </motion.div>
         </div>
-
-        {/* Value props */}
-        <div className="relative border-t border-white/5 bg-black/40 backdrop-blur-sm">
-          <div className="mx-auto grid max-w-7xl gap-6 px-5 py-10 sm:grid-cols-2 sm:px-8 lg:grid-cols-4 lg:px-10">
-            {VALUE_PROPS.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="flex gap-4"
-              >
-                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl border border-champagne/20 bg-champagne/10">
-                  <item.icon size={18} className="text-champagne" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-white">{item.title}</h3>
-                  <p className="mt-1 text-xs leading-6 text-white/50">{item.copy}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* Popular brands */}
@@ -436,7 +370,7 @@ export function CollectionsPage() {
               POPULAR BRANDS
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#666]">
-              From everyday sneakers to luxury streetwear — explore the labels
+              From everyday sneakers to luxury streetwear, explore the labels
               our customers love most.
             </p>
           </motion.div>
@@ -483,166 +417,6 @@ export function CollectionsPage() {
                 </p>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Request brand CTA */}
-      <section className="relative px-5 py-20 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-champagne/30 bg-black/70 shadow-[0_0_80px_rgba(201,165,62,0.08)] backdrop-blur-xl">
-          <div className="grid items-center gap-10 p-8 lg:grid-cols-[1.1fr_0.9fr_1fr] lg:p-12">
-            <div>
-              <h2 className="font-heading text-2xl font-bold uppercase tracking-wide text-white sm:text-3xl">
-                Can&apos;t Find Your Brand?
-              </h2>
-              <p className="mt-4 text-sm leading-7 text-white/55">
-                Request it and we&apos;ll do our best to get it for you. Our team
-                sources directly from trusted suppliers.
-              </p>
-              <a
-                href="https://wa.me/254712643440?text=Hello%20Dapper%20Footwear%2C%20I%27d%20like%20to%20request%20a%20brand."
-                target="_blank"
-                rel="noreferrer"
-                className="mt-7 inline-flex items-center gap-2 rounded-xl bg-champagne px-8 py-3.5 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-black transition-all hover:bg-[#dfc06a] hover:shadow-[0_8px_28px_var(--gold-glow)]"
-              >
-                Request a Brand
-                <ArrowRight size={14} />
-              </a>
-            </div>
-
-            <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1">
-              {[
-                { icon: Package, value: "1000+", label: "Products" },
-                { icon: Sparkles, value: "Top", label: "Across top brands" },
-                { icon: Users, value: "20K+", label: "Trusted customers" },
-              ].map((stat) => (
-                <div key={stat.label} className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-champagne/20 bg-champagne/10">
-                    <stat.icon size={20} className="text-champagne" />
-                  </div>
-                  <div>
-                    <p className="text-xl font-bold text-champagne">{stat.value}</p>
-                    <p className="text-xs uppercase tracking-[0.2em] text-white/45">
-                      {stat.label}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="relative flex flex-col items-center">
-              <div className="relative h-48 w-full sm:h-56">
-                {CTA_SHOES.map((src, i) => (
-                  <motion.img
-                    key={src}
-                    src={src}
-                    alt=""
-                    className="absolute bottom-0 object-contain drop-shadow-2xl"
-                    style={{
-                      left: `${12 + i * 22}%`,
-                      height: `${68 - i * 8}%`,
-                      zIndex: CTA_SHOES.length - i,
-                    }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{
-                      opacity: { delay: 0.2 + i * 0.12 },
-                      y: {
-                        duration: 4 + i,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      },
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="mt-4 flex items-center gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    size={14}
-                    className="fill-champagne text-champagne"
-                  />
-                ))}
-                <span className="ml-2 text-xs text-white/50">Loved by shoppers</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Air Force custom showcase — uses remaining hero asset */}
-      <section className="relative border-t border-white/5 bg-black/50 py-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:px-10">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-champagne/20 to-transparent blur-2xl" />
-            <img
-              src={asset("AirForceCustom.jpg")}
-              alt="Custom Air Force 1"
-              className="relative w-full max-w-md rounded-3xl object-cover shadow-[0_24px_60px_rgba(0,0,0,0.5)]"
-            />
-          </motion.div>
-          <div>
-            <p className="text-[0.62rem] font-semibold uppercase tracking-[0.42em] text-champagne">
-              Custom Drops
-            </p>
-            <h2 className="mt-3 font-heading text-3xl font-bold text-white">
-              One-of-One Custom Pairs
-            </h2>
-            <p className="mt-4 max-w-md text-sm leading-7 text-white/55">
-              Stand out with hand-finished customs — bold colorways and premium
-              materials that turn every step into a statement.
-            </p>
-            <Link
-              to="/shop"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-champagne hover:text-[#dfc06a]"
-            >
-              Explore Customs
-              <ArrowRight size={14} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter strip */}
-      <section className="border-t border-white/5 bg-[#080808] py-16">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-[0.62rem] font-semibold uppercase tracking-[0.45em] text-champagne">
-              Stay in the Loop
-            </p>
-            <h2 className="mt-3 font-heading text-2xl font-bold text-white sm:text-3xl">
-              New drops. Restocks. Exclusive deals.
-            </h2>
-            <p className="mt-3 text-sm text-white/45">
-              Be first to know when your favourite brands land at Dapper Footwear.
-            </p>
-            <form
-              onSubmit={handleSubscribe}
-              className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center"
-            >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                className="rounded-full border border-white/12 bg-white/5 px-6 py-3.5 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-champagne/50 sm:min-w-[280px]"
-              />
-              <button
-                type="submit"
-                className="rounded-full bg-champagne px-8 py-3.5 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-black transition-all hover:bg-[#dfc06a]"
-              >
-                Subscribe
-              </button>
-            </form>
           </div>
         </div>
       </section>

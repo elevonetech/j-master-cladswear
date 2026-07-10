@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Star, Heart, ChevronLeft, ChevronRight, ShoppingCart, MessageCircle, Plus, Minus } from "lucide-react";
+import { Star } from "lucide-react";
 import toast from "react-hot-toast";
 import products from "@/data/products";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -261,14 +261,14 @@ export function ProductPage() {
                 addToCart(product, quantity, selectedSize, selectedColor);
                 toast.success(`${product.name} added to cart`);
               }}
-              className="btn-secondary flex flex-1 px-6 py-4"
-              >
-                Add to cart
-              </button>
-              <button
-                type="button"
-                onClick={openWhatsApp}
-                className="btn-primary flex flex-1 px-6 py-4"
+              className="btn-primary flex-1 px-6 py-4 text-[11px]"
+            >
+              Add to cart
+            </button>
+            <button
+              type="button"
+              onClick={openWhatsApp}
+              className="btn-secondary flex-1 px-6 py-4 text-[11px]"
             >
               Order via WhatsApp
             </button>

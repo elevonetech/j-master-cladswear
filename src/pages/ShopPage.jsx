@@ -6,7 +6,6 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SkeletonGrid } from "@/components/SkeletonGrid";
 import { formatKes } from "@/utils/money";
-import { SlidersHorizontal } from "lucide-react";
 
 export function ShopPage() {
   const [searchParams] = useSearchParams();
@@ -49,14 +48,17 @@ export function ShopPage() {
     });
   }, [search, selectedCategory, selectedSize, selectedBrand, selectedColor, priceLimit, sort]);
 
-  const filterLabel = (k, v) => (
-    <label key={k} className="grid gap-2.5">
-      <span className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-stone/50">{k}</span>
-      {v}
-    </label>
-  );
-
   return (
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24">
+      {/* Page header */}
+      <div className="py-10">
+        <SectionHeading
+          eyebrow="Shop"
+          title="Browse our collection"
+          description="Find your perfect pair from our curated selection of premium footwear."
+        />
+      </div>
+
       <div className="grid gap-6 xl:grid-cols-[300px_1fr]">
         <aside className="bg-[#f8f8f8] h-fit rounded-[2rem] p-5 xl:sticky xl:top-32">
           <div className="text-sm font-semibold text-champagne font-body uppercase tracking-wider">Filters</div>
@@ -218,5 +220,6 @@ export function ShopPage() {
           )}
         </section>
       </div>
+    </div>
   );
 }

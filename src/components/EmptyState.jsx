@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ShoppingBag } from "lucide-react";
 
 export function EmptyState({ title, description, action }) {
   return (
