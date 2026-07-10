@@ -4,8 +4,7 @@ import products from "@/data/products";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ProductCard } from "@/components/ProductCard";
 import { handleImgError } from "@/utils/image";
-import { ArrowRight, Zap, Globe, Award } from "lucide-react";
-import { formatKes } from "@/utils/money";
+import { ArrowRight } from "lucide-react";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -13,26 +12,16 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] },
 });
 
-const stagger = {
-  animate: { transition: { staggerChildren: 0.08 } },
-};
-
 export function HomePage() {
   const featured = products.filter((p) => p.featured).slice(0, 4);
   const newArrivals = products
     .filter((p) => p.collection === "New Arrivals")
     .slice(0, 4);
-  const bestSellers = products
-    .filter((p) => p.badge === "Best Seller")
-    .slice(0, 4);
-  const trending = products
-    .filter((p) => p.collection === "Trending")
-    .slice(0, 4);
 
   const hero = featured[0];
 
   return (
-    <div className="space-y-24 pb-20">
+    <div className="space-y-16 pb-20">
       {/* Hero Section */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-8 rounded-[2.5rem] bg-[#f8f8f8] overflow-hidden">
@@ -77,27 +66,6 @@ export function HomePage() {
                 Explore Collections
               </Link>
             </motion.div>
-
-            {/* Stats strip */}
-            <motion.div
-              {...fadeUp(0.54)}
-              className="flex flex-wrap gap-x-8 gap-y-4 justify-start pt-4"
-            >
-              {[
-                { label: "Fast checkout", value: "1 tap" },
-                { label: "Premium styles", value: "24+" },
-                { label: "Delivery", value: "Nationwide" },
-              ].map((item) => (
-                <div key={item.label} className="text-center font-body">
-                  <p className="text-lg font-semibold text-champagne">
-                    {item.value}
-                  </p>
-                  <p className="mt-1 text-[9px] uppercase tracking-[0.3em] text-black/40 font-semibold">
-                    {item.label}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           {/* Right column - Hero Image */}
@@ -124,51 +92,15 @@ export function HomePage() {
               <p className="mt-1 text-sm font-semibold text-[#111] font-heading">
                 {hero.name}
               </p>
-              <p className="mt-1 text-xs text-champagne font-body">
-                {formatKes(hero.price)}
-              </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-24">
-          <div className="relative min-h-[30rem] overflow-hidden rounded-[2.25rem] bg-[#f8f8f8] p-4">
-            <motion.img
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              src={featured[0].images[0]}
-              alt={featured[0].name}
-              onError={handleImgError}
-              className="min-h-[30rem] w-full rounded-[2rem] object-cover"
-            />
-            <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] bg-white/90 p-5 shadow-md font-body">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.35em] text-champagne font-semibold">
-                    Featured drop
-                  </p>
-                  <h2 className="mt-2 text-2xl font-medium tracking-wide text-[#111] font-heading">
-                    {featured[0].name}
-                  </h2>
-                </div>
-                <div className="rounded-full bg-champagne/10 px-3 py-1 text-[9px] uppercase tracking-[0.3em] text-champagne font-semibold">
-                  {featured[0].badge}
-                </div>
-              </div>
-              <div className="mt-4 flex items-center gap-4 text-xs font-semibold text-champagne">
-                <span>Premium finish</span>
-                <span>WhatsApp order</span>
-              </div>
-            </div>
-          </div>
-      </section>
-
       {/* ══════════════════════════════════════
           BRAND STORY
       ══════════════════════════════════════ */}
-      <section className="bg-[#0a0a0a] py-24 lg:py-36 relative overflow-hidden">
+      <section className="bg-[#0a0a0a] py-24 relative overflow-hidden">
         {/* decorative circle */}
         <div className="pointer-events-none absolute -right-40 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full border border-white/[0.03]" />
         <div className="pointer-events-none absolute -left-24 bottom-0 h-[400px] w-[400px] rounded-full border border-white/[0.025]" />
@@ -184,16 +116,15 @@ export function HomePage() {
               />
               <div className="grid gap-3 sm:grid-cols-2 mt-8">
                 {[
-                  { icon: Award, text: "Curated premium shoes" },
-                  { icon: Zap, text: "Fast WhatsApp ordering" },
-                  { icon: Globe, text: "Streetwear to formal edits" },
-                  { icon: Award, text: "Responsive across all devices" },
-                ].map(({ icon: Icon, text }) => (
+                  "Curated premium shoes",
+                  "Fast WhatsApp ordering",
+                  "Streetwear to formal edits",
+                  "Responsive across all devices",
+                ].map((text) => (
                   <div
                     key={text}
-                    className="flex items-center gap-3 rounded-2xl border border-white/07 bg-white/[0.04] px-4 py-3.5 transition hover:bg-white/[0.07]"
+                    className="rounded-2xl border border-white/07 bg-white/[0.04] px-4 py-3.5 transition hover:bg-white/[0.07]"
                   >
-                    <Icon size={14} className="text-champagne flex-shrink-0" />
                     <span className="text-[0.78rem] text-white/70">{text}</span>
                   </div>
                 ))}
@@ -239,13 +170,13 @@ export function HomePage() {
                   {[
                     {
                       quote:
-                        "The collection feels premium and the WhatsApp checkout is incredibly efficient.",
-                      author: "Nairobi customer",
+                        "Ordered on WhatsApp Friday, shoes were at my door Monday. The quality is exactly what I was looking for.",
+                      author: "Brian K., Nairobi",
                     },
                     {
                       quote:
-                        "The black and white styling gives the whole brand a luxury retail feel.",
-                      author: "Verified buyer",
+                        "Finally a shoe shop that actually responds fast. The sneakers were boxed well and look even better in person.",
+                      author: "Mercy W., Mombasa",
                     },
                   ].map(({ quote, author }) => (
                     <div
@@ -301,54 +232,6 @@ export function HomePage() {
                 <ProductCard product={product} />
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 font-body">
-        <div className="bg-[#f8f8f8] rounded-[2rem] p-8 md:p-10">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <div>
-              <SectionHeading
-                dark
-                eyebrow="Newsletter"
-                title="Get updates on new drops"
-                description="Subscribe for curated arrivals, limited editions, and exclusive style releases."
-              />
-              <form className="flex flex-col gap-3 sm:flex-row mt-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="min-w-0 flex-1 rounded-full bg-white px-5 py-3 text-xs text-[#111] outline-none placeholder:text-black/40 shadow-sm"
-                />
-                <button
-                  type="button"
-                  className="btn-primary px-6 py-3 text-xs font-semibold"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              {[
-                { value: "24", label: "Style options" },
-                { value: "4.8/5", label: "Average rating" },
-                { value: "Same day", label: "WhatsApp response" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-[1.5rem] bg-white p-5 text-center shadow-sm"
-                >
-                  <p className="text-2xl font-semibold text-champagne font-body">
-                    {stat.value}
-                  </p>
-                  <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-black/40 font-semibold">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>

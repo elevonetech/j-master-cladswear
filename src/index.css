@@ -29,14 +29,14 @@
   --color-basalt: #111111;
   --color-bone: #f8f8f8;
   --color-clay: #666666;
+  --color-stone: #111111;
+  --color-linen: #faf9f7;
 
   --animate-pulse-gold: pulse-gold 2s ease-in-out infinite;
 
   /* ── Animations ── */
   --animate-fade-up: fade-up 0.6s ease-out forwards;
   --animate-shimmer: shimmer 2.4s linear infinite;
-  --animate-pulse-gold: pulse-gold 2.5s ease-in-out infinite;
-  --animate-float: float 6s ease-in-out infinite;
 
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(24px); }
@@ -166,4 +166,65 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.35;
   cursor: not-allowed;
   transform: none;
+}
+
+/* Eyebrow labels */
+.eyebrow-dark {
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.38em;
+  color: rgba(201, 165, 62, 0.75);
+}
+.eyebrow-light {
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.38em;
+  color: rgba(201, 165, 62, 0.85);
+}
+
+/* Accent lines */
+.accent-line {
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background: var(--color-champagne);
+  border-radius: 2px;
+  margin-bottom: 0.75rem;
+}
+.accent-line-long {
+  display: block;
+  width: 3rem;
+  height: 2px;
+  background: var(--color-champagne);
+  border-radius: 2px;
+  margin-bottom: 0.75rem;
+}
+
+/* Ghost button for dark backgrounds */
+.btn-ghost-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-ghost-dark:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+.btn-ghost-dark:active {
+  transform: scale(0.97);
 }

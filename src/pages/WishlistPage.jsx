@@ -13,7 +13,7 @@ export function WishlistPage() {
   const savedProducts = products.filter((p) => wishlist.includes(p.id));
 
   return (
-    <div style={{ backgroundColor: "#faf9f7" }}>
+    <div className="bg-linen">
       {/* ── Header ── */}
       <div className="bg-white border-b border-black/06 py-16 px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">

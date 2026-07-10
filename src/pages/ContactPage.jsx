@@ -151,9 +151,17 @@ export function ContactPage() {
           </div>
 
           <div className="bg-[#f8f8f8] overflow-hidden rounded-[2rem] shadow-sm">
-            <div className="px-6 py-5 text-xs uppercase tracking-[0.35em] text-black/40">
-              Google Map Placeholder
-            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127672.04625952178!2d36.7878668!3d-1.2863893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f173c05772b45%3A0x3e733ece125d5974!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+              width="100%"
+              height="280"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Dapper Footwear location in Nairobi"
+              className="w-full"
+            />
           </div>
         </div>
       </div>

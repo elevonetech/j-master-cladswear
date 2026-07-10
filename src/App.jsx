@@ -43,14 +43,6 @@ function LoadingScreen() {
       </div>
 
       <div className="text-center space-y-2">
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-[0.6rem] uppercase tracking-[0.5em] text-white/35"
-        >
-          Premium Footwear
-        </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}

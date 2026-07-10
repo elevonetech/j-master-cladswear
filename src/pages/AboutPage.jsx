@@ -1,36 +1,4 @@
-import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/SectionHeading";
-import { Award, Zap, Globe, Shield } from "lucide-react";
-
-const stats = [
-  { value: "24+",    label: "Curated styles" },
-  { value: "8",      label: "Featured brands" },
-  { value: "4.8/5",  label: "Customer rating" },
-  { value: "1 tap",  label: "WhatsApp checkout" },
-];
-
-const values = [
-  {
-    icon: Award,
-    title: "Premium curation",
-    copy: "We hand-select every silhouette for quality, design, and versatility, so every pair earns its place.",
-  },
-  {
-    icon: Zap,
-    title: "Fast commerce",
-    copy: "WhatsApp-first checkout means you order in seconds, not minutes. No forms, no friction.",
-  },
-  {
-    icon: Globe,
-    title: "Nationwide reach",
-    copy: "We deliver premium packaging and tracked orders to every corner of Kenya.",
-  },
-  {
-    icon: Shield,
-    title: "Trusted quality",
-    copy: "Our 4.8 average rating reflects a commitment to authentic products and honest service.",
-  },
-];
 
 export function AboutPage() {
   return (
@@ -116,26 +84,6 @@ export function AboutPage() {
         </div>
       </div>
 
-      {/* ── Stats ── dark band ── */}
-      <section className="bg-[#0a0a0a] py-20">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.07, duration: 0.55 }}
-                className="rounded-3xl border border-white/08 bg-white/[0.04] p-8 text-center hover:bg-white/[0.07] transition-colors duration-300"
-              >
-                <p className="text-4xl font-bold text-white font-heading">{stat.value}</p>
-                <p className="mt-3 text-[0.6rem] uppercase tracking-[0.3em] text-white/38 font-semibold">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

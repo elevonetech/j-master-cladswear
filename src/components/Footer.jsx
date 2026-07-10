@@ -65,19 +65,14 @@ function DapperLogoFooter() {
 
 export function Footer() {
   return (
-    <footer className="mt-24 bg-black">
+    <footer className="mt-16 bg-black">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:px-8">
         <div>
           <div className="flex items-center gap-3 mb-6">
             <DapperLogoFooter />
-            <div>
-              <p className="text-[0.58rem] font-semibold uppercase tracking-[0.38em] text-champagne/60">
-                Premium Footwear
-              </p>
-              <p className="text-sm font-bold text-white font-heading">
-                Dapper Footwear
-              </p>
-            </div>
+            <p className="text-sm font-bold text-white font-heading">
+              Dapper Footwear
+            </p>
           </div>
           <p className="text-[0.8rem] leading-relaxed text-white/45 max-w-xs">
             Premium silhouettes, timeless styling, and a WhatsApp-first shopping

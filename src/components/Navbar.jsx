@@ -51,14 +51,9 @@ export function Navbar() {
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
             <DapperLogo size={40} />
-            <div>
-              <p className={`text-[8px] font-semibold uppercase tracking-[0.42em] transition-colors duration-300 ${scrolled ? "text-champagne" : "text-champagne/90"}`}>
-                Premium Footwear
-              </p>
-              <h1 className="text-sm font-semibold tracking-wider text-[#111] font-body">
-                Dapper Footwear
-              </h1>
-            </div>
+            <h1 className="text-sm font-semibold tracking-wider text-[#111] font-body">
+              Dapper Footwear
+            </h1>
           </Link>
 
           {/* ── Desktop Nav ── */}
