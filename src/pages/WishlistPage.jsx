@@ -47,7 +47,10 @@ export function WishlistPage() {
                 whileHover={{ y: -4 }}
                 className="bg-white border border-black/07 rounded-3xl overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_36px_rgba(0,0,0,0.1)] transition-all duration-350 flex flex-col"
               >
-                <Link to={`/product/${product.id}`} className="block overflow-hidden">
+                <Link
+                  to={`/product/${product.id}`}
+                  className="block overflow-hidden"
+                >
                   <img
                     src={product.images[0]}
                     alt={product.name}
@@ -57,14 +60,18 @@ export function WishlistPage() {
                 </Link>
                 <div className="p-5 space-y-3 flex-1 flex flex-col">
                   <div className="flex-1">
-                    <p className="text-[0.6rem] font-semibold uppercase tracking-[0.26em] text-champagne/80">{product.brand}</p>
+                    <p className="text-[0.6rem] font-semibold uppercase tracking-[0.26em] text-champagne/80">
+                      {product.brand}
+                    </p>
                     <Link
                       to={`/product/${product.id}`}
                       className="mt-1.5 block text-[0.98rem] font-bold font-heading text-stone hover:text-champagne transition-colors duration-220 leading-snug"
                     >
                       {product.name}
                     </Link>
-                    <p className="mt-2 text-[1rem] font-bold text-stone">{formatKes(product.price)}</p>
+                    <p className="mt-2 text-[1rem] font-bold text-stone">
+                      {formatKes(product.price)}
+                    </p>
                   </div>
                   <button
                     type="button"

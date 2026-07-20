@@ -119,7 +119,6 @@ export function HomePage() {
                   "Curated premium shoes",
                   "Fast WhatsApp ordering",
                   "Streetwear to formal edits",
-                  "Responsive across all devices",
                 ].map((text) => (
                   <div
                     key={text}

@@ -5,7 +5,7 @@ import { useStore } from "@/context/StoreContext";
 import { useModal } from "@/context/ModalContext";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
-import { Heart, Eye, ShoppingBag } from "lucide-react";
+import { Heart, Eye, ShoppingBag, Star, BadgeCheck } from "lucide-react";
 
 export function ProductCard({ product }) {
   const { toggleWishlist, isWishlisted, addToCart } = useStore();
@@ -19,14 +19,14 @@ export function ProductCard({ product }) {
       transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group overflow-hidden rounded-[2rem] bg-white shadow-sm hover:shadow-md transition-all duration-300"
+      className="group overflow-hidden rounded-2xl border border-white/[0.06] bg-[#141210] transition-all duration-300 hover:border-champagne/30"
     >
       {/* ── Image ── */}
-      <div className="relative">
+      <div className="relative aspect-square overflow-hidden bg-[#0a0a0a]">
         <button
           type="button"
           onClick={() => openDetails(product.id)}
-          className="block w-full text-left cursor-pointer"
+          className="block h-full w-full text-left cursor-pointer"
           aria-label={`View details for ${product.name}`}
         >
           <img
@@ -34,14 +34,24 @@ export function ProductCard({ product }) {
             alt={product.name}
             loading="lazy"
             onError={handleImgError}
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
           />
         </button>
         {/* Gradient overlay for button visibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-        <div className="absolute left-4 top-4 flex gap-2">
-          <span className="rounded-full bg-[#f8f8f8] px-3 py-1 text-[9px] uppercase tracking-[0.35em] text-champagne">
-            {product.badge}
-          </span>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Badges top-left */}
+        <div className="absolute left-3 top-3 flex flex-col items-start gap-1.5">
+          {product.badge && (
+            <span className="rounded-md bg-champagne px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-[#1a1305]">
+              {product.badge}
+            </span>
+          )}
+          {product.discount ? (
+            <span className="rounded-md bg-[#c1443b] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-white">
+              -{product.discount}%
+            </span>
+          ) : null}
         </div>
 
         {/* Wishlist top-right */}
@@ -53,13 +63,13 @@ export function ProductCard({ product }) {
               wishlisted ? "Removed from saved items." : "Saved to wishlist.",
             );
           }}
-          className={`absolute right-4 top-4 px-3 py-1.5 text-[9px] uppercase tracking-[0.3em] transition-all duration-300 cursor-pointer ${
+          className={`absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-300 cursor-pointer ${
             wishlisted
-              ? "bg-champagne text-white"
-              : "bg-[#f5f5f5] text-[#111] hover:bg-champagne hover:text-white"
+              ? "border-champagne/60 bg-champagne text-[#1a1305]"
+              : "border-white/15 bg-black/50 text-white/80 backdrop-blur-sm hover:border-champagne/50 hover:text-champagne"
           }`}
         >
-          <Heart size={14} fill={wishlisted ? "currentColor" : "none"} />
+          <Heart size={13} fill={wishlisted ? "currentColor" : "none"} />
         </button>
 
         {/* Hover actions */}
@@ -75,7 +85,7 @@ export function ProductCard({ product }) {
               <button
                 type="button"
                 onClick={() => openPreview(product.id)}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full text-[10px] font-semibold tracking-wide bg-white/90 text-[#111] border border-black/10 backdrop-blur-sm shadow-[0_2px_12px_rgba(0,0,0,0.15)] hover:bg-white transition-all duration-200 cursor-pointer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full text-[10px] font-semibold tracking-wide bg-black/70 text-white/90 border border-white/15 backdrop-blur-sm hover:border-champagne/40 hover:text-champagne transition-all duration-200 cursor-pointer"
               >
                 <Eye size={12} />
                 Preview
@@ -83,7 +93,7 @@ export function ProductCard({ product }) {
               <button
                 type="button"
                 onClick={() => openDetails(product.id)}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full text-[10px] font-semibold tracking-wide bg-white/90 text-[#111] border border-black/10 backdrop-blur-sm shadow-[0_2px_12px_rgba(0,0,0,0.15)] hover:bg-white transition-all duration-200 cursor-pointer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full text-[10px] font-semibold tracking-wide bg-black/70 text-white/90 border border-white/15 backdrop-blur-sm hover:border-champagne/40 hover:text-champagne transition-all duration-200 cursor-pointer"
               >
                 Details
               </button>
@@ -93,7 +103,7 @@ export function ProductCard({ product }) {
                   addToCart(product, 1, product.sizes[0], product.colors[0]);
                   toast.success(`${product.name} added to cart`);
                 }}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full text-[10px] font-semibold tracking-wide bg-champagne text-white border border-champagne/40 backdrop-blur-sm shadow-[0_2px_12px_rgba(201,165,62,0.35)] hover:bg-[#b8942e] transition-all duration-200 cursor-pointer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full text-[10px] font-semibold tracking-wide bg-champagne text-[#1a1305] border border-champagne/40 shadow-[0_2px_12px_rgba(201,165,62,0.35)] hover:bg-[#d9b53e] transition-all duration-200 cursor-pointer"
               >
                 <ShoppingBag size={12} />
                 Add
@@ -102,35 +112,51 @@ export function ProductCard({ product }) {
           )}
         </AnimatePresence>
       </div>
-      <div className="space-y-4 p-5">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-champagne font-body">
-              {product.brand}
-            </p>
-            <button
-              type="button"
-              onClick={() => openDetails(product.id)}
-              className="mt-2 block text-left text-xl font-medium text-[#111] font-heading tracking-wide transition hover:text-champagne cursor-pointer"
-            >
-              {product.name}
-            </button>
-          </div>
-          <div className="rounded-full bg-[#f8f8f8] px-3 py-1 text-champagne">
-            {product.rating}
-          </div>
+
+      {/* ── Content ── */}
+      <div className="space-y-3 p-5">
+        <div className="flex items-center gap-1.5">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-champagne font-body">
+            {product.brand}
+          </span>
+          <BadgeCheck size={12} className="text-champagne/70" />
         </div>
-        <p className="min-h-10 text-xs leading-relaxed text-[#666] font-body">
+
+        <button
+          type="button"
+          onClick={() => openDetails(product.id)}
+          className="block text-left text-lg font-medium text-[#f5f1e8] font-heading tracking-wide transition hover:text-champagne cursor-pointer"
+        >
+          {product.name}
+        </button>
+
+        <p className="min-h-10 text-xs leading-relaxed text-white/45 font-body">
           {product.description}
         </p>
-        <div className="flex items-center justify-between pt-4">
-          <p className="text-lg font-semibold text-[#111] font-body">
-            {formatKes(product.price)}
-          </p>
-          <p className="text-[10px] uppercase tracking-[0.3em] text-black/40 font-body">
-            Stock {product.stock}
-          </p>
+
+        <div className="flex items-center justify-between pt-2">
+          <div className="flex items-baseline gap-2">
+            <p className="text-base font-bold text-champagne font-body">
+              {formatKes(product.price)}
+            </p>
+            {product.originalPrice ? (
+              <p className="text-xs text-white/35 line-through font-body">
+                {formatKes(product.originalPrice)}
+              </p>
+            ) : null}
+          </div>
+
+          {product.rating ? (
+            <div className="flex items-center gap-1 text-white/60">
+              <Star size={12} className="fill-champagne text-champagne" />
+              <span className="text-xs font-medium">{product.rating}</span>
+            </div>
+          ) : null}
         </div>
+
+        <p className="text-[10px] uppercase tracking-[0.25em] text-white/30 font-body">
+          Stock {product.stock}
+        </p>
       </div>
     </motion.article>
   );
