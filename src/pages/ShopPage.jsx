@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
 import products from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
-import { SectionHeading } from "@/components/SectionHeading";
+import { Pagination } from "@/components/Pagination";
 import { SkeletonGrid } from "@/components/SkeletonGrid";
 import { formatKes } from "@/utils/money";
 
@@ -13,6 +13,8 @@ const selectClass =
 
 const labelClass =
   "text-xs uppercase tracking-[0.3em] text-champagne font-semibold font-body";
+
+const PRODUCTS_PER_PAGE = 10;
 
 export function ShopPage() {
   const [searchParams] = useSearchParams();
@@ -27,6 +29,7 @@ export function ShopPage() {
   const [priceLimit, setPriceLimit] = useState(5000);
   const [sort, setSort] = useState("featured");
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 700);
@@ -85,6 +88,33 @@ export function ShopPage() {
     priceLimit,
     sort,
   ]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [
+    search,
+    selectedCategory,
+    selectedSize,
+    selectedBrand,
+    selectedColor,
+    priceLimit,
+    sort,
+  ]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE),
+  );
+
+  const paginatedProducts = useMemo(() => {
+    const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
+    return filteredProducts.slice(start, start + PRODUCTS_PER_PAGE);
+  }, [filteredProducts, currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const activeFilterCount = [
     selectedCategory !== "All",
@@ -211,12 +241,19 @@ export function ShopPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24 bg-[#0a0a0a]">
       {/* Page header */}
-      <div className="py-10">
-        <SectionHeading
-          eyebrow="Shop"
-          title="Browse our collection"
-          description="Find your perfect pair from our curated selection of premium footwear."
-        />
+      <div className="py-10 border-b border-white/10">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="h-1.5 w-1.5 rounded-full bg-white" />
+          <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-white/70 font-body">
+            Shop
+          </span>
+        </div>
+        <h1 className="text-3xl sm:text-4xl font-medium text-white font-heading tracking-wide">
+          Browse our collection
+        </h1>
+        <p className="mt-3 max-w-xl text-sm text-white/50 font-body">
+          Find your perfect pair from our curated selection of premium footwear.
+        </p>
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[300px_1fr]">
@@ -284,8 +321,28 @@ export function ShopPage() {
         </AnimatePresence>
 
         <section>
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-[#141210] border border-white/[0.06] px-5 py-4 text-xs text-white/45 font-body">
-            <div>Showing {filteredProducts.length} products</div>
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-[#141210] border border-white/[0.06] px-5 py-4 text-xs text-white/70 font-body">
+            <div>
+              {filteredProducts.length === 0 ? (
+                "Showing 0 products"
+              ) : (
+                <>
+                  Showing{" "}
+                  <span className="text-white font-semibold">
+                    {(currentPage - 1) * PRODUCTS_PER_PAGE + 1}–
+                    {Math.min(
+                      currentPage * PRODUCTS_PER_PAGE,
+                      filteredProducts.length,
+                    )}
+                  </span>{" "}
+                  of{" "}
+                  <span className="text-white font-semibold">
+                    {filteredProducts.length}
+                  </span>{" "}
+                  products
+                </>
+              )}
+            </div>
             <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.3em] font-semibold text-champagne">
               <span className="rounded-full bg-[#0a0a0a] border border-white/10 px-3 py-2">
                 Categories {categories.length - 1}
@@ -303,15 +360,22 @@ export function ShopPage() {
             <SkeletonGrid />
           ) : (
             <motion.div
+              key={currentPage}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
             >
-              {filteredProducts.map((product) => (
+              {paginatedProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </motion.div>
           )}
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </section>
       </div>
     </div>
