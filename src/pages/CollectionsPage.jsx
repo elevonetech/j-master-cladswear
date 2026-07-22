@@ -227,7 +227,7 @@ function BrandCard({ brand, index }) {
       </h3>
 
       <Link
-        to="/shop"
+        to={`/shop?brand=${encodeURIComponent(brand.name)}`}
         className="relative mt-4 flex items-center justify-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-champagne transition-colors group-hover:text-[#a8882e]"
       >
         Shop Now
