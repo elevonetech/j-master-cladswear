@@ -1,0 +1,36 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.85" />
+    </linearGradient>
+    <linearGradient id="shoe" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F7D774" />
+      <stop offset="100%" stop-color="#D4AF37" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" rx="60" fill="#111827" />
+  <rect x="0" y="0" width="1200" height="800" rx="60" fill="url(#bg)" />
+  <circle cx="900" cy="220" r="160" fill="#F7D774" fill-opacity="0.14" />
+  <circle cx="270" cy="180" r="120" fill="#F7D774" fill-opacity="0.12" />
+  <g filter="url(#glow)">
+    <path d="M290 380C320 310 380 280 520 280C660 280 840 340 920 380C980 410 1040 510 980 560C920 610 800 620 710 620C640 620 560 590 530 550C500 510 450 470 360 470C290 470 250 450 220 420C190 390 260 390 290 380Z" fill="url(#shoe)" />
+  </g>
+  <path d="M250 380C280 340 340 320 450 320C560 320 760 360 830 390C900 420 960 500 920 520C880 540 780 540 700 540C640 540 580 520 560 490C540 460 500 430 420 430C350 430 300 410 270 390C240 370 210 380 250 380Z" fill="#fff" fill-opacity="0.08" />
+  <path d="M310 360C340 320 400 300 510 300C620 300 820 340 890 370C950 395 1002 450 970 470C938 490 860 500 790 500C730 500 675 485 650 460C625 435 590 405 520 405C460 405 420 395 390 380C360 365 330 360 310 360Z" fill="#fff" fill-opacity="0.16" />
+  <g opacity="0.9">
+    <path d="M410 390C440 360 520 346 620 346C720 346 802 360 832 374" stroke="#fff" stroke-width="16" stroke-linecap="round" />
+    <path d="M430 420C455 400 515 390 610 390C705 390 788 402 810 412" stroke="#fff" stroke-width="10" stroke-linecap="round" />
+  </g>
+  <g opacity="0.8">
+    <ellipse cx="750" cy="350" rx="55" ry="40" fill="#fff" fill-opacity="0.14" />
+    <ellipse cx="520" cy="410" rx="42" ry="28" fill="#fff" fill-opacity="0.12" />
+  </g>
+</svg>
