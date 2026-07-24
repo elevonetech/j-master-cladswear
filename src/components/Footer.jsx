@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import logoImg from "@/assets/logo.jpeg";
+
 import {
   Share2,
   Mail,
@@ -25,43 +27,17 @@ const categories = [
   "Sandals",
 ];
 
-function DapperLogoFooter() {
+function MasterCladswearLogoFooter({ size = 32 }) {
   return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <rect width="40" height="40" rx="10" fill="rgba(200,168,75,0.15)" />
-      <rect
-        width="40"
-        height="40"
-        rx="10"
-        stroke="rgba(200,168,75,0.25)"
-        strokeWidth="1"
-      />
-      <path
-        d="M6 28 Q8 31 20 31 Q32 31 34 28 Q34 26 32 25 L28 24 L24 22 Q20 20 16 21 Q11 22 8 25 Z"
-        fill="#c8a84b"
-      />
-      <path
-        d="M16 21 Q17 14 22 12 Q27 10 30 13 L32 16 L32 22 L28 24 L24 22 Q20 20 16 21 Z"
-        fill="#c8a84b"
-        opacity="0.75"
-      />
-      <path
-        d="M22 12 L23 20"
-        stroke="rgba(255,255,255,0.6)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        opacity="0.9"
-      />
-    </svg>
+    <img
+      src={logoImg}
+      alt="J. MASTER CLADSWEAR Logo"
+      className="object-contain rounded-md"
+      style={{ width: size, height: size }}
+    />
   );
 }
+
 
 export function Footer() {
   return (
@@ -69,9 +45,9 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:px-8">
         <div>
           <div className="flex items-center gap-3 mb-6">
-            <DapperLogoFooter />
+            <MasterCladswearLogoFooter />
             <p className="text-sm font-bold text-white font-heading">
-              Dapper Footwear
+              J. MASTER CLADSWEAR
             </p>
           </div>
           <p className="text-[0.8rem] leading-relaxed text-white/45 max-w-xs">
@@ -181,7 +157,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/5 px-4 py-5 text-center text-xs uppercase tracking-[0.35em] text-bone/45 sm:px-6 lg:px-8">
-        © 2026 Dapper Footwear. All rights reserved.
+        © 2026 J. MASTER CLADSWEAR. All rights reserved.
       </div>
     </footer>
   );

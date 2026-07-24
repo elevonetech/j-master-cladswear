@@ -49,7 +49,7 @@ function LoadingScreen() {
           transition={{ delay: 0.32 }}
           className="text-2xl font-bold tracking-tight text-white font-heading"
         >
-          Dapper Footwear
+          J. MASTER CLADSWEAR
         </motion.h2>
       </div>
     </motion.div>

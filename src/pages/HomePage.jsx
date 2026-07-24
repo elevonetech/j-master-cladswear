@@ -4,7 +4,8 @@ import products from "@/data/products";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ProductCard } from "@/components/ProductCard";
 import { handleImgError } from "@/utils/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import heroBg from "@/assets/hero.png";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -13,88 +14,124 @@ const fadeUp = (delay = 0) => ({
 });
 
 export function HomePage() {
-  const featured = products.filter((p) => p.featured).slice(0, 4);
   const newArrivals = products
     .filter((p) => p.collection === "New Arrivals")
     .slice(0, 4);
 
-  const hero = featured[0];
-
   return (
     <div className="space-y-16 pb-20">
-      {/* Hero Section */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-8 rounded-[2.5rem] bg-[#f8f8f8] overflow-hidden">
-          {/* Left column - Content */}
-          <div className="space-y-8 p-8 md:p-12 lg:p-14">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.45em] text-champagne font-body">
-              Luxury footwear, curated for Dapper
-            </p>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="max-w-xl text-4xl font-medium tracking-wide text-[#111] font-heading md:text-6xl lg:text-7xl leading-[1.08]"
-            >
-              Step into
-              <br />
-              <em className="not-italic" style={{ color: "hsl(43,68%,58%)" }}>
-                pure luxury.
-              </em>
-            </motion.h1>
-            <p className="max-w-md text-xs leading-relaxed text-[#666] font-body md:text-sm">
-              Discover refined sneakers, formal icons, rugged boots, and
-              effortless casual pairs, designed to feel polished from first
-              glance to final checkout.
-            </p>
+      {/* ══════════════════════════════════════
+          HERO
+      ══════════════════════════════════════ */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0a0a0a]">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={heroBg}
+            alt="Featured sneaker"
+            onError={handleImgError}
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/85 to-[#0a0a0a]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/50" />
+        </div>
 
-            <motion.div
-              {...fadeUp(0.42)}
-              className="flex flex-wrap gap-3 justify-start"
-            >
-              <Link
-                to="/shop"
-                className="btn-primary px-6 py-3 text-xs font-semibold"
-              >
-                Shop the Collection
-                <ArrowRight size={14} />
-              </Link>
-              <Link
-                to="/collections"
-                className="btn-secondary px-6 py-3 text-xs font-semibold"
-              >
-                Explore Collections
-              </Link>
-            </motion.div>
-          </div>
+        {/* Decorative oversized text */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
+          <motion.span
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 0.03, x: 0 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            className="text-[20vw] font-heading font-bold text-white whitespace-nowrap"
+          >
+            J. MASTER CLADSWEAR
+          </motion.span>
+        </div>
 
-          {/* Right column - Hero Image */}
-          <div className="relative hidden lg:flex items-center justify-center h-full min-h-[28rem]">
-            <motion.img
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              src={hero.images[0]}
-              alt={hero.name}
-              onError={handleImgError}
-              className="w-full h-full object-cover rounded-tl-[2.5rem] rounded-bl-[2.5rem]"
-            />
-            {/* Floating badge */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="absolute bottom-8 left-8 rounded-2xl bg-white/95 backdrop-blur-sm p-4 shadow-lg"
-            >
-              <p className="text-[9px] uppercase tracking-[0.35em] text-champagne font-semibold">
-                Featured
-              </p>
-              <p className="mt-1 text-sm font-semibold text-[#111] font-heading">
-                {hero.name}
-              </p>
-            </motion.div>
+        {/* Content */}
+        <div className="relative max-w-[1440px] mx-auto px-4 md:px-8 w-full pt-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left text */}
+            <div className="lg:col-span-7">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              ></motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="font-heading text-5xl md:text-7xl lg:text-[90px] font-bold text-white leading-[0.95] mb-6"
+              >
+                Step Up.
+                <br />
+                <span className="text-champagne">Stand Out.</span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-white/60 text-base md:text-lg max-w-md leading-relaxed mb-10"
+              >
+                Discover authentic, stylish footwear from Kenya's most trusted
+                sellers. From iconic sneakers to refined formals — all at prices
+                that respect your hustle.
+              </motion.p>
+
+              <motion.div {...fadeUp(0.8)} className="flex flex-wrap gap-4">
+                <Link
+                  to="/shop"
+                  className="group inline-flex items-center gap-3 bg-champagne text-[#0a0a0a] px-8 py-3.5 text-xs font-body font-semibold uppercase tracking-[0.15em] hover:bg-champagne/90 transition-all"
+                >
+                  Shop Collection
+                  <ArrowRight
+                    size={14}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </Link>
+                <Link
+                  to="/shop?collection=new-arrivals"
+                  className="inline-flex items-center gap-3 border border-champagne/30 text-champagne px-8 py-3.5 text-xs font-body font-semibold uppercase tracking-[0.15em] hover:bg-champagne/10 transition-all"
+                >
+                  New Drops
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right floating shoe */}
+            <div className="lg:col-span-5 hidden lg:flex items-center justify-center">
+              <motion.div
+                animate={{ y: [0, -15, 0] }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative"
+              >
+                <div className="absolute inset-0 bg-champagne/5 rounded-full blur-3xl scale-150" />
+                <img
+                  src={heroBg}
+                  alt="Featured sneaker"
+                  onError={handleImgError}
+                  className="relative w-[420px] h-auto drop-shadow-2xl"
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <ChevronDown size={20} className="text-champagne/40" />
+        </motion.div>
       </section>
 
       {/* ══════════════════════════════════════
@@ -112,7 +149,7 @@ export function HomePage() {
                 dark
                 eyebrow="Brand story"
                 title="Built for the modern luxury wardrobe"
-                description="Dapper Footwear brings premium footwear with a minimal black-and-white identity and a checkout experience designed around convenience."
+                description="J. MASTER CLADSWEAR brings premium footwear with a minimal black-and-white identity and a checkout experience designed around convenience."
               />
               <div className="grid gap-3 sm:grid-cols-2 mt-8">
                 {[
