@@ -1,6 +1,4 @@
 export const formatKes = (amount) =>
-  new Intl.NumberFormat("en-KE", {
-    style: "currency",
-    currency: "KES",
+  `Ksh ${new Intl.NumberFormat("en-US", {
     maximumFractionDigits: 0,
-  }).format(amount);
+  }).format(amount)}`;

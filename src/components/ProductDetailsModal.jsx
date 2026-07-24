@@ -4,9 +4,9 @@ import toast from "react-hot-toast";
 import { X, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useStore } from "@/context/StoreContext";
 import { useModal } from "@/context/ModalContext";
+import { useProducts } from "@/context/ProductContext";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
-import products from "@/data/products";
 
 const REVIEWS = [
   {

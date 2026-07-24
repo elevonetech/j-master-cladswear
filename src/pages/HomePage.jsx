@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import products from "@/data/products";
+import { useProducts } from "@/context/ProductContext";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ProductCard } from "@/components/ProductCard";
 import { handleImgError } from "@/utils/image";
@@ -14,8 +14,9 @@ const fadeUp = (delay = 0) => ({
 });
 
 export function HomePage() {
+  const { products } = useProducts();
   const newArrivals = products
-    .filter((p) => p.collection === "New Arrivals")
+    .filter((p) => p.collection === "New Arrivals" || p.newArrival)
     .slice(0, 4);
 
   return (

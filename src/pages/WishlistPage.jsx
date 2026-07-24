@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useStore } from "@/context/StoreContext";
-import products from "@/data/products";
+import { useProducts } from "@/context/ProductContext";
 import { SectionHeading } from "@/components/SectionHeading";
 import { EmptyState } from "@/components/EmptyState";
 import { formatKes } from "@/utils/money";
@@ -9,6 +9,7 @@ import { handleImgError } from "@/utils/image";
 import { Trash2 } from "lucide-react";
 
 export function WishlistPage() {
+  const { products } = useProducts();
   const { wishlist, toggleWishlist } = useStore();
   const savedProducts = products.filter((p) => wishlist.includes(p.id));
 

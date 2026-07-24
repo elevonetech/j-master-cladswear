@@ -3,7 +3,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import toast from "react-hot-toast";
-import products from "@/data/products";
+import { useProducts } from "@/context/ProductContext";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionHeading } from "@/components/SectionHeading";
 import { useStore } from "@/context/StoreContext";
@@ -56,6 +56,7 @@ function ReviewCard({ name, rating, date, text }) {
 }
 
 export function ProductPage() {
+  const { products } = useProducts();
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart, toggleWishlist, isWishlisted, markViewed, recentlyViewed } = useStore();
@@ -64,7 +65,7 @@ export function ProductPage() {
   const [quantity,      setQuantity]      = useState(1);
   const [imageIndex,    setImageIndex]    = useState(0);
 
-  const product = useMemo(() => products.find((item) => item.id === id), [id]);
+  const product = useMemo(() => products.find((item) => String(item.id) === String(id)), [products, id]);
 
   useEffect(() => {
     if (product) {

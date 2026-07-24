@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import { useStore } from "@/context/StoreContext";
+import { useProducts } from "@/context/ProductContext";
 import { EmptyState } from "@/components/EmptyState";
 import { SectionHeading } from "@/components/SectionHeading";
 import { buildWhatsAppUrl } from "@/utils/whatsapp";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
-import products from "@/data/products";
 
 export function CartPage() {
+  const { products } = useProducts();
   const {
     cartItems,
     updateQuantity,

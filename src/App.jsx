@@ -11,7 +11,12 @@ import { CollectionsPage } from "@/pages/CollectionsPage";
 import { AboutPage } from "@/pages/AboutPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { WishlistPage } from "@/pages/WishlistPage";
+import { AdminLoginPage } from "@/pages/admin/AdminLoginPage";
+import { AdminDashboardPage } from "@/pages/admin/AdminDashboardPage";
+import { ProtectedRoute } from "@/components/admin/ProtectedRoute";
 import { StoreProvider } from "@/context/StoreContext";
+import { ProductProvider } from "@/context/ProductContext";
+import { AuthProvider } from "@/context/AuthContext";
 import { ModalProvider, useModal } from "@/context/ModalContext";
 import { ProductPreviewModal } from "@/components/ProductPreviewModal";
 import { ProductDetailsModal } from "@/components/ProductDetailsModal";
@@ -62,6 +67,18 @@ function RoutedApp() {
   return (
     <>
       <Routes>
+        {/* Admin Routes */}
+        <Route path="/admin/login" element={<AdminLoginPage />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminDashboardPage />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Public Store Routes */}
         <Route element={<Layout />}>
           <Route path="/"            element={<HomePage />} />
           <Route path="/shop"        element={<ShopPage />} />
@@ -74,6 +91,7 @@ function RoutedApp() {
           <Route path="*"            element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
+
       <ProductPreviewModal product={previewProduct} onClose={closePreview} />
       <ProductDetailsModal product={detailsProduct} onClose={closeDetails} />
     </>
@@ -92,34 +110,38 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <StoreProvider>
-        <ModalProvider>
-          <RoutedApp />
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 3000,
-              style: {
-                background: "#ffffff",
-                color: "#111111",
-                border: "1px solid rgba(0,0,0,0.08)",
-                borderRadius: "16px",
-                boxShadow: "0 4px 24px rgba(0,0,0,0.10)",
-                fontSize: "0.8rem",
-                fontFamily: "Inter, sans-serif",
-                fontWeight: "500",
-                padding: "12px 16px",
-              },
-              success: {
-                iconTheme: {
-                  primary: "hsl(43,68%,40%)",
-                  secondary: "#ffffff",
-                },
-              },
-            }}
-          />
-        </ModalProvider>
-      </StoreProvider>
+      <AuthProvider>
+        <ProductProvider>
+          <StoreProvider>
+            <ModalProvider>
+              <RoutedApp />
+              <Toaster
+                position="top-right"
+                toastOptions={{
+                  duration: 3000,
+                  style: {
+                    background: "#ffffff",
+                    color: "#111111",
+                    border: "1px solid rgba(0,0,0,0.08)",
+                    borderRadius: "16px",
+                    boxShadow: "0 4px 24px rgba(0,0,0,0.10)",
+                    fontSize: "0.8rem",
+                    fontFamily: "Inter, sans-serif",
+                    fontWeight: "500",
+                    padding: "12px 16px",
+                  },
+                  success: {
+                    iconTheme: {
+                      primary: "hsl(43,68%,40%)",
+                      secondary: "#ffffff",
+                    },
+                  },
+                }}
+              />
+            </ModalProvider>
+          </StoreProvider>
+        </ProductProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

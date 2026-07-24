@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
-import products from "@/data/products";
+import { useProducts } from "@/context/ProductContext";
 import { ProductCard } from "@/components/ProductCard";
 import { Pagination } from "@/components/Pagination";
 import { SkeletonGrid } from "@/components/SkeletonGrid";
@@ -17,6 +17,7 @@ const labelClass =
 const PRODUCTS_PER_PAGE = 10;
 
 export function ShopPage() {
+  const { products, loading: productsLoading } = useProducts();
   const [searchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -28,13 +29,13 @@ export function ShopPage() {
     searchParams.get("brand") ?? "All",
   );
   const [selectedColor, setSelectedColor] = useState("All");
-  const [priceLimit, setPriceLimit] = useState(5000);
+  const [priceLimit, setPriceLimit] = useState(10000);
   const [sort, setSort] = useState("featured");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setLoading(false), 700);
+    const timer = window.setTimeout(() => setLoading(false), 500);
     return () => window.clearTimeout(timer);
   }, []);
 
