@@ -24,7 +24,9 @@ export function ShopPage() {
     searchParams.get("category") ?? "All",
   );
   const [selectedSize, setSelectedSize] = useState("All");
-  const [selectedBrand, setSelectedBrand] = useState("All");
+  const [selectedBrand, setSelectedBrand] = useState(
+    searchParams.get("brand") ?? "All",
+  );
   const [selectedColor, setSelectedColor] = useState("All");
   const [priceLimit, setPriceLimit] = useState(5000);
   const [sort, setSort] = useState("featured");
@@ -35,6 +37,11 @@ export function ShopPage() {
     const timer = window.setTimeout(() => setLoading(false), 700);
     return () => window.clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const brandFromUrl = searchParams.get("brand") ?? "All";
+    setSelectedBrand(brandFromUrl);
+  }, [searchParams]);
 
   useEffect(() => {
     document.body.style.overflow = filtersOpen ? "hidden" : "";
