@@ -147,9 +147,9 @@ export function HomePage() {
             <div>
               <SectionHeading
                 dark
-                eyebrow="Brand story"
-                title="Built for the modern luxury wardrobe"
-                description="J. MASTER CLADSWEAR brings premium footwear with a minimal black-and-white identity and a checkout experience designed around convenience."
+                eyebrow="The J. MASTER standard"
+                title="Master every step in style"
+                description="J. MASTER CLADSWEAR is built for those who move with confidence. Discover premium footwear designed to bring together refined craftsmanship, timeless design, and effortless everyday style."
               />
               <div className="grid gap-3 sm:grid-cols-2 mt-8">
                 {[
