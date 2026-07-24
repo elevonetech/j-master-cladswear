@@ -8,7 +8,6 @@ import { ShopPage } from "@/pages/ShopPage";
 import { ProductPage } from "@/pages/ProductPage";
 import { CartPage } from "@/pages/CartPage";
 import { CollectionsPage } from "@/pages/CollectionsPage";
-import { AboutPage } from "@/pages/AboutPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { WishlistPage } from "@/pages/WishlistPage";
 import { StoreProvider } from "@/context/StoreContext";
@@ -69,7 +68,6 @@ function RoutedApp() {
           <Route path="/cart"        element={<CartPage />} />
           <Route path="/wishlist"    element={<WishlistPage />} />
           <Route path="/collections" element={<CollectionsPage />} />
-          <Route path="/about"       element={<AboutPage />} />
           <Route path="/contact"     element={<ContactPage />} />
           <Route path="*"            element={<Navigate to="/" replace />} />
         </Route>

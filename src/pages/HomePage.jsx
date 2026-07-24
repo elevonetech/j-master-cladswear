@@ -165,14 +165,7 @@ export function HomePage() {
                   </div>
                 ))}
               </div>
-              <div className="mt-8">
-                <Link
-                  to="/about"
-                  className="btn-ghost-dark !py-3 !px-7 !text-[0.68rem]"
-                >
-                  Our Story
-                </Link>
-              </div>
+
             </div>
 
             {/* Feature brands + testimonials */}

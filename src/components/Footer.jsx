@@ -14,7 +14,7 @@ const footerLinks = [
   { label: "Home", to: "/" },
   { label: "Shop", to: "/shop" },
   { label: "Collections", to: "/collections" },
-  { label: "About", to: "/about" },
+
   { label: "Contact", to: "/contact" },
 ];
 
