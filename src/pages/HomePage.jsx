@@ -247,9 +247,9 @@ export function HomePage() {
             />
             <Link
               to="/shop?collection=new-arrivals"
-              className="btn-secondary flex-shrink-0 mb-10 !py-2.5 !text-[0.68rem] group"
+              className="btn-secondary flex-shrink-0 mb-10 !px-5 !py-3 !text-[0.68rem] group inline-flex items-center gap-2 whitespace-nowrap"
             >
-              See all new{" "}
+              See all new
               <ArrowRight
                 size={12}
                 className="transition-transform group-hover:translate-x-1"

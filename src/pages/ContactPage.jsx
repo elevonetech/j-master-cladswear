@@ -1,4 +1,3 @@
-import heroImage from "@/assets/contact-hero.svg";
 import {
   Phone,
   Mail,
@@ -77,7 +76,9 @@ export function ContactPage() {
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
-                Whether you want luxury leather, all-day comfort, or a bold new silhouette, our fit experts are here to guide you to the perfect pair.
+                Whether you want luxury leather, all-day comfort, or a bold new
+                silhouette, our fit experts are here to guide you to the perfect
+                pair.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -87,7 +88,9 @@ export function ContactPage() {
                 >
                   Contact our fit experts
                 </a>
-                <span className="text-sm text-white/70">Fast replies for style, sizing, and shipping.</span>
+                <span className="text-sm text-white/70">
+                  Fast replies for style, sizing, and shipping.
+                </span>
               </div>
             </div>
           </div>
@@ -108,56 +111,82 @@ export function ContactPage() {
               </h2>
 
               <p className="mt-5 max-w-2xl text-[16px] leading-8 text-stone-600">
-                Whether you're searching for the perfect fit, checking product availability,
-                tracking your order or simply looking for style advice, we're committed to
-                giving you the best shopping experience.
+                Whether you're searching for the perfect fit, checking product
+                availability, tracking your order or simply looking for style
+                advice, we're committed to giving you the best shopping
+                experience.
               </p>
 
               <div className="mt-10 grid gap-5">
                 <div className="group/item flex items-start gap-5 rounded-3xl border border-stone-200 bg-[#fafafa] p-5 transition-all duration-300 hover:border-[#C9A227]/40 hover:bg-[#fffdf8] hover:shadow-lg">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C9A227]/10 transition-all duration-300 group-hover/item:bg-[#C9A227]">
-                    <CheckCircle2 size={24} className="text-[#C9A227] transition-all duration-300 group-hover/item:text-white" />
+                    <CheckCircle2
+                      size={24}
+                      className="text-[#C9A227] transition-all duration-300 group-hover/item:text-white"
+                    />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#111]">Find Your Perfect Fit</h3>
+                    <h3 className="text-lg font-semibold text-[#111]">
+                      Find Your Perfect Fit
+                    </h3>
                     <p className="mt-2 text-sm leading-7 text-stone-600">
-                      Unsure about sizing? Our team will help you choose footwear that fits comfortably before you place your order.
+                      Unsure about sizing? Our team will help you choose
+                      footwear that fits comfortably before you place your
+                      order.
                     </p>
                   </div>
                 </div>
 
                 <div className="group/item flex items-start gap-5 rounded-3xl border border-stone-200 bg-[#fafafa] p-5 transition-all duration-300 hover:border-[#C9A227]/40 hover:bg-[#fffdf8] hover:shadow-lg">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C9A227]/10 transition-all duration-300 group-hover/item:bg-[#C9A227]">
-                    <CheckCircle2 size={24} className="text-[#C9A227] transition-all duration-300 group-hover/item:text-white" />
+                    <CheckCircle2
+                      size={24}
+                      className="text-[#C9A227] transition-all duration-300 group-hover/item:text-white"
+                    />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#111]">Product Availability</h3>
+                    <h3 className="text-lg font-semibold text-[#111]">
+                      Product Availability
+                    </h3>
                     <p className="mt-2 text-sm leading-7 text-stone-600">
-                      Looking for a specific size or style? Reach out and we'll quickly check stock availability for you.
+                      Looking for a specific size or style? Reach out and we'll
+                      quickly check stock availability for you.
                     </p>
                   </div>
                 </div>
 
                 <div className="group/item flex items-start gap-5 rounded-3xl border border-stone-200 bg-[#fafafa] p-5 transition-all duration-300 hover:border-[#C9A227]/40 hover:bg-[#fffdf8] hover:shadow-lg">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C9A227]/10 transition-all duration-300 group-hover/item:bg-[#C9A227]">
-                    <CheckCircle2 size={24} className="text-[#C9A227] transition-all duration-300 group-hover/item:text-white" />
+                    <CheckCircle2
+                      size={24}
+                      className="text-[#C9A227] transition-all duration-300 group-hover/item:text-white"
+                    />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#111]">Delivery Support</h3>
+                    <h3 className="text-lg font-semibold text-[#111]">
+                      Delivery Support
+                    </h3>
                     <p className="mt-2 text-sm leading-7 text-stone-600">
-                      Need help tracking your package or understanding delivery options? We're only a message away.
+                      Need help tracking your package or understanding delivery
+                      options? We're only a message away.
                     </p>
                   </div>
                 </div>
 
                 <div className="group/item flex items-start gap-5 rounded-3xl border border-stone-200 bg-[#fafafa] p-5 transition-all duration-300 hover:border-[#C9A227]/40 hover:bg-[#fffdf8] hover:shadow-lg">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C9A227]/10 transition-all duration-300 group-hover/item:bg-[#C9A227]">
-                    <CheckCircle2 size={24} className="text-[#C9A227] transition-all duration-300 group-hover/item:text-white" />
+                    <CheckCircle2
+                      size={24}
+                      className="text-[#C9A227] transition-all duration-300 group-hover/item:text-white"
+                    />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#111]">Returns & Exchanges</h3>
+                    <h3 className="text-lg font-semibold text-[#111]">
+                      Returns & Exchanges
+                    </h3>
                     <p className="mt-2 text-sm leading-7 text-stone-600">
-                      We want you to love every purchase. Contact us if you need assistance with returns or exchanges.
+                      We want you to love every purchase. Contact us if you need
+                      assistance with returns or exchanges.
                     </p>
                   </div>
                 </div>
@@ -166,7 +195,9 @@ export function ContactPage() {
               <div className="mt-10 rounded-[28px] bg-gradient-to-r from-[#111] to-[#232323] p-8 text-white">
                 <h3 className="text-2xl font-bold">Need a Quick Response?</h3>
                 <p className="mt-3 max-w-lg text-white/75 leading-7">
-                  The fastest way to reach us is through WhatsApp. Whether you have a question before buying or need help after your purchase, we're here for you.
+                  The fastest way to reach us is through WhatsApp. Whether you
+                  have a question before buying or need help after your
+                  purchase, we're here for you.
                 </p>
                 <a
                   href="https://wa.me/254712643440"
@@ -191,35 +222,44 @@ export function ContactPage() {
                   Contact Details
                 </span>
 
-                <h2 className="mt-5 text-3xl font-bold">We'd Love To Hear From You</h2>
+                <h2 className="mt-5 text-3xl font-bold">
+                  We'd Love To Hear From You
+                </h2>
 
                 <p className="mt-4 leading-7 text-white/70">
-                  Reach us through your preferred channel. Whether you have a question before placing an order or need assistance afterwards, we're always happy to help.
+                  Reach us through your preferred channel. Whether you have a
+                  question before placing an order or need assistance
+                  afterwards, we're always happy to help.
                 </p>
 
                 <div className="mt-10 space-y-5">
-                  {contactItems.map(({ icon: Icon, text, href, external = false }) => (
-                    <div
-                      key={text}
-                      className="group flex items-center gap-5 rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-[#C9A227]/40 hover:bg-white/10"
-                    >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#C9A227]/15 transition-all duration-300 group-hover:bg-[#C9A227]">
-                        <Icon size={18} className="text-[#F6D66B] transition-all duration-300 group-hover:text-black" />
+                  {contactItems.map(
+                    ({ icon: Icon, text, href, external = false }) => (
+                      <div
+                        key={text}
+                        className="group flex items-center gap-5 rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-[#C9A227]/40 hover:bg-white/10"
+                      >
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#C9A227]/15 transition-all duration-300 group-hover:bg-[#C9A227]">
+                          <Icon
+                            size={18}
+                            className="text-[#F6D66B] transition-all duration-300 group-hover:text-black"
+                          />
+                        </div>
+                        {href ? (
+                          <a
+                            href={href}
+                            target={external ? "_blank" : undefined}
+                            rel={external ? "noreferrer" : undefined}
+                            className="transition-colors text-white/80 hover:text-[#F6D66B]"
+                          >
+                            {text}
+                          </a>
+                        ) : (
+                          <span className="text-white/80">{text}</span>
+                        )}
                       </div>
-                      {href ? (
-                        <a
-                          href={href}
-                          target={external ? "_blank" : undefined}
-                          rel={external ? "noreferrer" : undefined}
-                          className="transition-colors text-white/80 hover:text-[#F6D66B]"
-                        >
-                          {text}
-                        </a>
-                      ) : (
-                        <span className="text-white/80">{text}</span>
-                      )}
-                    </div>
-                  ))}
+                    ),
+                  )}
                 </div>
 
                 <a
@@ -236,9 +276,12 @@ export function ContactPage() {
 
             <div className="overflow-hidden rounded-[32px] bg-white p-5 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
               <div className="px-3 pb-5">
-                <h3 className="text-2xl font-bold text-[#111]">Visit Our Store</h3>
+                <h3 className="text-2xl font-bold text-[#111]">
+                  Visit Our Store
+                </h3>
                 <p className="mt-2 text-stone-600">
-                  You're always welcome to visit us and explore our latest footwear collection in person.
+                  You're always welcome to visit us and explore our latest
+                  footwear collection in person.
                 </p>
               </div>
 
