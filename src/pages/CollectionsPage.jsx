@@ -334,7 +334,7 @@ export function CollectionsPage() {
                 <ArrowRight size={14} />
               </Link>
               <a
-                href="https://wa.me/254712643440?text=Hello%20J.%20MASTER%20CLADSWEAR%2C%20I%27d%20like%20to%20request%20a%20brand."
+                href="https://wa.me/254702364786?text=Hello%20J.%20MASTER%20CLADSWEAR%2C%20I%27d%20like%20to%20request%20a%20brand."
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm transition-all hover:border-champagne/40 hover:text-champagne"
@@ -423,7 +423,7 @@ export function CollectionsPage() {
 
       {/* WhatsApp FAB */}
       <a
-        href="https://wa.me/254712643440"
+        href="https://wa.me/254702364786"
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"
