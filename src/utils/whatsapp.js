@@ -1,6 +1,6 @@
 import { formatKes } from "@/utils/money";
 
-const WHATSAPP_NUMBER = "254712643440";
+const WHATSAPP_NUMBER = "254702364786";
 
 export const buildOrderMessage = (items) => {
   const lines = items.map(

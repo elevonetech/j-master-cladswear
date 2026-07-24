@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
+import { WhatsAppFAB } from "@/components/WhatsAppFAB";
 
 export function Layout() {
   const location = useLocation();
@@ -25,6 +26,7 @@ export function Layout() {
         </motion.main>
       </AnimatePresence>
       <Footer />
+      <WhatsAppFAB />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useProducts } from "@/context/ProductContext";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SEO } from "@/components/SEO";
 import { ProductCard } from "@/components/ProductCard";
 import { handleImgError } from "@/utils/image";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -21,6 +22,7 @@ export function HomePage() {
 
   return (
     <div className="space-y-16 pb-20">
+      <SEO />
       {/* ══════════════════════════════════════
           HERO
       ══════════════════════════════════════ */}
@@ -78,7 +80,7 @@ export function HomePage() {
                 className="text-white/60 text-base md:text-lg max-w-md leading-relaxed mb-10"
               >
                 Discover authentic, stylish footwear from Kenya's most trusted
-                sellers. From iconic sneakers to refined formals — all at prices
+                sellers. From iconic sneakers to refined formals, all at prices
                 that respect your hustle.
               </motion.p>
 
@@ -166,14 +168,7 @@ export function HomePage() {
                   </div>
                 ))}
               </div>
-              <div className="mt-8">
-                <Link
-                  to="/about"
-                  className="btn-ghost-dark !py-3 !px-7 !text-[0.68rem]"
-                >
-                  Our Story
-                </Link>
-              </div>
+
             </div>
 
             {/* Feature brands + testimonials */}

@@ -14,7 +14,7 @@ const footerLinks = [
   { label: "Home", to: "/" },
   { label: "Shop", to: "/shop" },
   { label: "Collections", to: "/collections" },
-  { label: "About", to: "/about" },
+
   { label: "Contact", to: "/contact" },
 ];
 
@@ -67,14 +67,14 @@ export function Footer() {
               Instagram
             </a>
             <a
-              href="mailto:jamesmngandu@gmail.com"
+              href="mailto:Kithomejoseph88@gmail.com"
               className="btn-secondary px-4 py-2 text-[10px] tracking-widest"
             >
               <Mail size={12} />
               Email
             </a>
             <a
-              href="https://wa.me/254712643440"
+              href="https://wa.me/254702364786"
               target="_blank"
               rel="noreferrer"
               className="btn-primary px-4 py-2 text-[10px] tracking-widest"
@@ -132,8 +132,8 @@ export function Footer() {
           </p>
           <div className="space-y-4">
             {[
-              { icon: Phone, text: "0712 643 440" },
-              { icon: Mail, text: "jamesmngandu@gmail.com" },
+              { icon: Phone, text: "0702 364 786" },
+              { icon: Mail, text: "Kithomejoseph88@gmail.com" },
               { icon: MapPin, text: "Nairobi, Kenya" },
             ].map(({ icon: Icon, text }) => (
               <div
@@ -146,7 +146,7 @@ export function Footer() {
             ))}
           </div>
           <a
-            href="https://wa.me/254712643440"
+            href="https://wa.me/254702364786"
             className="mt-6 inline-flex items-center gap-2 rounded-full border border-champagne/30 bg-champagne/10 px-5 py-2.5 text-[0.68rem] font-semibold text-champagne hover:bg-champagne/18 transition-all duration-240"
             target="_blank"
             rel="noreferrer"

@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
+import { HelmetProvider } from "react-helmet-async";
 import { Layout } from "@/components/Layout";
 import { HomePage } from "@/pages/HomePage";
 import { ShopPage } from "@/pages/ShopPage";
 import { ProductPage } from "@/pages/ProductPage";
 import { CartPage } from "@/pages/CartPage";
 import { CollectionsPage } from "@/pages/CollectionsPage";
-import { AboutPage } from "@/pages/AboutPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { WishlistPage } from "@/pages/WishlistPage";
 import { AdminLoginPage } from "@/pages/admin/AdminLoginPage";
@@ -86,7 +86,6 @@ function RoutedApp() {
           <Route path="/cart"        element={<CartPage />} />
           <Route path="/wishlist"    element={<WishlistPage />} />
           <Route path="/collections" element={<CollectionsPage />} />
-          <Route path="/about"       element={<AboutPage />} />
           <Route path="/contact"     element={<ContactPage />} />
           <Route path="*"            element={<Navigate to="/" replace />} />
         </Route>
@@ -109,39 +108,41 @@ export default function App() {
   if (!ready) return <LoadingScreen />;
 
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <ProductProvider>
-          <StoreProvider>
-            <ModalProvider>
-              <RoutedApp />
-              <Toaster
-                position="top-right"
-                toastOptions={{
-                  duration: 3000,
-                  style: {
-                    background: "#ffffff",
-                    color: "#111111",
-                    border: "1px solid rgba(0,0,0,0.08)",
-                    borderRadius: "16px",
-                    boxShadow: "0 4px 24px rgba(0,0,0,0.10)",
-                    fontSize: "0.8rem",
-                    fontFamily: "Inter, sans-serif",
-                    fontWeight: "500",
-                    padding: "12px 16px",
-                  },
-                  success: {
-                    iconTheme: {
-                      primary: "hsl(43,68%,40%)",
-                      secondary: "#ffffff",
+    <HelmetProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <ProductProvider>
+            <StoreProvider>
+              <ModalProvider>
+                <RoutedApp />
+                <Toaster
+                  position="top-right"
+                  toastOptions={{
+                    duration: 3000,
+                    style: {
+                      background: "#ffffff",
+                      color: "#111111",
+                      border: "1px solid rgba(0,0,0,0.08)",
+                      borderRadius: "16px",
+                      boxShadow: "0 4px 24px rgba(0,0,0,0.10)",
+                      fontSize: "0.8rem",
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: "500",
+                      padding: "12px 16px",
                     },
-                  },
-                }}
-              />
-            </ModalProvider>
-          </StoreProvider>
-        </ProductProvider>
-      </AuthProvider>
-    </BrowserRouter>
+                    success: {
+                      iconTheme: {
+                        primary: "hsl(43,68%,40%)",
+                        secondary: "#ffffff",
+                      },
+                    },
+                  }}
+                />
+              </ModalProvider>
+            </StoreProvider>
+          </ProductProvider>
+        </AuthProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

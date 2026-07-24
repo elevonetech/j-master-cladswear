@@ -4,10 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   BadgeCheck,
-  MessageCircle,
   Package,
   Sparkles,
 } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const asset = (name) => `/assets/brands/${encodeURIComponent(name)}`;
 
@@ -243,6 +243,11 @@ function BrandCard({ brand, index }) {
 export function CollectionsPage() {
   return (
     <div className="collections-page relative -mt-[72px] overflow-hidden bg-[#050505] text-white">
+      <SEO
+        title="Collections"
+        description="Explore curated footwear collections from top brands including Nike, Adidas, Puma, Timberland, and Clarks. Premium quality at J. MASTER CLADSWEAR."
+        url="/collections"
+      />
       <style>{`
         .collections-page {
           --gold: #c9a53e;
@@ -334,7 +339,7 @@ export function CollectionsPage() {
                 <ArrowRight size={14} />
               </Link>
               <a
-                href="https://wa.me/254712643440?text=Hello%20J.%20MASTER%20CLADSWEAR%2C%20I%27d%20like%20to%20request%20a%20brand."
+                href="https://wa.me/254702364786?text=Hello%20J.%20MASTER%20CLADSWEAR%2C%20I%27d%20like%20to%20request%20a%20brand."
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm transition-all hover:border-champagne/40 hover:text-champagne"
@@ -420,17 +425,6 @@ export function CollectionsPage() {
           </div>
         </div>
       </section>
-
-      {/* WhatsApp FAB */}
-      <a
-        href="https://wa.me/254712643440"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Chat on WhatsApp"
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_32px_rgba(37,211,102,0.4)] transition-transform hover:scale-105"
-      >
-        <MessageCircle size={24} />
-      </a>
     </div>
   );
 }

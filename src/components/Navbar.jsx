@@ -10,7 +10,7 @@ const links = [
   { label: "Home",        to: "/" },
   { label: "Shop",        to: "/shop" },
   { label: "Collections", to: "/collections" },
-  { label: "About", to: "/about" },
+
   { label: "Contact", to: "/contact" },
 ];
 
@@ -46,9 +46,9 @@ export function Navbar() {
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
             <MasterCladswearLogo size={40} />
-            <h1 className="text-sm font-semibold tracking-wider text-[#111] font-body">
+            <span className="text-sm font-semibold tracking-wider text-[#111] font-body">
               J. MASTER CLADSWEAR
-            </h1>
+            </span>
           </Link>
 
           {/* ── Desktop Nav ── */}

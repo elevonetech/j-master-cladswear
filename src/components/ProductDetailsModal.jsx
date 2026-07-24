@@ -181,7 +181,7 @@ export function ProductDetailsModal({ product, onClose }) {
                   >
                     <img
                       src={img}
-                      alt=""
+                      alt={`${product?.name || "Product"} thumbnail`}
                       onError={handleImgError}
                       className="h-14 w-14 object-cover"
                     />
