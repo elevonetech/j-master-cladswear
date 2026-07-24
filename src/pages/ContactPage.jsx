@@ -159,7 +159,7 @@ export function ContactPage() {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Dapper Footwear location in Nairobi"
+              title="J. MASTER CLADSWEAR location in Nairobi"
               className="w-full"
             />
           </div>

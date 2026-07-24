@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ShoppingCart, Heart, X, Menu } from "lucide-react";
 import { useStore } from "@/context/StoreContext";
+import logoImg from "@/assets/logo.jpeg";
+
 
 const links = [
   { label: "Home",        to: "/" },
@@ -12,24 +14,17 @@ const links = [
   { label: "Contact", to: "/contact" },
 ];
 
-function DapperLogo({ dark = false }) {
+function MasterCladswearLogo({ dark = false, size = 36 }) {
   return (
-    <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect width="40" height="40" rx="10" fill={dark ? "#0a0a0a" : "#ffffff"} />
-      <rect width="40" height="40" rx="10" stroke={dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"} strokeWidth="1" />
-      {/* Shoe sole */}
-      <path d="M6 28 Q8 31 20 31 Q32 31 34 28 Q34 26 32 25 L28 24 L24 22 Q20 20 16 21 Q11 22 8 25 Z"
-        fill={dark ? "#c8a84b" : "#0A0A0B"} />
-      {/* Shoe upper */}
-      <path d="M16 21 Q17 14 22 12 Q27 10 30 13 L32 16 L32 22 L28 24 L24 22 Q20 20 16 21 Z"
-        fill={dark ? "#c8a84b" : "#0A0A0B"} opacity="0.85" />
-      {/* Lace detail */}
-      <path d="M22 12 L23 20"
-        stroke={dark ? "#ffffff" : "#c8a84b"}
-        strokeWidth="1.5" strokeLinecap="round" opacity="0.9" />
-    </svg>
+    <img
+      src={logoImg}
+      alt="J. MASTER CLADSWEAR Logo"
+      className="object-contain rounded-md"
+      style={{ width: size, height: size }}
+    />
   );
 }
+
 
 export function Navbar() {
   const [open, setOpen]       = useState(false);
@@ -50,9 +45,9 @@ export function Navbar() {
       >
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
-            <DapperLogo size={40} />
+            <MasterCladswearLogo size={40} />
             <h1 className="text-sm font-semibold tracking-wider text-[#111] font-body">
-              Dapper Footwear
+              J. MASTER CLADSWEAR
             </h1>
           </Link>
 

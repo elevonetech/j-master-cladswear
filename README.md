@@ -1,1 +1,1 @@
-# Dapper footwear
+# J. MASTER CLADSWEAR
