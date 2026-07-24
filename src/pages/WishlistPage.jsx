@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useStore } from "@/context/StoreContext";
 import products from "@/data/products";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SEO } from "@/components/SEO";
 import { EmptyState } from "@/components/EmptyState";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
@@ -14,6 +15,11 @@ export function WishlistPage() {
 
   return (
     <div className="bg-linen">
+      <SEO
+        title="Wishlist"
+        description="Your saved footwear collection. Review and purchase your favourite sneakers, boots, formal shoes, and more at J. MASTER CLADSWEAR."
+        url="/wishlist"
+      />
       {/* ── Header ── */}
       <div className="bg-white border-b border-black/06 py-16 px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">

@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
 import products from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import { SEO } from "@/components/SEO";
 import { Pagination } from "@/components/Pagination";
 import { SkeletonGrid } from "@/components/SkeletonGrid";
 import { formatKes } from "@/utils/money";
@@ -247,6 +248,11 @@ export function ShopPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24 bg-[#0a0a0a]">
+      <SEO
+        title="Shop"
+        description="Browse our complete collection of premium sneakers, formal shoes, boots, loafers, running shoes, and sandals. Authentic footwear at J. MASTER CLADSWEAR."
+        url="/shop"
+      />
       {/* Page header */}
       <div className="py-10 border-b border-white/10">
         <div className="flex items-center gap-2 mb-3">

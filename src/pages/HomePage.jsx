@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import products from "@/data/products";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SEO } from "@/components/SEO";
 import { ProductCard } from "@/components/ProductCard";
 import { handleImgError } from "@/utils/image";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -20,6 +21,7 @@ export function HomePage() {
 
   return (
     <div className="space-y-16 pb-20">
+      <SEO />
       {/* ══════════════════════════════════════
           HERO
       ══════════════════════════════════════ */}

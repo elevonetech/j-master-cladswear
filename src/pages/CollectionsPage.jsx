@@ -4,10 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   BadgeCheck,
-  MessageCircle,
   Package,
   Sparkles,
 } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const asset = (name) => `/assets/brands/${encodeURIComponent(name)}`;
 
@@ -243,6 +243,11 @@ function BrandCard({ brand, index }) {
 export function CollectionsPage() {
   return (
     <div className="collections-page relative -mt-[72px] overflow-hidden bg-[#050505] text-white">
+      <SEO
+        title="Collections"
+        description="Explore curated footwear collections from top brands including Nike, Adidas, Puma, Timberland, and Clarks. Premium quality at J. MASTER CLADSWEAR."
+        url="/collections"
+      />
       <style>{`
         .collections-page {
           --gold: #c9a53e;

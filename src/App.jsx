@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
+import { HelmetProvider } from "react-helmet-async";
 import { Layout } from "@/components/Layout";
 import { HomePage } from "@/pages/HomePage";
 import { ShopPage } from "@/pages/ShopPage";
@@ -89,9 +90,10 @@ export default function App() {
   if (!ready) return <LoadingScreen />;
 
   return (
-    <BrowserRouter>
-      <StoreProvider>
-        <ModalProvider>
+    <HelmetProvider>
+      <BrowserRouter>
+        <StoreProvider>
+          <ModalProvider>
           <RoutedApp />
           <Toaster
             position="top-right"
@@ -119,5 +121,6 @@ export default function App() {
         </ModalProvider>
       </StoreProvider>
     </BrowserRouter>
+    </HelmetProvider>
   );
 }

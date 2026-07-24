@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import products from "@/data/products";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SEO } from "@/components/SEO";
 import { useStore } from "@/context/StoreContext";
 import { formatKes } from "@/utils/money";
 import { buildWhatsAppUrl } from "@/utils/whatsapp";
@@ -101,6 +102,22 @@ export function ProductPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+      <SEO
+        title={product.name}
+        description={`${product.name} by ${product.brand}. ${product.description || "Premium footwear available at J. MASTER CLADSWEAR."}`}
+        url={`/product/${product.id}`}
+        image={product.images?.[0]}
+        type="product"
+        product={{
+          name: product.name,
+          description: product.description,
+          image: product.images?.[0],
+          brand: product.brand,
+          price: product.price,
+          rating: product.rating,
+          reviewCount: REVIEWS.length,
+        }}
+      />
       <div className="mb-8 flex items-center justify-between gap-4">
         <Breadcrumbs
           items={[

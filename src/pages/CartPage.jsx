@@ -5,6 +5,7 @@ import { Minus, Plus } from "lucide-react";
 import { useStore } from "@/context/StoreContext";
 import { EmptyState } from "@/components/EmptyState";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SEO } from "@/components/SEO";
 import { buildWhatsAppUrl } from "@/utils/whatsapp";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
@@ -40,6 +41,11 @@ export function CartPage() {
 
   return (
     <div className="bg-linen">
+      <SEO
+        title="Shopping Cart"
+        description="Review your selected footwear, sizes, colors, and quantities before placing your order at J. MASTER CLADSWEAR."
+        url="/cart"
+      />
       {/* ── Header ── */}
       <div className="bg-white border-b border-black/06 py-16 px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">

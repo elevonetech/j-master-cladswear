@@ -1,0 +1,22 @@
+{
+  "name": "J. MASTER CLADSWEAR",
+  "short_name": "J. MASTER",
+  "description": "Kenya's premium footwear brand. Shop authentic sneakers, formal shoes, boots, loafers, and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://media.base44.com/images/public/user_6a48bac8d4b8c19463f7ed62/d334eda84_WhatsAppImage2026-07-04at111048AM.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "https://media.base44.com/images/public/user_6a48bac8d4b8c19463f7ed62/d334eda84_WhatsAppImage2026-07-04at111048AM.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

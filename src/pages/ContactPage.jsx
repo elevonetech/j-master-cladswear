@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const InstagramIcon = ({ size = 14, className = "" }) => (
   <svg
@@ -52,6 +53,11 @@ export function ContactPage() {
 
   return (
     <div className="bg-gradient-to-br from-[#faf9f6] via-white to-[#f5efe3] relative overflow-hidden">
+      <SEO
+        title="Contact Us"
+        description="Get in touch with J. MASTER CLADSWEAR. Reach us via WhatsApp, phone, or email for style advice, sizing, orders, and customer support in Nairobi, Kenya."
+        url="/contact"
+      />
       <div className="absolute left-0 top-32 h-72 w-72 rounded-full bg-[#C9A227]/10 blur-[120px]" />
       <div className="absolute right-0 bottom-40 h-80 w-80 rounded-full bg-[#D4AF37]/10 blur-[130px]" />
 
