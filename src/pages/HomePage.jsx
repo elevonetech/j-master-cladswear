@@ -77,7 +77,7 @@ export function HomePage() {
                 className="text-white/60 text-base md:text-lg max-w-md leading-relaxed mb-10"
               >
                 Discover authentic, stylish footwear from Kenya's most trusted
-                sellers. From iconic sneakers to refined formals — all at prices
+                sellers. From iconic sneakers to refined formals, all at prices
                 that respect your hustle.
               </motion.p>
 
