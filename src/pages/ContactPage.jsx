@@ -64,42 +64,50 @@ export function ContactPage() {
       <div className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
         <section className="relative overflow-hidden rounded-[40px] mt-10 shadow-2xl ring-1 ring-slate-900/10">
           <img
-            src="https://images.unsplash.com/photo-1528701800489-20b9f299b80e?auto=format&fit=crop&w=1800&q=80"
-            alt="Modern sneaker silhouette"
-            className="h-[460px] w-full object-cover sm:h-[560px]"
+            src="/assets/contact-hero.jpg"
+            alt="Contact us - social media and communication icons"
+            className="h-[500px] w-full object-cover sm:h-[600px] lg:h-[650px]"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/30 to-slate-950/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a4d5c]/85 via-[#2a6b78]/60 to-[#4a9bb0]/40" />
 
-          <div className="absolute inset-0 flex items-center">
-            <div className="max-w-2xl px-8 py-10 md:px-16">
-              <span className="inline-flex rounded-full bg-[#C9A227]/20 px-5 py-2 text-sm font-semibold tracking-wide text-[#F7D774] backdrop-blur-xl">
-                Footwear Concierge
+          <div className="absolute inset-0 flex items-center justify-center md:justify-start">
+            <div className="max-w-2xl px-8 py-12 md:px-16 text-center md:text-left">
+              <span className="inline-flex rounded-full bg-white/15 px-5 py-2 text-sm font-semibold tracking-wide text-white backdrop-blur-md border border-white/20">
+                ✓ Always Available
               </span>
 
-              <h1 className="mt-6 text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-                Step into your next statement.
+              <h1 className="mt-8 text-5xl font-bold leading-tight text-white sm:text-6xl lg:text-7xl tracking-tight">
+                Let's Connect.
               </h1>
 
-              <p className="mt-6 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
-                Whether you want luxury leather, all-day comfort, or a bold new
-                silhouette, our fit experts are here to guide you to the perfect
-                pair.
+              <p className="mt-8 max-w-2xl text-lg leading-8 text-white/90 sm:text-xl">
+                Reach out via phone, email, WhatsApp, or visit us in Nairobi. 
+                We're here to answer your questions and help you find the perfect fit.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-10 flex flex-col sm:flex-row flex-wrap items-center md:items-start gap-4">
                 <a
-                  href="mailto:Kithomejoseph88@gmail.com"
-                  className="inline-flex items-center rounded-full bg-[#F7D774] px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-[#C9A227]/20 transition hover:brightness-95"
+                  href="https://wa.me/254702364786"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#F7D774] px-8 py-4 text-base font-semibold text-black shadow-2xl shadow-[#C9A227]/40 transition hover:brightness-110 hover:scale-105 active:scale-95"
                 >
-                  Contact our fit experts
+                  <MessageCircle size={20} />
+                  Message on WhatsApp
                 </a>
-                <span className="text-sm text-white/70">
-                  Fast replies for style, sizing, and shipping.
-                </span>
+                <a
+                  href="tel:+254702364786"
+                  className="inline-flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-md px-8 py-4 text-base font-semibold text-white border border-white/30 transition hover:bg-white/30 hover:scale-105 active:scale-95"
+                >
+                  <Phone size={20} />
+                  Call Us
+                </a>
               </div>
             </div>
           </div>
+
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a4d5c] to-transparent" />
         </section>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
