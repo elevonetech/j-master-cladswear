@@ -70,7 +70,7 @@ export function AuthProvider({ children }) {
         toast.success("Logged in as Admin (Local Mode)");
         return mockUser;
       } else {
-        const err = new Error("Invalid admin credentials. Default is admin@dapper.com / admin123");
+        const err = new Error("Invalid credentials");
         toast.error(err.message);
         throw err;
       }

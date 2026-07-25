@@ -317,8 +317,8 @@ export function AdminDashboardPage() {
               <p className="text-sm">No products found matching your search or filters.</p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-xs">
+            <div className="overflow-x-auto pb-4">
+              <table className="w-full min-w-[900px] text-left border-collapse text-xs">
                 <thead>
                   <tr className="border-b border-white/10 bg-[#161616] text-white/50 uppercase font-semibold">
                     <th className="py-4 px-4">Product</th>
@@ -368,7 +368,7 @@ export function AdminDashboardPage() {
 
                         <td className="py-3 px-4">
                           <span
-                            className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${
+                            className={`px-2.5 py-1 rounded-full text-[10px] font-bold whitespace-nowrap inline-block ${
                               (product.stock || 0) < 10
                                 ? "bg-red-500/20 text-red-400 border border-red-500/30"
                                 : "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
@@ -378,20 +378,20 @@ export function AdminDashboardPage() {
                           </span>
                         </td>
 
-                        <td className="py-3 px-4">
+                        <td className="py-3 px-4 min-w-[200px]">
                           <div className="flex flex-wrap gap-1">
                             {product.badge && (
-                              <span className="px-2 py-0.5 rounded bg-champagne/20 text-champagne text-[9px] font-semibold border border-champagne/30">
+                              <span className="px-2 py-0.5 rounded bg-champagne/20 text-champagne text-[9px] font-semibold border border-champagne/30 whitespace-nowrap inline-block">
                                 {product.badge}
                               </span>
                             )}
                             {product.featured && (
-                              <span className="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[9px] font-semibold border border-purple-500/30">
+                              <span className="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[9px] font-semibold border border-purple-500/30 whitespace-nowrap inline-block">
                                 Featured
                               </span>
                             )}
                             {product.bestSeller && (
-                              <span className="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[9px] font-semibold border border-blue-500/30">
+                              <span className="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[9px] font-semibold border border-blue-500/30 whitespace-nowrap inline-block">
                                 Best Seller
                               </span>
                             )}
