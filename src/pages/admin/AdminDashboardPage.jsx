@@ -156,7 +156,7 @@ export function AdminDashboardPage() {
             />
             <div>
               <span className="font-bold font-heading tracking-wider text-sm block leading-none">
-                DAPPER ADMIN
+                JMASTER ADMIN
               </span>
               <span className="text-[10px] text-white/40 group-hover:text-champagne transition-colors flex items-center gap-1">
                 View Storefront <ExternalLink className="h-2.5 w-2.5" />
