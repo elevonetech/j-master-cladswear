@@ -134,17 +134,17 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
       const parseList = (str) =>
         str
           ? str
-              .split(",")
-              .map((s) => s.trim())
-              .filter(Boolean)
+            .split(",")
+            .map((s) => s.trim())
+            .filter(Boolean)
           : [];
 
       const parseLines = (str) =>
         str
           ? str
-              .split("\n")
-              .map((s) => s.trim())
-              .filter(Boolean)
+            .split("\n")
+            .map((s) => s.trim())
+            .filter(Boolean)
           : [];
 
       const productPayload = {
@@ -239,7 +239,7 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-white/80 mb-1">
-                    Price (USD / Local) *
+                    Price *
                   </label>
                   <input
                     type="number"
@@ -248,7 +248,7 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
                     onChange={handleChange}
                     required
                     step="0.01"
-                    placeholder="299.99"
+                    placeholder="2200"
                     className="w-full bg-[#1c1c1c] border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-champagne"
                   />
                 </div>
@@ -547,8 +547,8 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
                 {isSubmitting
                   ? "Saving..."
                   : isEditing
-                  ? "Update Product"
-                  : "Publish Product"}
+                    ? "Update Product"
+                    : "Publish Product"}
               </button>
             </div>
           </form>
