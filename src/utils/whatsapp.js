@@ -32,3 +32,6 @@ export const buildOrderMessage = (items) => {
 
 export const buildWhatsAppUrl = (items) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildOrderMessage(items))}`;
+
+export const buildWhatsAppContactUrl = (message = "Hello, I would like to chat about your products.") =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

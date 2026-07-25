@@ -7,6 +7,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { buildWhatsAppContactUrl } from "@/utils/whatsapp";
 
 const InstagramIcon = ({ size = 14, className = "" }) => (
   <svg
@@ -88,7 +89,7 @@ export function ContactPage() {
 
               <div className="mt-8 sm:mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4 sm:justify-center">
                 <a
-                  href="https://wa.me/254702364786"
+                  href={buildWhatsAppContactUrl("Hello, I would like to chat about your shoes and availability.")}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-[#F7D774] px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-black shadow-2xl shadow-[#C9A227]/40 transition hover:brightness-110 hover:scale-105 active:scale-95"
@@ -214,10 +215,10 @@ export function ContactPage() {
                   purchase, we're here for you.
                 </p>
                 <a
-                  href="https://wa.me/254702364786"
+                  href={buildWhatsAppContactUrl("Hello, I have a question about your footwear collection.")}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#C9A227] px-7 py-4 font-semibold text-black transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  className="mt-8 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#C9A227] px-7 py-4 font-semibold text-black transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-[#d9b84a] hover:shadow-xl shadow-lg shadow-[#C9A227]/30"
                 >
                   <MessageCircle size={20} />
                   Chat on WhatsApp
@@ -277,10 +278,10 @@ export function ContactPage() {
                 </div>
 
                 <a
-                  href="https://wa.me/254702364786"
+                  href={buildWhatsAppContactUrl("Hello, I have a question about your footwear collection.")}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-10 flex w-full items-center justify-center gap-3 rounded-full bg-[#C9A227] px-6 py-4 font-semibold text-black transition-all duration-300 hover:scale-[1.02] hover:bg-[#d9b84a]"
+                  className="mt-10 flex w-full items-center justify-center gap-3 rounded-full bg-[#C9A227] px-6 py-4 font-semibold text-black transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-[#d9b84a] shadow-lg shadow-[#C9A227]/30"
                 >
                   <MessageCircle size={20} />
                   Start WhatsApp Chat
