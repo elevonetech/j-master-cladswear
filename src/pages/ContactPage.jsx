@@ -71,36 +71,36 @@ export function ContactPage() {
 
           <div className="absolute inset-0 bg-gradient-to-r from-[#1a4d5c]/85 via-[#2a6b78]/60 to-[#4a9bb0]/40" />
 
-          <div className="absolute inset-0 flex items-center justify-center md:justify-start">
-            <div className="max-w-2xl px-8 py-12 md:px-16 text-center md:text-left">
-              <span className="inline-flex rounded-full bg-white/15 px-5 py-2 text-sm font-semibold tracking-wide text-white backdrop-blur-md border border-white/20">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="max-w-2xl px-4 py-8 sm:px-8 sm:py-12 md:px-16 text-center">
+              <span className="inline-flex rounded-full bg-white/15 px-5 py-2 text-xs sm:text-sm font-semibold tracking-wide text-white backdrop-blur-md border border-white/20">
                 ✓ Always Available
               </span>
 
-              <h1 className="mt-8 text-5xl font-bold leading-tight text-white sm:text-6xl lg:text-7xl tracking-tight">
+              <h1 className="mt-6 sm:mt-8 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-7xl tracking-tight">
                 Let's Connect.
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-8 text-white/90 sm:text-xl">
+              <p className="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg leading-7 sm:leading-8 text-white/90 lg:text-xl">
                 Reach out via phone, email, WhatsApp, or visit us in Nairobi. 
                 We're here to answer your questions and help you find the perfect fit.
               </p>
 
-              <div className="mt-10 flex flex-col sm:flex-row flex-wrap items-center md:items-start gap-4">
+              <div className="mt-8 sm:mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4 sm:justify-center">
                 <a
                   href="https://wa.me/254702364786"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#F7D774] px-8 py-4 text-base font-semibold text-black shadow-2xl shadow-[#C9A227]/40 transition hover:brightness-110 hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-[#F7D774] px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-black shadow-2xl shadow-[#C9A227]/40 transition hover:brightness-110 hover:scale-105 active:scale-95"
                 >
-                  <MessageCircle size={20} />
-                  Message on WhatsApp
+                  <MessageCircle size={18} className="sm:w-5 sm:h-5" />
+                  <span className="sm:inline">Message on WhatsApp</span>
                 </a>
                 <a
                   href="tel:+254702364786"
-                  className="inline-flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-md px-8 py-4 text-base font-semibold text-white border border-white/30 transition hover:bg-white/30 hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-white/20 backdrop-blur-md px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white border border-white/30 transition hover:bg-white/30 hover:scale-105 active:scale-95"
                 >
-                  <Phone size={20} />
+                  <Phone size={18} className="sm:w-5 sm:h-5" />
                   Call Us
                 </a>
               </div>
@@ -110,8 +110,8 @@ export function ContactPage() {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a4d5c] to-transparent" />
         </section>
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="group relative overflow-hidden rounded-[32px] bg-white p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+        <div className="mt-12 sm:mt-14 grid gap-8 grid-cols-1 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="group relative overflow-hidden rounded-[32px] bg-white p-6 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
             <div className="absolute -right-16 -top-16 h-52 w-52 rounded-full bg-[#D4AF37]/10 blur-[90px]" />
             <div className="absolute -left-20 bottom-0 h-40 w-40 rounded-full bg-[#C9A227]/10 blur-[80px]" />
 
@@ -120,11 +120,11 @@ export function ContactPage() {
                 Customer Care
               </span>
 
-              <h2 className="mt-5 text-4xl font-bold text-[#111]">
+              <h2 className="mt-5 text-3xl sm:text-4xl font-bold text-[#111]">
                 We're Here to Help
               </h2>
 
-              <p className="mt-5 max-w-2xl text-[16px] leading-8 text-stone-600">
+              <p className="mt-5 max-w-2xl text-sm sm:text-base leading-7 sm:leading-8 text-stone-600">
                 Whether you're searching for the perfect fit, checking product
                 availability, tracking your order or simply looking for style
                 advice, we're committed to giving you the best shopping
@@ -140,10 +140,10 @@ export function ContactPage() {
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#111]">
+                    <h3 className="text-base sm:text-lg font-semibold text-[#111]">
                       Find Your Perfect Fit
                     </h3>
-                    <p className="mt-2 text-sm leading-7 text-stone-600">
+                    <p className="mt-2 text-xs sm:text-sm leading-6 sm:leading-7 text-stone-600">
                       Unsure about sizing? Our team will help you choose
                       footwear that fits comfortably before you place your
                       order.
@@ -206,9 +206,9 @@ export function ContactPage() {
                 </div>
               </div>
 
-              <div className="mt-10 rounded-[28px] bg-gradient-to-r from-[#111] to-[#232323] p-8 text-white">
-                <h3 className="text-2xl font-bold">Need a Quick Response?</h3>
-                <p className="mt-3 max-w-lg text-white/75 leading-7">
+              <div className="mt-10 rounded-[28px] bg-gradient-to-r from-[#111] to-[#232323] p-6 sm:p-8 text-white">
+                <h3 className="text-xl sm:text-2xl font-bold">Need a Quick Response?</h3>
+                <p className="mt-3 max-w-lg text-sm sm:text-base text-white/75 leading-6 sm:leading-7">
                   The fastest way to reach us is through WhatsApp. Whether you
                   have a question before buying or need help after your
                   purchase, we're here for you.
@@ -228,7 +228,7 @@ export function ContactPage() {
           </div>
 
           <div className="space-y-8">
-            <div className="relative overflow-hidden rounded-[32px] bg-[#171717] p-8 text-white shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
+            <div className="relative overflow-hidden rounded-[32px] bg-[#171717] p-6 sm:p-8 text-white shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
               <div className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-[#C9A227]/20 blur-[90px]" />
 
               <div className="relative">
@@ -236,11 +236,11 @@ export function ContactPage() {
                   Contact Details
                 </span>
 
-                <h2 className="mt-5 text-3xl font-bold">
+                <h2 className="mt-5 text-2xl sm:text-3xl font-bold">
                   We'd Love To Hear From You
                 </h2>
 
-                <p className="mt-4 leading-7 text-white/70">
+                <p className="mt-4 text-sm sm:text-base leading-6 sm:leading-7 text-white/70">
                   Reach us through your preferred channel. Whether you have a
                   question before placing an order or need assistance
                   afterwards, we're always happy to help.
@@ -264,12 +264,12 @@ export function ContactPage() {
                             href={href}
                             target={external ? "_blank" : undefined}
                             rel={external ? "noreferrer" : undefined}
-                            className="transition-colors text-white/80 hover:text-[#F6D66B]"
+                            className="transition-colors text-white/80 hover:text-[#F6D66B] text-sm sm:text-base break-all"
                           >
                             {text}
                           </a>
                         ) : (
-                          <span className="text-white/80">{text}</span>
+                          <span className="text-white/80 text-sm sm:text-base">{text}</span>
                         )}
                       </div>
                     ),
@@ -290,10 +290,10 @@ export function ContactPage() {
 
             <div className="overflow-hidden rounded-[32px] bg-white p-5 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
               <div className="px-3 pb-5">
-                <h3 className="text-2xl font-bold text-[#111]">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#111]">
                   Visit Our Store
                 </h3>
-                <p className="mt-2 text-stone-600">
+                <p className="mt-2 text-sm sm:text-base text-stone-600">
                   You're always welcome to visit us and explore our latest
                   footwear collection in person.
                 </p>
