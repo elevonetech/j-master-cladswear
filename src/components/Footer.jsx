@@ -51,8 +51,7 @@ export function Footer() {
             </p>
           </div>
           <p className="text-[0.8rem] leading-relaxed text-white/45 max-w-xs">
-            Premium silhouettes, timeless styling, and a WhatsApp-first shopping
-            experience designed for fast ordering.
+            Kenya's premier destination for authentic, high-quality footwear, blending timeless style with unmatched comfort.
           </p>
 
           {/* Social / contact links */}
