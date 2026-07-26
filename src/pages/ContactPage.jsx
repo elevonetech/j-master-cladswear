@@ -108,7 +108,7 @@ export function ContactPage() {
             </div>
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a4d5c] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a4d5c] to-transparent pointer-events-none" />
         </section>
 
         <div className="mt-12 sm:mt-14 grid gap-8 grid-cols-1 lg:grid-cols-[1.2fr_0.8fr]">
