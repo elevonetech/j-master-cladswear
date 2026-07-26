@@ -1,5 +1,15 @@
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
-import { isSupabaseConfigured, supabase, uploadProductImage } from "@/lib/supabase";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
+import {
+  isSupabaseConfigured,
+  supabase,
+  uploadProductImage,
+} from "@/lib/supabase";
 import { initialTestProducts } from "@/data/products";
 import toast from "react-hot-toast";
 
@@ -20,13 +30,13 @@ function formatProductFromDb(row) {
     sizes: Array.isArray(row.sizes)
       ? row.sizes
       : typeof row.sizes === "string"
-      ? JSON.parse(row.sizes || "[]")
-      : [],
+        ? JSON.parse(row.sizes || "[]")
+        : [],
     colors: Array.isArray(row.colors)
       ? row.colors
       : typeof row.colors === "string"
-      ? JSON.parse(row.colors || "[]")
-      : [],
+        ? JSON.parse(row.colors || "[]")
+        : [],
     description: row.description || "",
     rating: Number(row.rating || 5.0),
     reviews: Number(row.reviews || 0),
@@ -38,18 +48,18 @@ function formatProductFromDb(row) {
     tags: Array.isArray(row.tags)
       ? row.tags
       : typeof row.tags === "string"
-      ? JSON.parse(row.tags || "[]")
-      : [],
+        ? JSON.parse(row.tags || "[]")
+        : [],
     images: Array.isArray(row.images)
       ? row.images
       : typeof row.images === "string"
-      ? JSON.parse(row.images || "[]")
-      : [],
+        ? JSON.parse(row.images || "[]")
+        : [],
     specs: Array.isArray(row.specs)
       ? row.specs
       : typeof row.specs === "string"
-      ? JSON.parse(row.specs || "[]")
-      : [],
+        ? JSON.parse(row.specs || "[]")
+        : [],
   };
 }
 
@@ -83,6 +93,23 @@ export function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const loadLocalProducts = useCallback(() => {
+    const saved = localStorage.getItem(LOCAL_PRODUCTS_KEY);
+    if (saved) {
+      try {
+        setProducts(JSON.parse(saved));
+        return;
+      } catch {
+        // use default
+      }
+    }
+    setProducts(initialTestProducts);
+    localStorage.setItem(
+      LOCAL_PRODUCTS_KEY,
+      JSON.stringify(initialTestProducts),
+    );
+  }, []);
+
   const fetchProducts = useCallback(async () => {
     setLoading(true);
     try {
@@ -111,21 +138,7 @@ export function ProductProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  }, []);
-
-  const loadLocalProducts = () => {
-    const saved = localStorage.getItem(LOCAL_PRODUCTS_KEY);
-    if (saved) {
-      try {
-        setProducts(JSON.parse(saved));
-        return;
-      } catch {
-        // use default
-      }
-    }
-    setProducts(initialTestProducts);
-    localStorage.setItem(LOCAL_PRODUCTS_KEY, JSON.stringify(initialTestProducts));
-  };
+  }, [loadLocalProducts]);
 
   const saveLocalProducts = (newList) => {
     setProducts(newList);
@@ -181,7 +194,7 @@ export function ProductProvider({ children }) {
       // If new image files uploaded, process them
       if (imageFiles.length > 0) {
         const uploaded = await Promise.all(
-          imageFiles.map((file) => uploadProductImage(file))
+          imageFiles.map((file) => uploadProductImage(file)),
         );
         const validUploaded = uploaded.filter(Boolean);
         if (validUploaded.length > 0) {
@@ -191,9 +204,12 @@ export function ProductProvider({ children }) {
 
       const newProductPayload = {
         ...productData,
-        images: imageUrls.length > 0 ? imageUrls : [
-          "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
-        ],
+        images:
+          imageUrls.length > 0
+            ? imageUrls
+            : [
+                "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
+              ],
       };
 
       if (isSupabaseConfigured && supabase) {
@@ -246,7 +262,7 @@ export function ProductProvider({ children }) {
       // Handle image updates
       if (newImageFiles && newImageFiles.length > 0) {
         const uploaded = await Promise.all(
-          newImageFiles.map((file) => uploadProductImage(file))
+          newImageFiles.map((file) => uploadProductImage(file)),
         );
         const validUploaded = uploaded.filter(Boolean);
         if (validUploaded.length > 0) {
@@ -276,13 +292,13 @@ export function ProductProvider({ children }) {
         }
 
         setProducts((prev) =>
-          prev.map((p) => (p.id === id ? mergedProduct : p))
+          prev.map((p) => (p.id === id ? mergedProduct : p)),
         );
         toast.success("Product updated successfully!");
         return mergedProduct;
       } else {
         const updatedList = products.map((p) =>
-          p.id === id ? mergedProduct : p
+          p.id === id ? mergedProduct : p,
         );
         saveLocalProducts(updatedList);
         toast.success("Product updated locally!");
@@ -300,10 +316,7 @@ export function ProductProvider({ children }) {
   const deleteProduct = async (id) => {
     try {
       if (isSupabaseConfigured && supabase) {
-        const { error } = await supabase
-          .from("products")
-          .delete()
-          .eq("id", id);
+        const { error } = await supabase.from("products").delete().eq("id", id);
 
         if (error) {
           toast.error("Failed to delete product: " + error.message);
