@@ -99,15 +99,17 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
     const files = Array.from(e.target.files || []);
     if (files.length === 0) return;
 
-    setImageFiles((prev) => [...prev, ...files]);
-
-    const newPreviews = files.map((file) => URL.createObjectURL(file));
-    setImagePreviews((prev) => [...prev, ...newPreviews]);
+    const file = files[0];
+    setImageFiles([file]);
+    setImagePreviews([URL.createObjectURL(file)]);
+    setExistingImages([]);
   };
 
   const handleAddImageUrl = () => {
     if (!imageUrlInput.trim()) return;
-    setExistingImages((prev) => [...prev, imageUrlInput.trim()]);
+    setExistingImages([imageUrlInput.trim()]);
+    setImageFiles([]);
+    setImagePreviews([]);
     setImageUrlInput("");
   };
 
@@ -417,7 +419,7 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
                 </h4>
                 <span className="text-xs text-white/40">
                   {isEditing && imageFiles.length === 0
-                    ? "Existing images will be preserved if no new file is uploaded"
+                    ? "Existing image will be preserved if no new file is uploaded"
                     : "Upload file or paste image URL"}
                 </span>
               </div>
@@ -427,14 +429,13 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
                 <label className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-white/20 hover:border-champagne rounded-2xl cursor-pointer bg-white/5 hover:bg-white/10 transition-all text-center">
                   <Upload className="h-8 w-8 text-champagne mb-2" />
                   <span className="text-sm font-medium text-white">
-                    Upload New Image File(s)
+                    Upload New Image File
                   </span>
                   <span className="text-xs text-white/40 mt-1">
                     PNG, JPG, WEBP up to 5MB
                   </span>
                   <input
                     type="file"
-                    multiple
                     accept="image/*"
                     onChange={handleFileChange}
                     className="hidden"
@@ -471,7 +472,7 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
                 {existingImages.length > 0 && (
                   <div>
                     <span className="text-xs text-white/60 font-semibold mb-2 block">
-                      Current Images ({existingImages.length}):
+                      Current Image:
                     </span>
                     <div className="flex flex-wrap gap-3">
                       {existingImages.map((src, idx) => (
@@ -488,7 +489,7 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
                           <button
                             type="button"
                             onClick={() => handleRemoveExistingImage(idx)}
-                            className="absolute top-1 right-1 p-1 rounded-full bg-red-600/80 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="absolute top-1 right-1 p-1 rounded-full bg-red-600/80 text-white opacity-100 transition-opacity hover:bg-red-500"
                           >
                             <Trash2 className="h-3 w-3" />
                           </button>
@@ -502,7 +503,7 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
                 {imagePreviews.length > 0 && (
                   <div>
                     <span className="text-xs text-champagne font-semibold mb-2 block">
-                      New Uploaded Files ({imagePreviews.length}):
+                      New Uploaded File:
                     </span>
                     <div className="flex flex-wrap gap-3">
                       {imagePreviews.map((src, idx) => (
@@ -518,7 +519,7 @@ export function ProductModal({ isOpen, onClose, onSubmit, initialData = null }) 
                           <button
                             type="button"
                             onClick={() => handleRemoveNewPreview(idx)}
-                            className="absolute top-1 right-1 p-1 rounded-full bg-red-600/80 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="absolute top-1 right-1 p-1 rounded-full bg-red-600/80 text-white opacity-100 transition-opacity hover:bg-red-500"
                           >
                             <Trash2 className="h-3 w-3" />
                           </button>
