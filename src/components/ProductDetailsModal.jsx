@@ -64,14 +64,18 @@ function ReviewCard({ name, rating, date, text }) {
     <div className="rounded-[1.25rem] bg-[#f8f8f8] p-5">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-[#111] font-heading tracking-wide">{name}</p>
+          <p className="text-sm font-semibold text-[#111] font-heading tracking-wide">
+            {name}
+          </p>
           <StarRating rating={rating} />
         </div>
         <p className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-champagne">
           {date}
         </p>
       </div>
-      <p className="mt-3 text-xs leading-relaxed text-[#666] font-body">{text}</p>
+      <p className="mt-3 text-xs leading-relaxed text-[#666] font-body">
+        {text}
+      </p>
     </div>
   );
 }
@@ -79,6 +83,7 @@ function ReviewCard({ name, rating, date, text }) {
 export function ProductDetailsModal({ product, onClose }) {
   const { addToCart, toggleWishlist, isWishlisted } = useStore();
   const { openDetails } = useModal();
+  const { products } = useProducts();
   const [imageIndex, setImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
@@ -107,8 +112,7 @@ export function ProductDetailsModal({ product, onClose }) {
 
   const prevImage = () =>
     setImageIndex((v) => (v === 0 ? product.images.length - 1 : v - 1));
-  const nextImage = () =>
-    setImageIndex((v) => (v + 1) % product.images.length);
+  const nextImage = () => setImageIndex((v) => (v + 1) % product.images.length);
 
   const related = products
     .filter((p) => p.category === product.category && p.id !== product.id)
@@ -238,7 +242,9 @@ export function ProductDetailsModal({ product, onClose }) {
                         : "bg-[#f8f8f8] text-red-400"
                   }`}
                 >
-                  {product.stock > 0 ? `${product.stock} in stock` : "Out of stock"}
+                  {product.stock > 0
+                    ? `${product.stock} in stock`
+                    : "Out of stock"}
                 </span>
               </div>
 
@@ -359,7 +365,10 @@ export function ProductDetailsModal({ product, onClose }) {
                     ["Gender", product.gender],
                     ["Collection", product.collection],
                   ].map(([label, value]) => (
-                    <div key={label} className="rounded-[1rem] bg-[#f8f8f8] p-3">
+                    <div
+                      key={label}
+                      className="rounded-[1rem] bg-[#f8f8f8] p-3"
+                    >
                       <p className="text-[9px] uppercase tracking-[0.3em] text-champagne font-semibold">
                         {label}
                       </p>
