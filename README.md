@@ -1,7 +1,8 @@
 # J. MASTER CLADSWEAR
 
-![J. MASTER CLADSWEAR](https://media.base44.com/images/public/user_6a48bac8d4b8c19463f7ed62/d334eda84_WhatsAppImage2026-07-04at111048AM.jpg)
-
+<p align="center">
+  <img src="./src/assets/logo.jpeg" alt="J. MASTER CLADSWEAR" width="800">
+</p>
 **J. MASTER CLADSWEAR** is a premium footwear e-commerce platform built for Kenya's luxury shoe market. It provides a seamless, dynamic, and fully responsive shopping experience, allowing users to browse authentic sneakers, formal shoes, boots, and loafers, while seamlessly completing orders via WhatsApp integration.
 
 ## 🚀 Tech Stack
