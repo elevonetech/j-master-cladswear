@@ -5,11 +5,11 @@ import { useStore } from "@/context/StoreContext";
 import { useModal } from "@/context/ModalContext";
 import { formatKes } from "@/utils/money";
 import { handleImgError } from "@/utils/image";
-import { Heart, Eye, ShoppingBag, Star, BadgeCheck } from "lucide-react";
+import { Heart, ShoppingBag, Star, BadgeCheck } from "lucide-react";
 
 export function ProductCard({ product }) {
   const { toggleWishlist, isWishlisted, addToCart } = useStore();
-  const { openPreview, openDetails } = useModal();
+  const { openDetails } = useModal();
   const wishlisted = isWishlisted(product.id);
   const [hovered, setHovered] = useState(false);
 
@@ -82,14 +82,6 @@ export function ProductCard({ product }) {
               transition={{ duration: 0.2 }}
               className="absolute bottom-3 left-3 right-3 flex gap-1.5"
             >
-              <button
-                type="button"
-                onClick={() => openPreview(product.id)}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 h-10 rounded-full text-[10px] font-semibold tracking-wide bg-black/70 text-white/90 border border-white/15 backdrop-blur-sm hover:border-champagne/40 hover:text-champagne transition-all duration-200 cursor-pointer"
-              >
-                <Eye size={12} />
-                Preview
-              </button>
               <button
                 type="button"
                 onClick={() => openDetails(product.id)}

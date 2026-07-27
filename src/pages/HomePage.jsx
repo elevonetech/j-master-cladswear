@@ -168,11 +168,10 @@ export function HomePage() {
                   </div>
                 ))}
               </div>
-
             </div>
 
-            {/* Feature brands + testimonials */}
-            <div className="space-y-6">
+            {/* Feature brands */}
+            <div>
               <div className="rounded-3xl border border-white/08 bg-white/[0.04] p-8">
                 <p className="eyebrow-dark mb-5">Featured brands</p>
                 <div className="flex flex-wrap gap-2.5">
@@ -192,36 +191,6 @@ export function HomePage() {
                     >
                       {brand}
                     </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="rounded-3xl border border-white/08 bg-white/[0.04] p-8">
-                <p className="eyebrow-dark mb-5">Testimonials</p>
-                <div className="space-y-3">
-                  {[
-                    {
-                      quote:
-                        "Ordered on WhatsApp Friday, shoes were at my door Monday. The quality is exactly what I was looking for.",
-                      author: "Brian K., Nairobi",
-                    },
-                    {
-                      quote:
-                        "Finally a shoe shop that actually responds fast. The sneakers were boxed well and look even better in person.",
-                      author: "Mercy W., Mombasa",
-                    },
-                  ].map(({ quote, author }) => (
-                    <div
-                      key={quote}
-                      className="rounded-2xl border border-white/06 bg-white/[0.03] p-5"
-                    >
-                      <p className="text-[0.8rem] leading-relaxed text-white/60 italic">
-                        "{quote}"
-                      </p>
-                      <p className="mt-2.5 text-[0.62rem] uppercase tracking-[0.25em] text-champagne/60 font-semibold">
-                        {author}
-                      </p>
-                    </div>
                   ))}
                 </div>
               </div>

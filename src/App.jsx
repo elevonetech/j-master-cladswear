@@ -18,7 +18,6 @@ import { StoreProvider } from "@/context/StoreContext";
 import { ProductProvider } from "@/context/ProductContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { ModalProvider, useModal } from "@/context/ModalContext";
-import { ProductPreviewModal } from "@/components/ProductPreviewModal";
 import { ProductDetailsModal } from "@/components/ProductDetailsModal";
 
 function LoadingScreen() {
@@ -37,7 +36,8 @@ function LoadingScreen() {
           transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
           className="absolute inset-0 rounded-full"
           style={{
-            background: "conic-gradient(from 0deg, rgba(200,168,75,0) 0%, rgba(200,168,75,0.8) 100%)",
+            background:
+              "conic-gradient(from 0deg, rgba(200,168,75,0) 0%, rgba(200,168,75,0.8) 100%)",
             mask: "radial-gradient(transparent 60%, black 61%)",
             WebkitMask: "radial-gradient(transparent 60%, black 61%)",
           }}
@@ -62,7 +62,7 @@ function LoadingScreen() {
 }
 
 function RoutedApp() {
-  const { previewProduct, detailsProduct, closePreview, closeDetails } = useModal();
+  const { detailsProduct, closeDetails } = useModal();
 
   return (
     <>
@@ -80,18 +80,17 @@ function RoutedApp() {
 
         {/* Public Store Routes */}
         <Route element={<Layout />}>
-          <Route path="/"            element={<HomePage />} />
-          <Route path="/shop"        element={<ShopPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/shop" element={<ShopPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/cart"        element={<CartPage />} />
-          <Route path="/wishlist"    element={<WishlistPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/collections" element={<CollectionsPage />} />
-          <Route path="/contact"     element={<ContactPage />} />
-          <Route path="*"            element={<Navigate to="/" replace />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
 
-      <ProductPreviewModal product={previewProduct} onClose={closePreview} />
       <ProductDetailsModal product={detailsProduct} onClose={closeDetails} />
     </>
   );
